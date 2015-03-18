@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+    <server>
+        <host_url>http://einstation.sinaapp.com/</host_url>		
+        <fms_url>rtmp://121.199.41.110/ZweiteHorizont</fms_url>
+		<fms_token>ZweiteHorizont</fms_token>
+		<blog_url>http://acgs.me/</blog_url>
+		<amfphp_url>http://einstation.sinaapp.com/amfphp/index.php</amfphp_url>
+		<upload_url>http://einstation.sinaapp.com/UploadFile/upload.php</upload_url>
+    </server>
+	
+	<system_setting>
+	
+	
+	
+	
+	</system_setting>
+</Config>

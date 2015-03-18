@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Applications>
+	<application id="0">
+		<type>SystemApplication</type>
+ 		<name>
+			<Chinese><![CDATA[登陆系统]]></Chinese>
+			<English>Login    System</English>
+		</name>
+		<address>com.zweisystem.applications.SystemOperation.LoginSystem.LoginSystem</address>
+		<color>red</color>
+	</application>
+	
+	<application id="1">
+		<type>SystemApplication</type>
+ 		<name>
+			<Chinese><![CDATA[Passcard    系统]]></Chinese>
+			<English>Passcard    System</English>
+		</name>
+		<address>com.zweisystem.applications.PasscardSystem.PasscardSystem</address>
+		<color>red</color>
+	</application>
+	
+	<application id="2">
+		<type>SystemApplication</type>
+ 		<name>
+			<Chinese>控制中心</Chinese>
+			<English>HeadQuarters</English>
+		</name>
+		<address>com.zweisystem.applications.EinStationHeadQuarters.EinStationHeadQuarters</address>
+		<color>red</color>
+	</application>
+	
+	<application id="3">
+		<type>Application</type>
+ 		<name>
+			<Chinese>留言板</Chinese>
+			<English>Guestbook</English>
+		</name>
+		<address>com.zweisystem.applications.Guestbook.Guestbook</address>
+		<color>orange</color>
+	</application>
+	<application id="4">
+		<type>Application</type>
+ 		<name>
+			<Chinese>欢迎界面</Chinese>
+			<English>Welcome    Board</English>
+		</name>
+		<address>com.zweisystem.applications.WelcomeBoard.WelcomeBoard</address>
+		<color>orange</color>
+	</application>
+	<application id="5">
+		<type>Application</type>
+ 		<name>
+			<Chinese>新浪微博      主控端</Chinese>
+			<English>SinaWeibo    Main    Controller</English>
+		</name>
+		<address>com.zweisystem.applications.SinaWeibo.MainController.SinaWeiboMainController</address>
+		<color>orange</color>
+	</application>
+	<application id="6">
+		<type>Application</type>
+ 		<name>
+			<Chinese>AConnect    客户端</Chinese>
+			<English>AConnect    Client</English>
+		</name>
+		<address>com.zweisystem.applications.AConnect.AConnectClient</address>
+		<color>lightblue</color>
+	</application>
+	<application id="7">
+		<type>Application</type>
+ 		<name>
+			<Chinese>AConnect    遥控器</Chinese>
+			<English>AConnect    Remote</English>
+		</name>
+		<address>com.zweisystem.applications.AConnect.AConnectRemote</address>
+		<color>orange</color>
+	</application>
+<application id="7">
+		<type>Application</type>
+ 		<name>
+			<Chinese>AConnect    遥控器2</Chinese>
+			<English>AConnect    Remote2</English>
+		</name>
+		<address>com.zweisystem.applications.AConnect.AConnectRemote2</address>
+		<color>orange</color>
+	</application>
+	
+<application id="7">
+		<type>Application</type>
+ 		<name>
+			<Chinese>AConnect    遥控器3</Chinese>
+			<English>AConnect    Remote3</English>
+		</name>
+		<address>com.zweisystem.applications.AConnect.AConnectRemote3</address>
+		<color>orange</color>
+	</application>
+	<application id="8">
+		<type>Application</type>
+ 		<name>
+			<Chinese>Sibyl    System</Chinese>
+			<English>Sibyl    System</English>
+		</name>
+		<address>com.zweisystem.applications.PsychoPass.PsychoPassBackground</address>
+		<color>orange</color>
+	</application>
+	<application id="0">
+		<type>Application</type>
+ 		<name>
+			<Chinese>Sibyl    System      查询中心</Chinese>
+			<English>Sibyl    System    Centre</English>
+		</name>
+		<address>com.zweisystem.applications.PsychoPass.PsychoPassControlSystem</address>
+		<color>orange</color>
+	</application>
+	<application id="0">
+		<type>Application</type>
+ 		<name>
+			<Chinese>毕业查询系统</Chinese>
+			<English>Graduation    Helper</English>
+		</name>
+		<address>com.zweisystem.applications.GraduationHelper.GraduationHelper</address>
+		<color>orange</color>
+	</application>
+	<application>
+		<type>TestApplication</type>
+ 		<name>
+			<Chinese>        总测试面板</Chinese>
+			<English>    Test    Board</English>
+		</name>
+		<address>com.zweisystem.applications.TestBoard.TestBoard</address>
+		<color>lightblue</color>
+	</application>
+	<application>
+		<type>TestApplication</type>
+ 		<name>
+			<Chinese>    Zweite    Horizon</Chinese>
+			<English>    Zweite    Horizon</English>
+		</name>
+		<address>com.zweisystem.applications.ZweiteHorizont.ZweiteHorizont</address>
+		<color>lightblue</color>
+	</application>
+	<application>
+		<type>TestApplication</type>
+ 		<name>
+			<Chinese>    Hellomet    主视线</Chinese>
+			<English>    Hellomet    MainView</English>
+		</name>
+		<address>com.zweisystem.applications.Hellomet.MainView</address>
+		<color>lightblue</color>
+	</application>
+	<!-- 这里是程序模板
+	<application>
+		<type>TestApplication</type>
+ 		<name>
+			<Chinese></Chinese>
+			<English></English>
+		</name>
+		<address></address>
+		<color>red</color>
+	</application>
+	-->
+
+</Applications>

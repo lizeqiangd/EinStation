@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Applications>
+
+	<app>
+		<type>3</type>
+		<name>测试面板</name>
+		<path>com.lizeqiangd.zweisystem.applications.SystemOperation.TestBoard.TestBoard</path>
+		<style>lightblue</style>
+	</app>
+	<app>
+		<type>3</type>
+		<name>聊天大厅</name>				
+		<path>com.lizeqiangd.zweisystem.applications.MessageChannel.Lobby.Standard.StandardLobby</path>
+		<style>lightblue</style>
+	</app>
+	<app>
+		<type>2</type>
+		<name>留言板</name>
+		<path>com.lizeqiangd.einstation.applications.GuestBook.GuestBook</path>
+		<style>lightblue</style>
+	</app>
+	<app>
+		<type>2</type>
+		<name>微博授权端</name>
+		<path>com.lizeqiangd.zweisystem.applications.Weibo.MainController.WeiboMainController</path>
+		<style>orange</style>
+	</app>
+	<app>
+		<type>2</type>
+		<name>欢迎界面</name>
+		<path>com.lizeqiangd.zweisystem.applications.SystemOperation.WelcomeBoard.WelcomeBoard</path>
+		<style>orange</style>
+	</app>
+	
+	<app>
+		<type>1</type>
+		<name>远控中心</name>
+		<path>com.lizeqiangd.zweisystem.applications.SystemOperation.EinStationHeadQuarters.EinStationHeadQuarters</path>
+		<style>red</style>
+	</app>
+	
+	<app>
+		<type>2</type>
+		<name>登陆系统</name>
+		<path>com.lizeqiangd.zweisystem.applications.SystemOperation.LoginSystem.LoginSystem</path>
+		<style>red</style>
+	</app>
+	<!-- 这里是程序模板
+	<app>
+		<type>0</type>
+		<name>dummy</name>
+		<path>com.lizeqiangd.zweisystem.applications.SystemOperation.TestBoard.TestBoard</path>
+		<style>lightblue</style>
+	</app>
+	-->
+
+</Applications>

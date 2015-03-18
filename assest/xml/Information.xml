@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Information>
+	<author>
+		<name>Lizeqiangd</name>
+		<icon>http://tp4.sinaimg.cn/1736409487/180/40003657679/1</icon>
+		<description>恩</description>
+	</author>
+	
+    <advertisement>
+		<pic>http://i.hostker.com/public/panel/themes/blue/img/cp_logo_login.png</pic>
+		<title>Hostker</title>
+		<url>http://www.hostker.com/</url>   
+    </advertisement>
+
+    <background>
+        <pic>
+            <url>/Picture/Website/Background/BRS0001.jpg</url>
+            <description>mickykun (c)2010 BLACK★ROCK SHOOTER</description>
+        </pic>  
+    </background>
+	
+</Information>
