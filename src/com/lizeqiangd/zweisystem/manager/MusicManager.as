@@ -43,7 +43,7 @@
 		/**
 		 * 初始化该管理器,默认是5秒缓存.
 		 */
-		public static function init()
+		public static function init():void
 		{
 			_s = new Sound();
 			//_nowPlayingMusic = new Music();
@@ -97,7 +97,7 @@
 		 * 开始加载一首一个Music实例,并将正在播放音乐切换成参数音乐.
 		 * @param	song
 		 */
-		public static function load(song:Music)
+		public static function load(song:Music):void
 		{
 			stop()
 			_nowPlayingMusic = song;
@@ -108,7 +108,7 @@
 		 * 简便方法,直接load一个url.
 		 * @param	s
 		 */
-		public static function loadUrl(s:String)
+		public static function loadUrl(s:String):void
 		{
 			stop()
 			var song:Music = new Music;
@@ -127,7 +127,7 @@
 		 * 如果
 		 * @param	song
 		 */
-		public static function play()
+		public static function play():void
 		{
 			if (_nowPlayingMusic.musicUrl && !_isPlaying)
 			{
@@ -145,7 +145,7 @@
 		/**
 		 * 暂停播放音乐.记录当前位置.
 		 */
-		public static function pause()
+		public static function pause():void
 		{
 			if (_isPlaying)
 			{
@@ -160,7 +160,7 @@
 		/**
 		 * 停止播放音乐,效果是暂停.但是好写一些.
 		 */
-		public static function stop()
+		public static function stop():void
 		{
 			if (_isPlaying)
 			{
@@ -177,7 +177,7 @@
 		 * 设置播放时间的位置,播放时间单位为毫秒.
 		 * @param	s
 		 */
-		public static function position(s:int)
+		public static function position(s:int):void
 		{
 			if (_isPlaying)
 			{
@@ -211,7 +211,7 @@
 		/**
 		 * 设置缓存时间,单位秒
 		 */
-		public static function set bufferTime(s:int)
+		public static function set bufferTime(s:int):void
 		{
 			SoundMixer.bufferTime = s
 		}
@@ -219,7 +219,7 @@
 		/**
 		 * 设置目标的音量
 		 */
-		public static function set targetVolume(s:Number)
+		public static function set targetVolume(s:Number):void
 		{
 			s > 1 ? s = 1 : null;
 			s < 0 ? s = 0 : null;
@@ -238,7 +238,7 @@
 		/**
 		 * 直接设置当前音量
 		 */
-		public function set nowVolume(s:Number)
+		public function set nowVolume(s:Number):void
 		{
 			_st.volume = s
 		}
@@ -270,7 +270,7 @@
 		/**
 		 * 设置静音. 取消后回复之前的音量.
 		 */
-		public static function set mute(s:Boolean)
+		public static function set mute(s:Boolean):void
 		{
 			if (s)
 			{
@@ -302,7 +302,7 @@
 		/**
 		 * 内部方法:渐变音量
 		 */
-		private static function changeVolume()
+		private static function changeVolume():void
 		{
 			if (targetVolume > _st.volume)
 			{
@@ -325,7 +325,7 @@
 		/**
 		 * 销毁本类.
 		 */
-		public static function dispose()
+		public static function dispose():void
 		{
 		}
 	}

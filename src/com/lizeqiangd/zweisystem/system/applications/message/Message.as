@@ -8,7 +8,7 @@
 	public class Message
 	{
 		///默认系列		
-		public static function SystemErrorMessage(message:String = "")
+		public static function SystemErrorMessage(message:String = ""):void
 		{
 			var obj:Object = new Object;
 			obj.title = "System Notification";
@@ -25,7 +25,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SystemMessage(message:String = "", autoClose:Boolean = false)
+		public static function SystemMessage(message:String = "", autoClose:Boolean = false):void
 		{
 			var obj:Object = new Object;
 			obj.title = "System Notification";
@@ -42,7 +42,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SystemConfirm(s:String, e:Function)
+		public static function SystemConfirm(s:String, e:Function):void
 		{
 			var obj:Object = new Object;
 			obj.title = "System Notification";
@@ -60,7 +60,7 @@
 			Msg.confirm(obj, e);
 		}
 		
-		public static function BoardcastMessage(c)
+		public static function BoardcastMessage(c:*):void
 		{
 			var obj:Object = new Object;
 			obj.title = "EinStation Boardcast";
@@ -77,7 +77,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function ApplicationExisted(c)
+		public static function ApplicationExisted(c:*):void
 		{
 			var obj:Object = new Object;
 			obj.title = "ZweiSystem Notification";
@@ -94,7 +94,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function ApplicationFullWindowsExisted(c)
+		public static function ApplicationFullWindowsExisted(c:*):void
 		{
 			var obj:Object = new Object;
 			obj.title = "ZweiSystem Notification";
@@ -111,7 +111,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function ApplicationOpenFailed(c)
+		public static function ApplicationOpenFailed(c:*):void
 		{
 			var obj:Object = new Object;
 			obj.title = "ZweiSystem Notification";
@@ -128,7 +128,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function MessageBoxTooMuch(e:Function)
+		public static function MessageBoxTooMuch(e:Function):void
 		{
 			var obj:Object = new Object;
 			obj.title = "ZweiSystem Notification";
@@ -146,7 +146,7 @@
 			Msg.confirm(obj, e);
 		}
 		
-		public static function OpenUrl(url:String, type:String, func:Function, trusted:Boolean = false)
+		public static function OpenUrl(url:String, type:String, func:Function, trusted:Boolean = false):void
 		{
 			var obj:Object = new Object;
 			obj.title = "ZweiSystem Notification";
@@ -171,7 +171,7 @@
 			Msg.confirm(obj, func);
 		}
 		
-		public static function NetLoadXmlError(c:String)
+		public static function NetLoadXmlError(c:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "ZweiSystem Notification";
@@ -188,7 +188,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function GuestbooxPublishOk()
+		public static function GuestbooxPublishOk():void
 		{
 			var obj:Object = new Object;
 			obj.title = "Guestbook Notification";
@@ -205,7 +205,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function GuestbooxCommentDelete(content:String, func:Function)
+		public static function GuestbooxCommentDelete(content:String, func:Function):void
 		{
 			var obj:Object = new Object;
 			obj.title = "Guestbook Notification";
@@ -222,7 +222,7 @@
 			Msg.confirm(obj, func)
 		}
 		
-		public static function GuestbooxCommentDeleteOk()
+		public static function GuestbooxCommentDeleteOk():void
 		{
 			var obj:Object = new Object;
 			obj.title = "Guestbook Notification";
@@ -239,7 +239,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function GuestbooxCommentReplyOk()
+		public static function GuestbooxCommentReplyOk():void
 		{
 			var obj:Object = new Object;
 			obj.title = "Guestbook Notification";
@@ -256,7 +256,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function InformationTips(message:String, func:Function)
+		public static function InformationTips(message:String, func:Function):void
 		{
 			var obj:Object = new Object;
 			obj.title = "Notification";
@@ -274,7 +274,7 @@
 			Msg.confirm(obj, func);
 		}
 		
-		public static function SinaWeiboApiError(e:String)
+		public static function SinaWeiboApiError(e:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "Weibo Notification";
@@ -291,7 +291,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SinaWeiboAuthorizationError(reason:String)
+		public static function SinaWeiboAuthorizationError(reason:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "Weibo Notification";
@@ -308,7 +308,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SinaWeiboPublishOk()
+		public static function SinaWeiboPublishOk():void
 		{
 			var obj:Object = new Object;
 			obj.title = "Weibo Notification";
@@ -325,7 +325,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SinaWeiboPublishError(reason:String)
+		public static function SinaWeiboPublishError(reason:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "Weibo Notification";
@@ -342,7 +342,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SystemVarsError(e:String)
+		public static function SystemVarsError(e:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "System Notification";
@@ -359,7 +359,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function PsychoPassError(func:Function)
+		public static function PsychoPassError(func:Function):void
 		{
 			var obj:Object = new Object;
 			obj.title = "Sibyl System on EinStation";
@@ -377,7 +377,7 @@
 			Msg.confirm(obj, func)
 		}
 		
-		public static function PsychoPassOk(e:String)
+		public static function PsychoPassOk(e:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "Sibyl System on EinStation";
@@ -394,7 +394,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function HQ_offline_control()
+		public static function HQ_offline_control():void
 		{
 			var obj:Object = new Object;
 			obj.title = "EinStationHeadQuarters";
@@ -411,7 +411,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function LoginFailed(message:String)
+		public static function LoginFailed(message:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "UserManager";
@@ -428,7 +428,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function AMFPHPMessage(message:String)
+		public static function AMFPHPMessage(message:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "AMFPHP Notification";
@@ -445,7 +445,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function AMFPHPSystemConfigMessage(message:String)
+		public static function AMFPHPSystemConfigMessage(message:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "System Notification";
@@ -462,7 +462,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SystemUnavailable()
+		public static function SystemUnavailable():void
 		{
 			var obj:Object = new Object;
 			obj.title = "System Notification";
@@ -479,7 +479,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function SystemNeedUpdate()
+		public static function SystemNeedUpdate():void
 		{
 			var obj:Object = new Object;
 			obj.title = "System Notification";
@@ -496,7 +496,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function GraduationHelper_Message(e:String)
+		public static function GraduationHelper_Message(e:String):void
 		{
 			
 			var obj:Object = new Object;
@@ -514,7 +514,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function GraduationHelper_Failed(e:String)
+		public static function GraduationHelper_Failed(e:String):void
 		{
 			
 			var obj:Object = new Object;
@@ -532,7 +532,7 @@
 			Msg.show(obj);
 		}
 		
-		public static function GraduationHelper_Warning(func:Function, message:String)
+		public static function GraduationHelper_Warning(func:Function, message:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "GraduationHelper";
@@ -550,7 +550,7 @@
 			Msg.confirm(obj, func);
 		}
 		
-		public static function SystemUpdate(func:Function, message:String)
+		public static function SystemUpdate(func:Function, message:String):void
 		{
 			var obj:Object = new Object;
 			obj.title = "SystemUpdate";

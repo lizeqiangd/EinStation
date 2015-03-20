@@ -32,14 +32,13 @@ package com.lizeqiangd.zweisystem.system.applications.title
 		{
 			this.setDisplayLayer = "topLayer";
 			this.setApplicationName = "TitleBar";
-			this.setApplicationVersion = "2.1"
 			this.setFocusAble = false
 			
 			addEventListener(ApplicationEvent.OPENED, init)
 		}
 		
 		///初始化标题栏
-		public function init(e:ApplicationEvent)
+		public function init(e:ApplicationEvent):void
 		{
 			removeEventListener(ApplicationEvent.OPENED, init)
 			
@@ -62,24 +61,24 @@ package com.lizeqiangd.zweisystem.system.applications.title
 		
 		}
 		
-		private function addApplicationListener()
+		private function addApplicationListener():void
 		{
 			bg.addEventListener(MouseEvent.CLICK, onTitleClick)
 			this.addEventListener(ApplicationEvent.CLOSE, onApplicationClose);
 		}
 		
-		private function removeApplicationListener()
+		private function removeApplicationListener():void
 		{
 			bg.removeEventListener(MouseEvent.CLICK, onTitleClick)
 			this.removeEventListener(ApplicationEvent.CLOSE, onApplicationClose);
 		}
 		
-		private function onApplicationClose(e:ApplicationEvent)
+		private function onApplicationClose(e:ApplicationEvent):void
 		{
 			dispose()
 		}
 		
-		private function makeTitleFrame()
+		private function makeTitleFrame():void
 		{
 			frame.graphics.clear()
 			frame.graphics.lineStyle(1, 0xFF9900, 1)
@@ -104,7 +103,7 @@ package com.lizeqiangd.zweisystem.system.applications.title
 		}
 		
 		///直接通过applicationMessage(s:String)发送文字至显示.
-		public function applicationMessage(e:Object)
+		public function applicationMessage(e:Object):void
 		{
 			tf.text = e as String
 			//trace("title",e)
@@ -119,7 +118,7 @@ package com.lizeqiangd.zweisystem.system.applications.title
 			AnimationManager.fade_in(bg)
 		}
 		
-		public function dispose()
+		public function dispose():void
 		{
 			removeApplicationListener();
 		}

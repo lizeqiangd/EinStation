@@ -71,7 +71,7 @@
 		 */
 		public static function getSystemConfig2(name:String, okFunc:Function):void
 		{
-			AMFPHP.call("EinStationServices/getEinStationConfig2", new Responder(function(e:*)
+			AMFPHP.call("EinStationServices/getEinStationConfig2", new Responder(function(e:*):void
 				{
 					okFunc(JSON.parse(e.value));
 				}, onSystemConfigFailed), name)

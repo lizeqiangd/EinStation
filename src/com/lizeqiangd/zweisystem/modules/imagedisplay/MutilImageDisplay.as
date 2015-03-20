@@ -27,7 +27,7 @@
 		/**
 		 * 构造函数,初始化2个ImageDisplay
 		 */
-		public function MutilImageDisplay()
+		public function MutilImageDisplay():void
 		{
 			im1 = new ImageDisplay;
 			im2 = new ImageDisplay;
@@ -41,7 +41,7 @@
 		/**
 		 * 添加MutilImageDisplay的侦听器用
 		 */
-		private function addUiListener()
+		private function addUiListener():void
 		{
 			im1.addEventListener(Event.COMPLETE, onCompleteHandler);
 			im2.addEventListener(Event.COMPLETE, onCompleteHandler);
@@ -54,7 +54,7 @@
 		/**
 		 * 移除MutilImageDisplay所有侦听器用
 		 */
-		private function removeUiLIstener()
+		private function removeUiLIstener():void
 		{
 			im1.removeEventListener(Event.COMPLETE, onCompleteHandler);
 			im2.removeEventListener(Event.COMPLETE, onCompleteHandler);
@@ -67,7 +67,7 @@
 		/**
 		 * 自动切换2个核心.
 		 */
-		public function load(_url:String)
+		public function load(_url:String):void
 		{
 			if (_nowUsingCore == 0)
 			{
@@ -88,7 +88,7 @@
 		/**
 		 * 调度progessing事件,并反馈数值
 		 */
-		private function onProgress(e:NetEvent)
+		private function onProgress(e:NetEvent):void
 		{
 			dispatchEvent(new NetEvent(NetEvent.PROGRESSING, e.data));
 		}
@@ -96,7 +96,7 @@
 		/**
 		 * 当加载失败的时候,会反馈信息.
 		 */
-		private function onIOErrorHandler(e:IOErrorEvent)
+		private function onIOErrorHandler(e:IOErrorEvent):void
 		{
 			dispatchEvent(e);
 		}
@@ -104,7 +104,7 @@
 		/**
 		 * 当第一个加载好的时候,会自动调用AnimationManager.fate_in()方法进行无缝切换
 		 */
-		private function onCompleteHandler(e:Event)
+		private function onCompleteHandler(e:Event):void
 		{
 			dispatchEvent(e);
 			if (_nowUsingCore == 0)
@@ -160,7 +160,7 @@
 		/**
 		 * 销毁本实例..
 		 */
-		public function dispose()
+		public function dispose():void
 		{
 			removeUiLIstener();
 			im1.dispose();
@@ -172,7 +172,7 @@
 		/**
 		 * 设置图片的长宽以及缩放模式.默认为:100x100,proportionalOutside模式
 		 */
-		public function config(_Width:Number = 100, _Height:Number = 100, _scaleMode:String = "proportionalOutside")
+		public function config(_Width:Number = 100, _Height:Number = 100, _scaleMode:String = "proportionalOutside"):void
 		{
 			im1.config(_Width, _Height, _scaleMode)
 			im2.config(_Width, _Height, _scaleMode)
@@ -181,7 +181,7 @@
 		/**
 		 * proportionalOutside模式下,设置图片的长宽,同时询问是否要遮罩.默认为:100x100,
 		 */
-		public function configProportionalOutside(_Width:Number = 100, _Height:Number = 100, _useMask:Boolean = false)
+		public function configProportionalOutside(_Width:Number = 100, _Height:Number = 100, _useMask:Boolean = false):void
 		{
 			im1.configProportionalOutside(_Width, _Height, _useMask)
 			im2.configProportionalOutside(_Width, _Height, _useMask)
@@ -190,7 +190,7 @@
 		/**
 		 * widthOnly模式下,设置图片的宽度.
 		 */
-		public function configWidthOnly(_Width:Number = 100)
+		public function configWidthOnly(_Width:Number = 100):void
 		{
 			im1.configWidthOnly(_Width)
 			im2.configWidthOnly(_Width)
@@ -199,7 +199,7 @@
 		/**
 		 * heightOnly模式下,设置图片的高度
 		 */
-		public function configHeightOnly(_Height:Number = 100)
+		public function configHeightOnly(_Height:Number = 100):void
 		{
 			im1.configHeightOnly(_Height)
 			im2.configHeightOnly(_Height)
@@ -208,7 +208,7 @@
 		/**
 		 * none模式,原图加载.你什么都不用管
 		 */
-		public function configNone()
+		public function configNone():void
 		{
 			im1.configNone()
 			im2.configNone()

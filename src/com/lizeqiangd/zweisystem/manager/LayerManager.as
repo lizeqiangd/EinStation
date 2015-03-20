@@ -12,7 +12,6 @@
 	import flash.display.DisplayObject;
 	import flash.utils.getDefinitionByName;
 	
-	
 	/**
 	 * PopUpManager负责打开应用，并对他dispatchEvent(new ApplicationEvent(ApplicationEvent.OPENED))
 	 * 然后根据应用所在层，分发至LayerManager。默认为LayerManager的顶层。并对应用进行居中。
@@ -35,7 +34,7 @@
 		public static const LayerManagerFloat:String = "floatLayer";
 		public static const LayerManagerAnimation:String = "animationLayer";
 		public static const LayerManagerMessage:String = "messageLayer";
-		public static const LayerManagerTop:String = "topLayer";		
+		public static const LayerManagerTop:String = "topLayer";
 		
 		private static var backgroundLayer:Layer;
 		private static var applicationLayer:Layer;
@@ -48,7 +47,7 @@
 		/**
 		 * 初始化全系统的显示层对象.并添加在StageProxy
 		 */
-		public static function init()
+		public static function init():void
 		{
 			if (inited)
 			{
@@ -106,7 +105,7 @@
 					case LayerManagerFloat: 
 					case LayerManagerAnimation: 
 					case LayerManagerMessage: 
-					case LayerManagerTop: 						
+					case LayerManagerTop: 
 						break;
 					case LayerManagerBackground: 
 						PositionUtility.setDisplayPosition(o, "TL")
@@ -134,8 +133,9 @@
 			return o;
 		}
 		
-		public static function addChildLayer(o:DisplayObject, layername:String ="" )
-		{layername==""?layername=LayerManagerTop:null
+		public static function addChildLayer(o:DisplayObject, layername:String = ""):void
+		{
+			layername == "" ? layername = LayerManagerTop : null
 			if (!inited)
 			{
 				db.log("LayerManager:not inited")
@@ -146,9 +146,9 @@
 				LayerManager[layername].addChild(o);
 				
 				///信息层则处理方式特殊.
-			
+				
 				if (layername == "messageLayer")
-				{	
+				{
 					//trace("layer:",layername)
 					///自动堆叠MessageBox
 					o.x = o.x + int(messageLayer.numChildren - 1) * 20;
@@ -191,7 +191,7 @@
 		}
 		
 		///类似于windows的点击窗口使之聚焦，成为最前。
-		public static function setForceLayer(o:BaseWindows)
+		public static function setForceLayer(o:BaseWindows):void
 		{
 			if (!inited)
 			{
@@ -204,23 +204,23 @@
 		}
 		
 		///当舞台大小放生变化时候的函数，目前为防止应用出界
-		private static function onStageResize()
+		private static function onStageResize():void
 		{
 			if (!inited)
 			{
 				return
 			}
-			for (var i = 0; i < applicationLayer.numChildren; i++)
+			for (var i:int = 0; i < applicationLayer.numChildren; i++)
 			{
 				PositionUtility.setDisplayBackToStage(applicationLayer.getChildAt(i));
 			}
-			for (var k = 0; k < messageLayer.numChildren; k++)
+			for (var k :int= 0; k < messageLayer.numChildren; k++)
 			{
 				PositionUtility.setDisplayBackToStage(messageLayer.getChildAt(k));
 			}
 		} ///响应AppicationEvent.CLOSED事件。removeChild。
 		
-		private static function removeApplicatoin(e:ApplicationEvent)
+		private static function removeApplicatoin(e:ApplicationEvent):void
 		{
 			removeChildLayer(e.target)
 		}

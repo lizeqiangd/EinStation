@@ -193,7 +193,7 @@
 		/**
 		 * 销毁本类中的实例部分.同时进行下一步.
 		 */
-		private static function dispose()
+		private static function dispose():void
 		{
 			AmfphpConnectDelayTimer.stop();
 			AmfphpConnectDelayTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, onAMFPHPConnectDelay);

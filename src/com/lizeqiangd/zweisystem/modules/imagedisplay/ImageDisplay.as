@@ -67,7 +67,7 @@
 		/**
 		 * 读取图片,需要图片url.不支持多重跳转
 		 */
-		public function load(url:String)
+		public function load(url:String):void
 		{
 			if (state != "ready")
 			{
@@ -83,7 +83,7 @@
 		/**
 		 * 卸载图片,调用loader的unload()
 		 */
-		public function unload()
+		public function unload():void
 		{
 			if (state !== "ready")
 			{
@@ -95,7 +95,7 @@
 		/**
 		 * 设置图片的长宽以及缩放模式.默认为:100x100,proportionalOutside模式
 		 */
-		public function config(_Width:Number = 100, _Height:Number = 100, _scaleMode:String = "proportionalOutside")
+		public function config(_Width:Number = 100, _Height:Number = 100, _scaleMode:String = "proportionalOutside"):void
 		{
 			_config = {name: "content", estimatedBytes: 3000, width: _Width, height: _Height, scaleMode: _scaleMode, hAlign: "center", vAlign: "center", onProgress: onProgressHandler, onError: onErrorHandler, onComplete: onCompleteHandler};
 		}
@@ -103,7 +103,7 @@
 		/**
 		 * proportionalOutside模式下,设置图片的长宽,同时询问是否要遮罩.默认为:100x100,
 		 */
-		public function configProportionalOutside(_Width:Number = 100, _Height:Number = 100, _useMask:Boolean = false)
+		public function configProportionalOutside(_Width:Number = 100, _Height:Number = 100, _useMask:Boolean = false):void
 		{
 			_config = {name: "content", estimatedBytes: 3000, width: _Width, height: _Height, scaleMode: "proportionalOutside", hAlign: "center", vAlign: "center", onProgress: onProgressHandler, onError: onErrorHandler, onComplete: onCompleteHandler};
 			this._useMask = _useMask;
@@ -114,7 +114,7 @@
 		/**
 		 * widthOnly模式下,设置图片的宽度.
 		 */
-		public function configWidthOnly(_Width:Number = 100)
+		public function configWidthOnly(_Width:Number = 100):void
 		{
 			_config = {name: "content", estimatedBytes: 3000, width: _Width, scaleMode: "widthOnly", hAlign: "center", vAlign: "center", onProgress: onProgressHandler, onError: onErrorHandler, onComplete: onCompleteHandler};
 		}
@@ -122,7 +122,7 @@
 		/**
 		 * heightOnly模式下,设置图片的高度
 		 */
-		public function configHeightOnly(_Height:Number = 100)
+		public function configHeightOnly(_Height:Number = 100):void
 		{
 			_config = {name: "content", estimatedBytes: 3000, height: _Height, scaleMode: "heightOnly", hAlign: "center", vAlign: "center", onProgress: onProgressHandler, onError: onErrorHandler, onComplete: onCompleteHandler};
 		}
@@ -130,7 +130,7 @@
 		/**
 		 * none模式,原图加载.你什么都不用管
 		 */
-		public function configNone()
+		public function configNone():void
 		{
 			_config = {name: "content", estimatedBytes: 3000, scaleMode: "none", hAlign: "center", vAlign: "center", onProgress: onProgressHandler, onError: onErrorHandler, onComplete: onCompleteHandler};
 		}
@@ -138,7 +138,7 @@
 		/**
 		 * 销毁本ImageDisplay
 		 */
-		public function dispose()
+		public function dispose():void
 		{
 			if (_loader)
 			{
@@ -149,7 +149,7 @@
 		/**
 		 * 加载图片的时候将progress数值发出
 		 */
-		private function onProgressHandler(e:LoaderEvent)
+		private function onProgressHandler(e:LoaderEvent):void
 		{
 			dispatchEvent(new NetEvent(NetEvent.PROGRESSING, e.target.progress));
 			//trace("ImageDisplay"+_code+":" +e.target.progress);
@@ -158,7 +158,7 @@
 		/**
 		 * 加载错误的时候的事件
 		 */
-		private function onErrorHandler(e:LoaderEvent)
+		private function onErrorHandler(e:LoaderEvent):void
 		{
 			Cc.error("ImageDisplay" + _code + ": load url(" + _url + ") fault!");
 			dispatchEvent(new IOErrorEvent(IOErrorEvent.IO_ERROR));
@@ -168,7 +168,7 @@
 		/**
 		 * 完成加载的时候,调度Event.Complete事件,同时显示图片
 		 */
-		private function onCompleteHandler(e:LoaderEvent)
+		private function onCompleteHandler(e:LoaderEvent):void
 		{
 			this.addChildAt(_loader.content, 0);
 			state = "complete";

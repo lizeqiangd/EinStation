@@ -8,8 +8,8 @@
 	 */
 	public interface iApplication
 	{
-		function init(e:ApplicationEvent);
-		function applicationMessage(e:Object)
-		function dispose()
+		function init(e:ApplicationEvent):void;
+		function applicationMessage(e:Object):void
+		function dispose():void
 	}
 }

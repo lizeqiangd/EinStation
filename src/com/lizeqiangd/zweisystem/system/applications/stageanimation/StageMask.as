@@ -23,12 +23,11 @@
 			this.setDisplayLayer = "animationLayer";
 			this.setBackgroundTitle = "Einstation System Application - StageMask -";
 			this.setApplicationName = "StageMask";
-			this.setApplicationVersion = "0"
 			this.setBackgroundControlType = "none"
 			init(null)
 		}
 		
-		public function init(e:ApplicationEvent)
+		public function init(e:ApplicationEvent):void
 		{
 			this.graphics.beginFill(0x000000, 1);
 			this.graphics.drawRect(0, 0, 300, 300);
@@ -40,29 +39,29 @@
 			setTimeout(onStageResize, 50)
 		}
 		
-		private function addApplicationListener()
+		private function addApplicationListener():void
 		{
 			this.addEventListener(ApplicationEvent.CLOSE, onApplicationClose);
 		}
 		
-		private function removeApplicationListener()
+		private function removeApplicationListener():void
 		{
 			;
 			this.removeEventListener(ApplicationEvent.CLOSE, onApplicationClose);
 		}
 		
-		private function onApplicationClose(e:ApplicationEvent)
+		private function onApplicationClose(e:ApplicationEvent):void
 		{
 			dispose()
 		}
 		
-		public function dispose()
+		public function dispose():void
 		{
 			removeApplicationListener();
 			StageProxy.removeResizeFunction(onStageResize);
 		}
 		
-		private function onStageResize()
+		private function onStageResize():void
 		{
 			this.width = StageProxy.stageWidth;
 			this.height = StageProxy.stageHeight;
@@ -70,7 +69,7 @@
 			this.y = 0
 		}
 		
-		public function applicationMessage(e:Object)
+		public function applicationMessage(e:Object):void
 		{
 		
 		}

@@ -20,7 +20,7 @@
 		private static var inited:Boolean = false
 		
 		///初始化该管理器.
-		public static function init()
+		public static function init():void
 		{
 			if (inited)
 			{
@@ -43,7 +43,7 @@
 		}
 		
 		///自动从服务器获取文字.
-		static public function loadTitleFormServer()
+		static public function loadTitleFormServer():void
 		{
 			SystemConfig.getSystemConfig("TitleInformation", onLoadTitleInformationComplete)
 			TitleManager.MainTitle = "从服务器获取信息中...."
@@ -55,7 +55,7 @@
 		}
 		
 		///设置标题文字.
-		public static function set MainTitle(s:String)
+		public static function set MainTitle(s:String):void
 		{
 			if (inited)
 			{
@@ -66,7 +66,7 @@
 		}
 		
 		///建立副标题.不知道如何是好~~咕嘿嘿@20140404
-		public static function createSubTitle()
+		public static function createSubTitle():void
 		{
 			if (!inited)
 			{

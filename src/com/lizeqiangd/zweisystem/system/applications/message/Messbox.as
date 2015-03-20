@@ -53,7 +53,6 @@
 			this.setApplicationName = "MessageBox";
 			this.setApplicationTitle = "Notification"
 			this.setOpeningAnimationType = "popup"
-			this.setApplicationVersion = "2.1.0";
 			this.setMutiExistEnable = true;
 			this.addEventListener(ApplicationEvent.INIT, init);
 		}
@@ -63,7 +62,7 @@
 		 * 所有信息都会在本方法中录入.
 		 * @param	e
 		 */
-		private function init(e:ApplicationEvent)
+		private function init(e:ApplicationEvent):void
 		{
 			if (inited)
 			{
@@ -120,7 +119,7 @@
 		}
 		
 		///增加侦听器
-		private function addApplicationListener()
+		private function addApplicationListener():void
 		{
 			mc_btn1.addEventListener(UIEvent.CLICK, onButtonFunction);
 			mc_btn2.addEventListener(UIEvent.CLICK, onButtonFunction);
@@ -143,7 +142,7 @@
 			btn_close.mouseEnabled = true
 		}
 		///删除侦听器
-		private function removeApplicationListener()
+		private function removeApplicationListener():void
 		{
 			this.removeEventListener(ApplicationEvent.INIT, init);
 			mc_btn1.removeEventListener(UIEvent.CLICK, onButtonFunction);
@@ -152,7 +151,7 @@
 		}
 		
 		///点击按钮的时候进行反馈.无论点击什么都会关闭该窗口.
-		private function onButtonFunction(e:UIEvent)
+		private function onButtonFunction(e:UIEvent):void
 		{
 			switch (e.target.name)
 			{
@@ -179,7 +178,7 @@
 		}
 		
 		///当按钮触发关闭窗口的时候,会自动删除全部侦听器.
-		private function closeMessageBox(e:ApplicationEvent)
+		private function closeMessageBox(e:ApplicationEvent):void
 		{
 			for (var i:Object in this)
 			{
@@ -197,19 +196,19 @@
 		}
 		
 		///自动关闭方法
-		private function set timeToClose(value:Boolean)
+		private function set timeToClose(value:Boolean):void
 		{
 			isAutoClose = value;
 		}
 		
 		//自动重播方法
-		private function set replayAnime(value:Boolean)
+		private function set replayAnime(value:Boolean):void
 		{
 			isAutoRepeat = value
 		}
 		
 		//设置动画名称以及动画对象的class
-		private function set anime(o:Object)
+		private function set anime(o:Object):void
 		{
 			var ClassReference:Class = getDefinitionByName(ESPath.MessageBoxAnimePath + o.anime) as Class;
 			mc_anime = (new ClassReference() as MovieClip);
@@ -221,7 +220,7 @@
 		}
 		
 		///设置动画背景颜色
-		private function set color(s:String)
+		private function set color(s:String):void
 		{
 			if (s)
 			{
@@ -230,20 +229,20 @@
 		}
 		
 		///设置信息
-		private function set info(s:String)
+		private function set info(s:String):void
 		{
 			this.tx_text.text = s;
 			TextAnimation.Typing(tx_text);
 		}
 		
 		///设置左边按钮的文字
-		private function set btn1(s:String)
+		private function set btn1(s:String):void
 		{
 			this.mc_btn1.title = s;
 		}
 		
 		///设置右边按钮的文字
-		private function set btn2(s:String)
+		private function set btn2(s:String):void
 		{
 			this.mc_btn2.title = s;
 		}
@@ -269,7 +268,7 @@
 		}
 		
 		///当触发动画重播时
-		private function replayAnimeHandle()
+		private function replayAnimeHandle():void
 		{
 			mc_anime.gotoAndPlay(1);
 			mc_anime.mc_anime.gotoAndPlay(1);

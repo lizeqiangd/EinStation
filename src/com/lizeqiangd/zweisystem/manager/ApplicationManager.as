@@ -29,7 +29,7 @@
 		private static var inited:Boolean = false
 		private static var isFullWindowApplicationExisted:Boolean = false
 		
-		public static function init()
+		public static function init():void
 		{
 			if (inited)
 			{
@@ -192,7 +192,7 @@
 		}
 		
 		///删除应用从管理器中,同时移除侦听器.如果是全屏程序则处理全屏细节.
-		private static function deleteApplication(e:ApplicationEvent)
+		private static function deleteApplication(e:ApplicationEvent):void
 		{
 			for (var i:int = 0; i < applications.length; i++)
 			{

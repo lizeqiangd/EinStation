@@ -28,15 +28,13 @@
 		/**
 		 * 初始化方法.通过AddOnManager激活所有Tween动画插件,同时激活文字特效.并且建立stagemask应用.
 		 */
-		public static function init()
+		public static function init():void
 		{
 			if (inited)
 			{
 				return
 			}
 			inited = true
-			AddOnManager.initTweenPlugin()
-			AddOnManager.initTextAnimation()
 			stagemask = LayerManager.createPopUp(StageMask)
 		}
 		
@@ -44,7 +42,7 @@
 		 * 遮罩全舞台,只保留TopLayer能使用,默认是0.6的alpha,如果为0则取消遮罩
 		 * @param	value
 		 */
-		public static function MaskInStage(value:Number = 0.6)
+		public static function MaskInStage(value:Number = 0.6):void
 		{
 			if (value > 0)
 			{
@@ -59,7 +57,7 @@
 		/**
 		 * 取消舞台遮罩.
 		 */
-		public static function MaskOutStage()
+		public static function MaskOutStage():void
 		{
 			TweenLite.to(stagemask, animeTime, {autoAlpha: 0, overwrite: 3 /*, onStart: dispatchEventStart, onStartParams: [stagemask], onComplete: dispatchEventComplete, onCompleteParams: [stagemask]*/});
 		}
@@ -68,7 +66,7 @@
 		 * 简易方法调用DisplayObject从alpha0到1
 		 * @param	o
 		 */
-		public static function fade_in(o:*)
+		public static function fade_in(o:*):void
 		{
 			if (o.alpha == 1&&o.visible==true)
 			{
@@ -82,7 +80,7 @@
 		 * 简易方法调用DisplayObject从alpha1到0 ,如果元件本身就是alpha为0则将其visible设为true.然后返回.
 		 * @param	o
 		 */
-		public static function fade_out(o:*)
+		public static function fade_out(o:*):void
 		{
 			if (o.alpha == 0)
 			{
@@ -100,7 +98,7 @@
 		 * 简易方法调用DisplayObject的alpha,同时时间可以自定义并且alpha为0时visible=false
 		 * @param	o
 		 */
-		public static function fade(o:*, n:Number = 0, time:Number = 0)
+		public static function fade(o:*, n:Number = 0, time:Number = 0):void
 		{
 			time == 0 ? time =animeTime : time
 			TweenLite.to(DisplayObject(o), time, {autoAlpha: n, overwrite: 3, onStart: dispatchEventStart, onStartParams: [o], onComplete: dispatchEventComplete, onCompleteParams: [o]});
@@ -113,7 +111,7 @@
 		 * @param	n 颜色的名字或者unit
 		 * @param	immediately 是否需要等待时间,可以用于立刻变色.
 		 */
-		public static function changeColor(o:DisplayObject, n:*, immediately:Boolean = false)
+		public static function changeColor(o:DisplayObject, n:*, immediately:Boolean = false):void
 		{
 			var color:uint = 0
 			switch (n)
@@ -156,7 +154,7 @@
 		 * @param	o
 		 * @param	type  显示的方法.
 		 */
-		public static function open(o:DisplayObject, type:String = "")
+		public static function open(o:DisplayObject, type:String = ""):void
 		{
 			var obj:Object = {overwrite: 3, onStart: dispatchEventStart, onStartParams: [o], onComplete: dispatchEventOpened, onCompleteParams: [o]}
 			switch (type)
@@ -192,7 +190,7 @@
 		 * @param	o
 		 * @param	type  显示的方法.
 		 */
-		public static function close(o:DisplayObject, type:String = "")
+		public static function close(o:DisplayObject, type:String = ""):void
 		{
 			var obj:Object = {overwrite: 3, onStart: dispatchEventStart, onStartParams: [o], onComplete: dispatchEventClosed, onCompleteParams: [o]}
 			switch (type)
@@ -223,48 +221,38 @@
 					break;
 			}
 		}
-		
-		/**
-		 * 测试方法.??
-		 * @param	o
-		 */
-		public static function test(o:*)
-		{
-			//TweenLite.from(o, 3, {alpha:0,transformAroundCenter:{scaleX:0.5, scaleY:0.5}, ease:Elastic.easeOut,onComplete :AnimeClose,onCompleteParams :[o]});
-		}
-		
 		///抛出事件:OPENED
-		private static function dispatchEventOpened(o:DisplayObject)
+		private static function dispatchEventOpened(o:DisplayObject):void
 		{
 			o.dispatchEvent(new AnimationEvent(AnimationEvent.OPENED));
 		}
 		
 		///抛出事件:START
-		private static function dispatchEventStart(o:DisplayObject)
+		private static function dispatchEventStart(o:DisplayObject):void
 		{
 			o.dispatchEvent(new AnimationEvent(AnimationEvent.START));
 		}
 		
 		///抛出事件:PLAYING
-		private static function dispatchEventPlaying(o:DisplayObject)
+		private static function dispatchEventPlaying(o:DisplayObject):void
 		{
 			o.dispatchEvent(new AnimationEvent(AnimationEvent.PLAYING));
 		}
 		
 		///抛出事件:COMPLETE
-		private static function dispatchEventComplete(o:DisplayObject)
+		private static function dispatchEventComplete(o:DisplayObject):void
 		{
 			o.dispatchEvent(new AnimationEvent(AnimationEvent.COMPLETE));
 		}
 		
 		///抛出事件:Repeat
-		private static function dispatchEventRepeat(o:DisplayObject)
+		private static function dispatchEventRepeat(o:DisplayObject):void
 		{
 			o.dispatchEvent(new AnimationEvent(AnimationEvent.Repeat));
 		}
 		
 		///抛出事件:CLOSED
-		private static function dispatchEventClosed(o:DisplayObject)
+		private static function dispatchEventClosed(o:DisplayObject):void
 		{
 			o.dispatchEvent(new AnimationEvent(AnimationEvent.CLOSED));
 		}

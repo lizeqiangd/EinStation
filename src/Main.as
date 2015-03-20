@@ -4,6 +4,7 @@ package
 	import com.lizeqiangd.zweisystem.components.PositionUtility;
 	import com.lizeqiangd.zweisystem.components.StageProxy;
 	import com.lizeqiangd.zweisystem.components.texteffect.TextAnimation;
+	import com.lizeqiangd.zweisystem.manager.AddOnManager;
 	import com.lizeqiangd.zweisystem.manager.AnimationManager;
 	import com.lizeqiangd.zweisystem.manager.ApplicationManager;
 	import com.lizeqiangd.zweisystem.manager.ConfigManager;
@@ -12,8 +13,10 @@ package
 	import com.lizeqiangd.zweisystem.manager.MusicManager;
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
+	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.utils.setTimeout;
 	
 	/**
 	 * ...
@@ -44,7 +47,7 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			StageProxy.init(this.stage)
 			db.initConsole(this.stage)
-			db.showConsole();
+			db.hideConsole();
 			TextAnimation.init(this.stage)
 			PositionUtility.center(db);
 			loadConfig();
@@ -66,156 +69,164 @@ package
 			SystemManager.init(this.loaderInfo);
 			LayerManager.init()
 			MusicManager.init();
+			AddOnManager.initLoaderMax()
+			AddOnManager.initTweenPlugin()
 			AnimationManager.init()
-			new QuoteManager
-			
+			new QuoteManager()
 			AnimationManager.MaskOutStage()
 			ApplicationManager.init()
-			ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
+			//BackgroundManager.init();
+			setTimeout(onInitCompleted,1000)
 			
 		}
-			//
-			//Cc.debug("EinStation initing: ApplicationManager inited");
-			//
-			//Cc.debug("EinStation initing: all managers init complete!");
-			//this.removeChild(this.mc_test);
-			//this.mc_test = null;
-			//this.removeChild(this.mc_failed);
-			////Cc.debug("EinStation:........Maskout the Stage........");
-			//Cc.error("**********EinStation initing complete!**********");
-			//Cc.debug("************************************************");
-			//this.initEinStation();
+		
+		private function onInitCompleted():void 
+		{
+			ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
+		
+		}
+		//
+		//Cc.debug("EinStation initing: ApplicationManager inited");
+		//
+		//Cc.debug("EinStation initing: all managers init complete!");
+		//this.removeChild(this.mc_test);
+		//this.mc_test = null;
+		//this.removeChild(this.mc_failed);
+		////Cc.debug("EinStation:........Maskout the Stage........");
+		//Cc.error("**********EinStation initing complete!**********");
+		//Cc.debug("************************************************");
+		//this.initEinStation();
 		//}
 		//
 		//private function initEinStation():*
 		//{
-			//AnimationManager.MaskOutStage();
-			//Cc.visible = false;
-			//if (!HostManager.SYSTEM_AVAILABLE)
-			//{
-				//ApplicationManager.open("SystemOperation.LoginSystem.LoginSystem");
-				//Message.SystemUnavailable();
-				//TitleManager.init();
-				//TitleManager.MainTitle = "系统已经被锁定,请尝试登陆解锁.";
-				//Cc.debug("EinStation Plugin initing: TitleManager inited");
-				//BackgroundManager.init();
-				//Cc.debug("EinStation Plugin initing: BackgroundManager inited");
-				//this.EinStationStartComplete();
-				//return;
-			//}
-			//switch (SystemManager.getFlashVar("app"))
-			//{
-				//case "": 
-				//case "EinStatin": 
-					//this.EinStatinMode();
-					//break;
-				//case "PSYCHO-PASS": 
-					//Message.SystemUpdate(function():*
-						//{
-							//URLNavigator.open("http://einstation.sinaapp.com/2/?app=PSYCHO-PASS", true, "_self");
-						//}, "由于系统升级原因,你所需要的功能[" + SystemManager.getFlashVar("app") + "]已经迁移到新的地址,是否进入?");
-					//break;
-				//case "Debug": 
-					//this.DebugMode();
-					//break;
-				//default: 
-					//this.DebugMode();
-					//Message.SystemVarsError(SystemManager.getFlashVar("app"));
-			//}
-			//this.EinStationStartComplete();
+		//AnimationManager.MaskOutStage();
+		//Cc.visible = false;
+		//if (!HostManager.SYSTEM_AVAILABLE)
+		//{
+		//ApplicationManager.open("SystemOperation.LoginSystem.LoginSystem");
+		//Message.SystemUnavailable();
+		//TitleManager.init();
+		//TitleManager.MainTitle = "系统已经被锁定,请尝试登陆解锁.";
+		//Cc.debug("EinStation Plugin initing: TitleManager inited");
+		//BackgroundManager.init();
+		//Cc.debug("EinStation Plugin initing: BackgroundManager inited");
+		//this.EinStationStartComplete();
+		//return;
+		//}
+		//switch (SystemManager.getFlashVar("app"))
+		//{
+		//case "": 
+		//case "EinStatin": 
+		//this.EinStatinMode();
+		//break;
+		//case "PSYCHO-PASS": 
+		//Message.SystemUpdate(function():*
+		//{
+		//URLNavigator.open("http://einstation.sinaapp.com/2/?app=PSYCHO-PASS", true, "_self");
+		//}, "由于系统升级原因,你所需要的功能[" + SystemManager.getFlashVar("app") + "]已经迁移到新的地址,是否进入?");
+		//break;
+		//case "Debug": 
+		//this.DebugMode();
+		//break;
+		//default: 
+		//this.DebugMode();
+		//Message.SystemVarsError(SystemManager.getFlashVar("app"));
+		//}
+		//this.EinStationStartComplete();
 		//}
 		//
 		//private function DebugMode():void
 		//{
-			//TitleManager.init();
-			//TitleManager.loadTitleFormServer();
-			//Cc.debug("EinStation Plugin initing: TitleManager inited");
-			//NavigationManager.init();
-			//Cc.debug("EinStation Plugin initing: NavigationManager inited");
-			//BackgroundManager.init();
-			//Cc.debug("EinStation Plugin initing: BackgroundManager inited");
-			//ZweiteHorizontService.init(true);
-			//Cc.debug("EinStation Plugin initing: Remote inited");
-			//MusicWidgetManager.init();
-			//Cc.debug("EinStation Plugin initing: MusicWidgetManager inited");
-			//WeiboManager.init();
-			//Cc.debug("EinStation Plugin initing: WeiboManager inited");
-			//// ApplicationManager.open("com.lizeqiangd.zweisystem.applications.Weibo.MainController.WeiboMainController");
-			////  ApplicationManager.open("com.lizeqiangd.zweisystem.applications.MessageChannel.ChatRoom.Standard.StandardChatRoom");
-			//ApplicationManager.open("com.lizeqiangd.zweisystem.applications.MessageChannel.Lobby.Standard.StandardLobby");
-			////  ApplicationManager.open("com.lizeqiangd.zweisystem.applications.SystemOperation.TestBoard.TestBoard"); 
+		//TitleManager.init();
+		//TitleManager.loadTitleFormServer();
+		//Cc.debug("EinStation Plugin initing: TitleManager inited");
+		//NavigationManager.init();
+		//Cc.debug("EinStation Plugin initing: NavigationManager inited");
+		//BackgroundManager.init();
+		//Cc.debug("EinStation Plugin initing: BackgroundManager inited");
+		//ZweiteHorizontService.init(true);
+		//Cc.debug("EinStation Plugin initing: Remote inited");
+		//MusicWidgetManager.init();
+		//Cc.debug("EinStation Plugin initing: MusicWidgetManager inited");
+		//WeiboManager.init();
+		//Cc.debug("EinStation Plugin initing: WeiboManager inited");
+		//// ApplicationManager.open("com.lizeqiangd.zweisystem.applications.Weibo.MainController.WeiboMainController");
+		////  ApplicationManager.open("com.lizeqiangd.zweisystem.applications.MessageChannel.ChatRoom.Standard.StandardChatRoom");
+		//ApplicationManager.open("com.lizeqiangd.zweisystem.applications.MessageChannel.Lobby.Standard.StandardLobby");
+		////  ApplicationManager.open("com.lizeqiangd.zweisystem.applications.SystemOperation.TestBoard.TestBoard"); 
 		//}
 		//
 		//private function EinStatinMode():*
 		//{
-			//TitleManager.init();
-			//TitleManager.loadTitleFormServer();
-			//Cc.debug("EinStation Plugin initing: TitleManager inited");
-			//NavigationManager.init();
-			//Cc.debug("EinStation Plugin initing: NavigationManager inited");
-			//BackgroundManager.init();
-			//Cc.debug("EinStation Plugin initing: BackgroundManager inited");
-			//ZweiteHorizontService.init(true);
-			//Cc.debug("EinStation Plugin initing: Remote inited");
-			//MusicWidgetManager.init();
-			//Cc.debug("EinStation Plugin initing: MusicWidgetManager inited");
-			//WeiboManager.init();
-			//Cc.debug("EinStation Plugin initing: WeiboManager inited");
-			//
-			//SystemConfig.getSystemConfig("DefaultApplication", this.onDefaultApplicationLoadComplete);
-			//SystemConfig.getSystemConfig("DefaultApplication2", this.onDefaultApplication2LoadComplete);
-			//
-			//SystemConfig.getSystemConfig2("NicoNicoNi", this.onNiconiconi);
+		//TitleManager.init();
+		//TitleManager.loadTitleFormServer();
+		//Cc.debug("EinStation Plugin initing: TitleManager inited");
+		//NavigationManager.init();
+		//Cc.debug("EinStation Plugin initing: NavigationManager inited");
+		//BackgroundManager.init();
+		//Cc.debug("EinStation Plugin initing: BackgroundManager inited");
+		//ZweiteHorizontService.init(true);
+		//Cc.debug("EinStation Plugin initing: Remote inited");
+		//MusicWidgetManager.init();
+		//Cc.debug("EinStation Plugin initing: MusicWidgetManager inited");
+		//WeiboManager.init();
+		//Cc.debug("EinStation Plugin initing: WeiboManager inited");
+		//
+		//SystemConfig.getSystemConfig("DefaultApplication", this.onDefaultApplicationLoadComplete);
+		//SystemConfig.getSystemConfig("DefaultApplication2", this.onDefaultApplication2LoadComplete);
+		//
+		//SystemConfig.getSystemConfig2("NicoNicoNi", this.onNiconiconi);
 		//}
 		//
 		//private function onDefaultApplicationLoadComplete(param1:Object):*
 		//{
-			//if (param1.value)
-			//{
-				//ApplicationManager.open(param1.value);
-			//}
+		//if (param1.value)
+		//{
+		//ApplicationManager.open(param1.value);
+		//}
 		//}
 		//
 		//private function onDefaultApplication2LoadComplete(param1:Object):*
 		//{
-			//if (param1.value)
-			//{
-				//ApplicationManager.open(param1.value);
-			//}
+		//if (param1.value)
+		//{
+		//ApplicationManager.open(param1.value);
+		//}
 		//}
 		//
 		//private function onNiconiconi(param1:Object):*
 		//{
-			//if (param1.enable)
-			//{
-				//Message.SystemConfirm("你准备好放弃治疗了吗?(注意音响大小)妮可妮可妮~妮可妮可妮~~妮可妮可妮~~~", function():*
-					//{
-						//TitleManager.MainTitle = param1.title;
-						//BackgroundManager.remote(param1.url,param1.description);
-					//});
-			//}
+		//if (param1.enable)
+		//{
+		//Message.SystemConfirm("你准备好放弃治疗了吗?(注意音响大小)妮可妮可妮~妮可妮可妮~~妮可妮可妮~~~", function():*
+		//{
+		//TitleManager.MainTitle = param1.title;
+		//BackgroundManager.remote(param1.url,param1.description);
+		//});
+		//}
 		//}
 		//
 		//private function EinStationStartComplete():*
 		//{
-			//this.failedTimer.stop();
-			//this.failedTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, this.EinStationStartError);
-			//this.failedTimer = null;
-			//try
-			//{
-				//removeChild(this.mc_failed);
-			//}
-			//catch (e:*)
-			//{
-			//}
-			//this.mc_failed = null;
-			//StageProxy.updateStageSize();
+		//this.failedTimer.stop();
+		//this.failedTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, this.EinStationStartError);
+		//this.failedTimer = null;
+		//try
+		//{
+		//removeChild(this.mc_failed);
+		//}
+		//catch (e:*)
+		//{
+		//}
+		//this.mc_failed = null;
+		//StageProxy.updateStageSize();
 		//}
 		//
 		//private function EinStationStartError(param1:*):*
 		//{
-			//addChild(this.mc_failed);
-			//this.mc_failed.alpha = 1;
+		//addChild(this.mc_failed);
+		//this.mc_failed.alpha = 1;
 		//}
 	
 	}

@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'2015/3/18'</value>
+      <value>'2015/3/20'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -45,7 +45,7 @@
   <file-specs>
     <path-element>D:\wy\code\lizeqiangd\as3\EinStation\src\Main.as</path-element>
   </file-specs>
-  <default-background-color>#FFFFFF</default-background-color>
+  <default-background-color>#000000</default-background-color>
   <default-frame-rate>60</default-frame-rate>
   <default-size>
     <width>800</width>

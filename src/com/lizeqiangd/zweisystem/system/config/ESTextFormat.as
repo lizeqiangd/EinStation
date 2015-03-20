@@ -8,9 +8,13 @@ package com.lizeqiangd.zweisystem.system.config
 	 * @author lizeqiangd
 	 */
 	public class ESTextFormat extends TextFormat
-	{		
-		public static const DefaultTextFormat:TextFormat = new TextFormat("微软雅黑", 12, 0xff9900)	
+	{
+		public static const DefaultTextFormat:TextFormat = new TextFormat("微软雅黑", 12, 0xff9900)
 		
-		public static const LightBlueTitleTextFormat:TextFormat = new TextFormat("微软雅黑", 12, 0x3399ff, null,null,null,null,null,TextFormatAlign.CENTER )	
+		public static function get LightBlueTitleTextFormat():TextFormat
+		{
+			var tf:TextFormat = new TextFormat("微软雅黑", 12, 0x3399ff, null, null, null, null, null, TextFormatAlign.CENTER)
+			return tf
+		}
 	}
 }

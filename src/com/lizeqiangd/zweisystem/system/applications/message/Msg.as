@@ -29,7 +29,7 @@
 		 * @param	o
 		 * @param	func
 		 */
-		public static function show(o:Object, func:Function = null)
+		public static function show(o:Object, func:Function = null):void
 		{
 			var msgbox:Messbox = LayerManager.createPopUp(Messbox)
 			o.type = "show"
@@ -68,7 +68,7 @@
 		 * @param	ok_handle
 		 * @param	close_handle
 		 */
-		public static function confirm(o:Object, ok_handle:Function, close_handle:Function = null)
+		public static function confirm(o:Object, ok_handle:Function, close_handle:Function = null):void
 		{
 			var msgbox:Messbox = LayerManager.createPopUp(Messbox)
 			o.type = "confirm"
@@ -104,7 +104,7 @@
 		 * 简单的提示一个信息,全部默认设置,只需要文字.
 		 * @param	s
 		 */
-		public static function info(s:String)
+		public static function info(s:String):void
 		{
 			var msgbox:Messbox = LayerManager.createPopUp(Messbox)
 			

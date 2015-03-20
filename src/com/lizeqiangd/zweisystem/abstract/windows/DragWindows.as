@@ -25,7 +25,7 @@
 		/**
 		 *当程序初始化完成的时候,对程序添加拖拽侦听
 		 */
-		private function onDragWindiowsInitedHandle(e:ApplicationEvent)
+		private function onDragWindiowsInitedHandle(e:ApplicationEvent):void
 		{
 			this.removeEventListener(ApplicationEvent.INITED, onDragWindiowsInitedHandle);
 			
@@ -38,7 +38,7 @@
 		/**
 		 *当程序开始关闭的时候,移除本抽象类的侦听器
 		 */
-		private function onDragWindowsCloseHangle(e:ApplicationEvent)
+		private function onDragWindowsCloseHangle(e:ApplicationEvent):void
 		{
 			this.removeEventListener(ApplicationEvent.CLOSE, this.onDragWindowsCloseHangle);
 			this.sp_background.removeEventListener(MouseEvent.MOUSE_DOWN, this.onDragWindowsStartDrag);
@@ -70,7 +70,7 @@
 		/**
 		 *设置背景色块的alpha属性
 		 */
-		public function set setBgAlpha(e:Number)
+		public function set setBgAlpha(e:Number):void
 		{
 			AnimationManager.fade(this.sp_background, e)
 		}
@@ -78,7 +78,7 @@
 		/**
 		 *设置是否可以拖拽本窗口
 		 */
-		public function set setDragEnable(e:Boolean)
+		public function set setDragEnable(e:Boolean):void
 		{
 			this.stopDrag();
 			dragAble = e

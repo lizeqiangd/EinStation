@@ -27,6 +27,7 @@
 	 * 2014.03.31 全面更新注释文档,删除无用方法,精简处理.
 	 * 2014.04.07 debug完成.
 	 * 2014.06.07 增加视频背景功能.
+	 * 2015.03.19 考虑重构
 	 * lizeqiangd
 	 */
 	public class BackGround extends BaseWindows implements iApplication
@@ -51,7 +52,6 @@
 		{
 			this.setDisplayLayer = "backgroundLayer";
 			this.setApplicationName = "BackgroundImage";
-			this.setApplicationVersion = "2.2"
 			this.setAutoAdjustToRetina = false
 			this.setFocusAble = false
 			this.setMutiExistEnable = false
@@ -63,7 +63,7 @@
 		 * 初始化程序,仅仅是初始化完成而已,加载图片需要外部调入.
 		 * @param	e ApplicationEvent
 		 */
-		public function init(e:ApplicationEvent)
+		public function init(e:ApplicationEvent):void
 		{
 			removeEventListener(ApplicationEvent.OPENED, init)
 			Cc.log("BackGround:initing...");
@@ -111,7 +111,7 @@
 		 * Progress Event
 		 * @param	e
 		 */
-		private function onProgress(e:NetEvent)
+		private function onProgress(e:NetEvent):void
 		{
 			setDescription("Loading Image:" + Math.round(e.data * 100) + "%", false);
 		}
@@ -120,7 +120,7 @@
 		 * Loading Error  修正后重新加载即可.
 		 * @param	e
 		 */
-		private function onIOError(e:IOErrorEvent)
+		private function onIOError(e:IOErrorEvent):void
 		{
 			state = "error";
 			setDescription("背景图片加载失败,不会影响正常使用.")
@@ -131,7 +131,7 @@
 		 * 读取完成时候,由其他地方通知切换出图片.
 		 * @param	e
 		 */
-		private function onLoadComplete(e:*)
+		private function onLoadComplete(e:*):void
 		{
 			//dispatchEvent(e)
 			applicationMessage({type: "complete"});
@@ -142,7 +142,7 @@
 		 * 设置底部介绍文字的内容.会自动激活动画
 		 * e:设置的内容   needAnime:是否激活typing动画效果.
 		 */
-		private function setDescription(e:String, needAnime:Boolean = true)
+		private function setDescription(e:String, needAnime:Boolean = true):void
 		{
 			if (info_lock)
 			{
@@ -156,7 +156,7 @@
 		/**
 		 * 开始读取图片.
 		 */
-		private function loadingImage()
+		private function loadingImage():void
 		{
 			_loader.load(image.url)
 		}
@@ -164,7 +164,7 @@
 		/**
 		 * 开始读取视频
 		 */
-		private function loadingVideo()
+		private function loadingVideo():void
 		{
 			video.stopStream()
 			video.loadVideo(image.url)
@@ -173,7 +173,7 @@
 		/**
 		 * 重新定位各部件应用位置.
 		 */
-		private function onStageResize()
+		private function onStageResize():void
 		{
 			this.x = 0
 			this.y = 0
@@ -194,7 +194,7 @@
 		 * 应用程序消息通道.默认舞台是黑色的.
 		 * @param	e
 		 */
-		public function applicationMessage(e:Object)
+		public function applicationMessage(e:Object):void
 		{
 			switch (e.type)
 			{
@@ -272,7 +272,7 @@
 		/**
 		 * 销毁本类,目前来看没有什么机会用到.
 		 */
-		public function dispose()
+		public function dispose():void
 		{
 			_loader.removeEventListener(Event.COMPLETE, onLoadComplete);
 			_loader.removeEventListener(IOErrorEvent.IO_ERROR, onIOError);

@@ -25,15 +25,18 @@
 		public static const none:String = "none"
 		
 		private static var inited:Boolean = false
-		
-		public static function init()
+		private static var default_image:Image 
+		public static function init():void
 		{
 			if (inited)
 			{
 				return
 			}
+			default_image = new Image()
+			default_image.description = '默认图片'
+			default_image.url='http://events.acg.tv/activity/html/img/background.jpg'
 			background = LayerManager.createPopUp(BackGround)
-			var o:Object = {image: HostManager.BACKGROUND_IMAGE, type: "remote"}
+			var o:Object = {image: HostManager.BACKGROUND_IMAGE?HostManager.BACKGROUND_IMAGE:default_image, type: "remote"}
 			background.applicationMessage(o)
 			inited = true
 		}
@@ -43,7 +46,7 @@
 		 * @param	event
 		 * @param	listener
 		 */
-		public static function addEventListener(event:String , listener:Function)
+		public static function addEventListener(event:String , listener:Function):void
 		{
 			background.addEventListener(event, listener, false, 0, true)
 		}
@@ -52,7 +55,7 @@
 		 * @param	event
 		 * @param	listener
 		 */
-		public static function removeEventListener(event:String, listener:Function)
+		public static function removeEventListener(event:String, listener:Function):void
 		{
 			background.removeEventListener(event, listener)
 		}
@@ -62,7 +65,7 @@
 		 * @param	url
 		 * @param	description
 		 */
-		public static function remote(url:String, description:String = "")
+		public static function remote(url:String, description:String = ""):void
 		{
 			if (!inited)
 			{
@@ -80,7 +83,7 @@
 		 * "recover","blackWithoutText","black","whiteWithoutText","white","none"
 		 * @param	s
 		 */
-		public static function control(s:String)
+		public static function control(s:String):void
 		{
 			if (!inited)
 			{
@@ -95,7 +98,7 @@
 		 * @param	information
 		 * @param	isLocked
 		 */
-		public static function infomation(information:String , isLocked:Boolean = false) {
+		public static function infomation(information:String , isLocked:Boolean = false):void {
 			background.applicationMessage({type:"infolock",info:information,lock:isLocked})
 		}
 	

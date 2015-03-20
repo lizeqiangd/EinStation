@@ -18,7 +18,7 @@ package com.lizeqiangd.zweisystem.data.application
 		private static var app:Application
 		
 		public static var tempApplicationVector:Vector.<Application>
-		public static function init(applications:XML)
+		public static function init(applications:XML):void
 		{
 			system = new Vector.<Application>;
 			test = new Vector.<Application>;

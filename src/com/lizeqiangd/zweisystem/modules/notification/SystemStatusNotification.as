@@ -43,7 +43,7 @@
 		 * @param	_Height 显示范围高度 会上下各减少1(默认是200)
 		 * @param	_displayContenter 显示的载体
 		 */
-		public function init(_Width:Number = 300, _Height:Number = 200, _displayContenter:DisplayObjectContainer = null)
+		public function init(_Width:Number = 300, _Height:Number = 200, _displayContenter:DisplayObjectContainer = null):void
 		{
 			//初始化文字格式设定.
 			tf = new TextField
@@ -74,7 +74,7 @@
 		 * @param	_Width  显示范围宽度 会左右各减少1 默认为0,则不动仅仅更新中间动画效果位置
 		 * @param	_Height 显示范围高度 会上下各减少1 默认为0,则不动仅仅更新中间动画效果位置
 		 */
-		public function resize(_Width:Number = 0, _Height:Number = 0)
+		public function resize(_Width:Number = 0, _Height:Number = 0):void
 		{
 			if (_Width > 0 || _Height > 0)
 			{
@@ -107,8 +107,9 @@
 		 * @param	AnimationClassAddress 目标动画的Class路径.不需要库前缀.
 		 * @param	InformationText 显示需要显示的文字在动画下面.
 		 */
-		public function anime(AnimationClassPath:String = "", InformationText:String = "")
+		public function anime(AnimationClassPath:String = "", InformationText:String = ""):void
 		{
+			//this.parent.setChildIndex(this,this.parent.numChildren-1)
 			//当ssn没有遮罩时,增加遮罩
 			if (!isMasked)
 			{
@@ -156,8 +157,9 @@
 		/**
 		 * 主要方法..结束动画显示,
 		 */
-		public function clean()
+		public function clean():void
 		{
+			//this.parent.setChildIndex(this,this.parent.numChildren-1)
 			//消除遮罩层
 			if (isMasked)
 			{
@@ -183,7 +185,7 @@
 		/**
 		 * 销毁本ssn.全部清除外加赋null
 		 */
-		public function dispose()
+		public function dispose():void
 		{
 			clean()
 			removeChildren()

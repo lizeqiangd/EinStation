@@ -33,7 +33,7 @@ package com.lizeqiangd.zweisystem.modules.videodisplay
 		private var isAutoResize:Boolean = false
 		private var nsc:Object
 		
-		public function init(width:Number = 320, height:Number = 240, autoResize:Boolean = false)
+		public function init(width:Number = 320, height:Number = 240, autoResize:Boolean = false):void
 		{
 			nsc = new Object
 			nsc.onXMPData = onXMPData
@@ -51,19 +51,19 @@ package com.lizeqiangd.zweisystem.modules.videodisplay
 			addChild(_video)
 		}
 		
-		public function loadCamera(cam:Camera = null)
+		public function loadCamera(cam:Camera = null):void
 		{
 			mode = "camera"
 			_video.attachCamera(cam ? cam : Camera.getCamera())
 		}
 		
-		public function loadStream()
+		public function loadStream():void
 		{
 			_nc = new NetConnection()
 			_ns = new NetStream(_nc)
 		}
 		
-		public function loadVideo(url:String)
+		public function loadVideo(url:String):void
 		{
 			_nc = new NetConnection()
 			_nc.connect(null)
@@ -76,7 +76,7 @@ package com.lizeqiangd.zweisystem.modules.videodisplay
 			_ns.play(url)
 		}
 		
-		public function stopStream()
+		public function stopStream():void
 		{
 			if (mode == "camera")
 			{
@@ -90,14 +90,14 @@ package com.lizeqiangd.zweisystem.modules.videodisplay
 			}
 		}
 		
-		private function addNSListener()
+		private function addNSListener():void
 		{
 			_ns.addEventListener(NetStatusEvent.NET_STATUS, onNetStatusEvent)
 			_ns.addEventListener(IOErrorEvent.IO_ERROR, onNSIOError)
 			_ns.addEventListener(NetDataEvent.MEDIA_TYPE_DATA, onMediaTypeData)
 		}
 		
-		private function onNetStatusEvent(e:NetStatusEvent)
+		private function onNetStatusEvent(e:NetStatusEvent):void
 		{
 			switch (e.info.code)
 			{
@@ -149,25 +149,25 @@ package com.lizeqiangd.zweisystem.modules.videodisplay
 		
 		}
 		
-		private function onNSIOError(e:IOErrorEvent)
+		private function onNSIOError(e:IOErrorEvent):void
 		{
 			dispatchEvent(e)
 			//trace("VideoDisplay:IOError")
 		}
 		
-		private function onMediaTypeData(e:NetDataEvent)
+		private function onMediaTypeData(e:NetDataEvent):void
 		{
 			//trace("VideoDisplay:NetDataEvent")
 		}
 		
-		private function removeNSListener()
+		private function removeNSListener():void
 		{
 			_ns.removeEventListener(NetStatusEvent.NET_STATUS, onNetStatusEvent)
 			_ns.removeEventListener(IOErrorEvent.IO_ERROR, onNSIOError)
 			_ns.removeEventListener(NetDataEvent.MEDIA_TYPE_DATA, onMediaTypeData)
 		}
 		
-		public function dispose()
+		public function dispose():void
 		{
 			if (state == "init")
 			{
@@ -195,23 +195,23 @@ package com.lizeqiangd.zweisystem.modules.videodisplay
 			return _nc
 		}
 		
-		public function onXMPData(o:Object)
+		public function onXMPData(o:Object):void
 		{
 		
 			//trace("onXMPData")
 		}
 		
-		public function onTextData(o:Object)
+		public function onTextData(o:Object):void
 		{
 			//trace("onTextData")
 		}
 		
-		public function onPlayStatus(o:Object)
+		public function onPlayStatus(o:Object):void
 		{
 			//trace("onPlayStatus")
 		}
 		
-		public function onMetaData(o:Object)
+		public function onMetaData(o:Object):void
 		{
 			if (isAutoResize)
 			{
@@ -221,12 +221,12 @@ package com.lizeqiangd.zweisystem.modules.videodisplay
 			StageProxy.updateStageSize()
 		}
 		
-		public function onImageData(o:Object)
+		public function onImageData(o:Object):void
 		{
 			//trace("onImageData")
 		}
 		
-		public function onCuePoint(o:Object)
+		public function onCuePoint(o:Object):void
 		{
 			trace("onCuePoint")
 		}

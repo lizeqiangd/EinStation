@@ -54,7 +54,7 @@
 		/**
 		 * 当开启动画结束的时候调用.
 		 */
-		private function onAnimeOpened(e:AnimationEvent)
+		private function onAnimeOpened(e:AnimationEvent):void
 		{
 			this.removeEventListener(AnimationEvent.OPENED, onAnimeOpened);
 			this.dispatchEvent(new ApplicationEvent(ApplicationEvent.INIT));
@@ -63,7 +63,7 @@
 		/**
 		 * 当关闭动画结束的时候调用.
 		 */
-		private function onAnimeClosed(e:AnimationEvent)
+		private function onAnimeClosed(e:AnimationEvent):void
 		{
 			this.removeEventListener(AnimationEvent.CLOSED, onAnimeClosed);
 			this.dispatchEvent(new ApplicationEvent(ApplicationEvent.CLOSED));
@@ -72,7 +72,7 @@
 		/**
 		 * 设置开启动画的名称.需要在AnimationManager内注册
 		 */
-		public function set setOpeningAnimationType(s:String)
+		public function set setOpeningAnimationType(s:String):void
 		{
 			defaultOpeningAnimeType = s;
 		}
@@ -80,7 +80,7 @@
 		/**
 		 * 设置关闭动画的名称.需要在AnimationManager内注册
 		 */
-		public function set setClosingAnimationType(s:String)
+		public function set setClosingAnimationType(s:String):void
 		{
 			defaultClosingAnimeType = s;
 		}

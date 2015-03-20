@@ -11,8 +11,9 @@
 	 */
 	public class PositionUtility
 	{
-		private static const offsetX:int = 20//ESSetting.PositionUtilityOffsetX
-		private static const offsetY:int = 20//ESSetting.PositionUtilityOffsetY
+		private static const offsetX:int = 0//ESSetting.PositionUtilityOffsetX
+		private static const offsetY:int = 0//ESSetting.PositionUtilityOffsetY
+		private static const saveWindowsBoard:int=20
 		private static var displayObjects:Array;
 		private static var isInited:Boolean = false
 		
@@ -71,13 +72,13 @@
 		 */
 		public static function setDisplayBackToStage(display_obj:DisplayObject):void
 		{
-			if (display_obj.x > (StageProxy.stageWidth - 20))
+			if (display_obj.x > (StageProxy.stageWidth - saveWindowsBoard))
 			{
-				display_obj.x = StageProxy.stageWidth - 20;
+				display_obj.x = StageProxy.stageWidth - saveWindowsBoard;
 			}
-			if (display_obj.y > (StageProxy.stageHeight - 20))
+			if (display_obj.y > (StageProxy.stageHeight - saveWindowsBoard))
 			{
-				display_obj.y = StageProxy.stageHeight - 20;
+				display_obj.y = StageProxy.stageHeight - saveWindowsBoard;
 			}
 			if (display_obj.x < (20 - display_obj.width))
 			{

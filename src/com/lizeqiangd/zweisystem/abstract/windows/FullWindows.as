@@ -23,36 +23,35 @@
 			this.addEventListener(ApplicationEvent.CLOSE, onFullWindowsCloseHangle);
 		}
 		
-		private function onFullWindowsOpenHangle(e:ApplicationEvent)
+		private function onFullWindowsOpenHangle(e:ApplicationEvent):void
 		{
 			BackgroundManager.control(_backgroundControlType)
 		}
 		
-		private function onFullWindowsCloseHangle(e:ApplicationEvent)
+		private function onFullWindowsCloseHangle(e:ApplicationEvent):void
 		{
 			removeEventListener(ApplicationEvent.INITED, onFullWindowsOpenHangle);
 			removeEventListener(ApplicationEvent.CLOSE, onFullWindowsCloseHangle);
 			BackgroundManager.control(BackgroundManager.recover)
 		}
 		
-		public function set setBgAlpha(e:Number)
+		public function set setBgAlpha(e:Number):void
 		{
 			
-		
-		   try
-		   {
-		if (getChildByName(FullWindows._mc_bg))
+			try
 			{
-				AnimationManager.fade(getChildByName(FullWindows._mc_bg), e)
+				if (getChildByName(FullWindows._mc_bg))
+				{
+					AnimationManager.fade(getChildByName(FullWindows._mc_bg), e)
+				}
 			}
-		   }
-		   catch (e:*)
-		   {
-		   trace("FullWindows配置错误，找不到需要的实例，请检查mc_bg是否存在。");
-		 }
+			catch (e:*)
+			{
+				trace("FullWindows配置错误，找不到需要的实例，请检查mc_bg是否存在。");
+			}
 		}
 		
-		public function set setBackgroundTitle(s:String)
+		public function set setBackgroundTitle(s:String):void
 		{
 			if (s)
 			{

@@ -14,12 +14,12 @@
 	 * 2013.01.27 更新应用事件。
 	 * 2014.03.28 更新所有备注.并重新检查.  目前无法进行任何更改...很完善?
 	 * 2014.12.17 添加对baseui的继承
+	 * 2015.03.19 删除版本功能.
 	 */
 	public class BaseWindows extends BaseUI
 	{
 		private var appName:String = "untitled";
 		private var displayLayer:String = "topLayer";
-		private var appVersion = "unknown";
 		private var mutiExist:Boolean = false;
 		private var autoRemove:Boolean = true;
 		private var removeBackground:Boolean = false;
@@ -44,7 +44,7 @@
 		/**
 		 * 简单粗暴的方法对应苹果高清屏幕所使用.效果群拔
 		 */
-		private function adjustToRetinaScreen()
+		private function adjustToRetinaScreen():void
 		{
 			//trace("appName:", appName, "autoAdjustToRetina:", autoAdjustToRetina)
 			if (SystemManager.getScreenDPI > ESSetting.BaseWindowsRetinaScaleLimit && autoAdjustToRetina)
@@ -71,7 +71,7 @@
 		/**
 		 * 该方法将 ApplicationEvent.CLOSE 事件放入本应用,则应用将会和常规关闭方法一样被关闭.
 		 */
-		public function CloseApplication(e:* = null)
+		public function CloseApplication(e:* = null):void
 		{
 			this.dispatchEvent(new ApplicationEvent(ApplicationEvent.CLOSE));
 		}
@@ -79,7 +79,7 @@
 		/**
 		 * 强行将本应用成为LayerManager中的聚焦程序,相当于被点击.
 		 */
-		private function onBaseWindowsFocus(e:MouseEvent)
+		private function onBaseWindowsFocus(e:MouseEvent):void
 		{
 			if (isFocusAble)
 			{
@@ -129,7 +129,7 @@
 		 *获取该应用是否允许多重存在.
 		 */
 		
-		public function set setMutiExistEnable(e:Boolean)
+		public function set setMutiExistEnable(e:Boolean):void
 		{
 			mutiExist = e;
 		}
@@ -143,25 +143,9 @@
 		}
 		
 		/**
-		 * 设置当前应用程序版本
-		 */
-		public function set setApplicationVersion(s:String)
-		{
-			appVersion = s;
-		}
-		
-		/**
-		 * 获取应用程序版本.
-		 */
-		public function get getApplicationVersion():String
-		{
-			return appVersion;
-		}
-		
-		/**
 		 * 设置当前应用程序名字.
 		 */
-		public function set setApplicationName(e:String)
+		public function set setApplicationName(e:String):void
 		{
 			appName = e;
 		}
@@ -177,7 +161,7 @@
 		/**
 		 * 设置当前应用显示层.初始化之前定义有效.之后修改无效.
 		 */
-		public function set setDisplayLayer(e:String)
+		public function set setDisplayLayer(e:String):void
 		{
 			displayLayer = e;
 		}
@@ -193,7 +177,7 @@
 		/**
 		 * 设置当前应用是否允许被聚焦(放置最前)
 		 */
-		public function set setFocusAble(e:Boolean)
+		public function set setFocusAble(e:Boolean):void
 		{
 			isFocusAble = e;
 		}
@@ -209,7 +193,7 @@
 		/**
 		 * 设置是否该应用是否暂时移除背景程序(默认是白色背景)
 		 */
-		public function set setAutoRemoveBackground(s:Boolean)
+		public function set setAutoRemoveBackground(s:Boolean):void
 		{
 			if (s)
 			{
@@ -230,7 +214,7 @@
 		/**
 		 * 设置是否自动校正屏幕大小.
 		 */
-		public function set setAutoAdjustToRetina(value:Boolean)
+		public function set setAutoAdjustToRetina(value:Boolean):void
 		{
 			this.autoAdjustToRetina = value
 		}
