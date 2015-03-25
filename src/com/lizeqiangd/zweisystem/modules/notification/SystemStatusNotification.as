@@ -109,7 +109,7 @@
 		 */
 		public function anime(AnimationClassPath:String = "", InformationText:String = ""):void
 		{
-			//this.parent.setChildIndex(this,this.parent.numChildren-1)
+			this.parent.setChildIndex(this,this.parent.numChildren-1)
 			//当ssn没有遮罩时,增加遮罩
 			if (!isMasked)
 			{
@@ -159,7 +159,7 @@
 		 */
 		public function clean():void
 		{
-			//this.parent.setChildIndex(this,this.parent.numChildren-1)
+			this.parent.setChildIndex(this,this.parent.numChildren-1)
 			//消除遮罩层
 			if (isMasked)
 			{

@@ -1,5 +1,6 @@
 package com.lizeqiangd.zweisystem.manager 
 {
+	import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionCreator;
 	import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireCreator;
 	import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator;
 	import com.lizeqiangd.zweisystem.animations.ssn.ssn_wait;
@@ -11,6 +12,7 @@ package com.lizeqiangd.zweisystem.manager
 	{
 		private var QuestionnaireGenerators:QuestionnaireGenerator	
 		private var QuestionnaireCreators:QuestionnaireCreator 	
+		private var QuestionCreators:QuestionCreator 	
 		private var ssn_waits:ssn_wait
 	}
 

@@ -88,7 +88,7 @@
 				return
 			}
 			
-			db.log("LayerManager.createPopUp: opening[", c, "]")
+			db.log("LayerManager.createPopUp: opening", c)
 			var o:* = null
 			///检测是否为BaseWindows,如果是则完全按照常规
 			if (CompareClass.isSuperClass(c, BaseWindows))
@@ -111,7 +111,7 @@
 						PositionUtility.setDisplayPosition(o, "TL")
 						break;
 					default: 
-						db.log("LayerManager.createPopUp:[", c, "] is a BaseWindows but the layername is wrong!")
+						db.log("LayerManager.createPopUp:", c, " is a BaseWindows but the layername is wrong!")
 				}
 			}
 			else
@@ -120,13 +120,13 @@
 				{
 					o.getDisplayLayer = LayerManagerTop
 					LayerManager.addChildLayer(o, LayerManagerTop);
-					db.log("LayerManager.createPopUp:[", c, "] is not a BaseWindows,directly open at " + atLayer)
+					db.log("LayerManager.createPopUp:", c, " is not a BaseWindows,directly open at " + atLayer)
 				}
 				else
 				{
 					o.getDisplayLayer = atLayer
 					LayerManager.addChildLayer(o, atLayer);
-					db.log("LayerManager.createPopUp:[", c, "] is not a BaseWindows,directly open at topLayer")
+					db.log("LayerManager.createPopUp:", c, " is not a BaseWindows,directly open at topLayer")
 				}
 			}
 			o.dispatchEvent(new ApplicationEvent(ApplicationEvent.OPENED));

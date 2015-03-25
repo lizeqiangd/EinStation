@@ -92,7 +92,7 @@
 			if (!findApplicationMutiExistEnableByAddress(ApplicatoinAddress))
 			{
 				//trace("程序：" + ApplicatoinAddress + "不允许多重存在");
-				db.log("ApplicationManager.open:Application address existed.[" + ApplicatoinAddress + "]")
+				db.log("ApplicationManager.open:Application address existed." + ApplicatoinAddress + "")
 				//findApplicationMutiExistEnableByAddress(app_Address);
 				//Message.ApplicationExisted(ApplicatoinAddress)
 				return null;

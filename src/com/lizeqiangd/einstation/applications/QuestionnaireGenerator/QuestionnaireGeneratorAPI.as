@@ -83,6 +83,14 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 					urlr.url = baseurl + questionnaire_api
 					urlr.data['action'] = api
 					break;
+				case 'add_questionnaire_question': 
+					urlr.url = baseurl + questionnaire_api
+					urlr.data['action'] = api
+					break;
+				case 'remove_questionnaire_question': 
+					urlr.url = baseurl + questionnaire_api
+					urlr.data['action'] = api
+					break;
 				
 				//question
 				case 'get_question': 
@@ -115,6 +123,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 					break;
 				
 				default: 
+					trace('QG,找不到api方法:', question_api)
 			}
 			
 			urll.load(urlr)
@@ -128,9 +137,11 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 				urll.removeEventListener(IOErrorEvent.IO_ERROR, onError)
 				urll.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, onError)
 				var returnObj:Object = JSON.parse(urll.data)
+				//var returnObj:Object = urll.data
 				if (returnObj.code !== 200)
 				{
-					trace('QuestionnaireGenerator APIError:', returnObj.data)
+					trace('QuestionnaireGenerator APIError:', api, returnObj.data)
+					onComplete({})
 				}
 				else
 				{

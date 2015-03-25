@@ -17,10 +17,10 @@
 	 */
 	public class TitleWindows extends DragWindows
 	{
+		public var tx_title:TextField;
+		
 		private var orignalTitle:String = ""
 		private var isInited:Boolean = false
-		private var tx_title:TextField;
-		
 		private var btn_closes:btn_close
 		
 		/**
@@ -92,6 +92,13 @@
 		public function set setApplicationTitle(t:String):void
 		{
 			tx_title.text = t;
+		}
+		
+		/**
+		 * 设置关闭按钮是否隐藏
+		 */
+		public function showCloseButton(e:Boolean=false ):void {
+			this.btn_closes.visible=e
 		}
 	}
 }

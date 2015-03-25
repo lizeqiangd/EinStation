@@ -23,7 +23,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 		private var tx_id:TextField
 		private var tx_type:TextField
 		private var tx_title:TextField
-				
+		
 		public function dgr_questions()
 		{
 			tx_id = new TextField
@@ -34,11 +34,11 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			tx_type.mouseEnabled = false
 			tx_title.mouseEnabled = false
 			
-			tx_id.defaultTextFormat = ESTextFormat.LightBlueTitleTextFormat// BPTextFormat.DataGirdCommentRowTextFormat
-			tx_type.defaultTextFormat = ESTextFormat.LightBlueTitleTextFormat// BPTextFormat.DataGirdCommentRowTextFormat
+			tx_id.defaultTextFormat = ESTextFormat.LightBlueTitleTextFormat // BPTextFormat.DataGirdCommentRowTextFormat
+			tx_type.defaultTextFormat = ESTextFormat.LightBlueTitleTextFormat // BPTextFormat.DataGirdCommentRowTextFormat
 			var tf:TextFormat = ESTextFormat.LightBlueTitleTextFormat
-			tf.align='left'
-			tx_title.defaultTextFormat =tf//  BPTextFormat.DataGirdCommentRowTextFormat
+			tf.align = 'left'
+			tx_title.defaultTextFormat = tf //  BPTextFormat.DataGirdCommentRowTextFormat
 			
 			tx_id.text = ""
 			tx_type.text = ""
@@ -52,14 +52,17 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			tx_id.width = 30
 			tx_type.x = 32
 			tx_type.width = 20
-			tx_title.defaultTextFormat.align='left'
+			tx_title.defaultTextFormat.align = 'left'
 			tx_title.x = 52
 			tx_title.width = 238
+			
+			tx_id.height = 20
+			tx_type.height = 20
+			tx_title.height = 20
 			
 			addChild(tx_id)
 			addChild(tx_title)
 			addChild(tx_type)
-			
 		}
 		
 		public function update():void
@@ -68,7 +71,13 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			{
 				tx_id.text = data[indexInDataGird].id + ""
 				tx_type.text = data[indexInDataGird].type + ""
-				tx_title.text =data[indexInDataGird].title			
+				tx_title.text = data[indexInDataGird].title
+			}
+			else
+			{
+				tx_id.text = ""
+				tx_type.text = ""
+				tx_title.text = ''
 			}
 			cherkSelected()
 		}

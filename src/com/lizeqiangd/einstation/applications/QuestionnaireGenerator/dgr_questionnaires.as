@@ -20,55 +20,63 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 	public class dgr_questionnaires extends BaseDataGirdRow implements iDataGirdRow
 	{
 		
-		private var tx_id:TextField
-		private var tx_type:TextField
-		private var tx_title:TextField
-				
+		private var tx_1:TextField
+		private var tx_2:TextField
+		private var tx_3:TextField
+		
 		public function dgr_questionnaires()
 		{
-			tx_id = new TextField
-			tx_type = new TextField
-			tx_title = new TextField
+			tx_1 = new TextField
+			tx_2 = new TextField
+			tx_3 = new TextField
 			
-			tx_id.mouseEnabled = false
-			tx_type.mouseEnabled = false
-			tx_title.mouseEnabled = false
+			tx_1.mouseEnabled = false
+			tx_2.mouseEnabled = false
+			tx_3.mouseEnabled = false
 			
-			tx_id.defaultTextFormat = ESTextFormat.LightBlueTitleTextFormat// BPTextFormat.DataGirdCommentRowTextFormat
-			tx_type.defaultTextFormat = ESTextFormat.LightBlueTitleTextFormat// BPTextFormat.DataGirdCommentRowTextFormat
 			var tf:TextFormat = ESTextFormat.LightBlueTitleTextFormat
-			tf.align='left'
-			tx_title.defaultTextFormat =tf//  BPTextFormat.DataGirdCommentRowTextFormat
+			tf.align = 'left'
+			tx_1.defaultTextFormat = tf // BPTextFormat.DataGirdCommentRowTextFormat
+			tx_2.defaultTextFormat = tf // BPTextFormat.DataGirdCommentRowTextFormat
+			tx_3.defaultTextFormat = tf //  BPTextFormat.DataGirdCommentRowTextFormat
 			
-			tx_id.text = ""
-			tx_type.text = ""
-			tx_title.text = ""
+			tx_1.text = ""
+			tx_2.text = ""
+			tx_3.text = ""
 			
-			tx_id.y = 2
-			tx_type.y = 2
-			tx_title.y = 2
+			tx_1.y = 2
+			tx_2.y = 2
+			tx_3.y = 2
 			
-			tx_id.x = 2
-			tx_id.width = 30
-			tx_type.x = 32
-			tx_type.width = 20
-			tx_title.defaultTextFormat.align='left'
-			tx_title.x = 52
-			tx_title.width = 238
+			tx_1.x = 2
+			tx_2.x = 22
+			tx_3.x = 212
+			tx_1.width = tx_2.x - tx_1.x
+			tx_2.width = tx_3.x - tx_2.x
+			tx_3.width = getUiWidth-tx_3.x 
 			
-			addChild(tx_id)
-			addChild(tx_title)
-			addChild(tx_type)
+			tx_1.height = 20
+			tx_2.height = 20
+			tx_3.height = 20
 			
+			addChild(tx_1)
+			addChild(tx_3)
+			addChild(tx_2)
 		}
 		
 		public function update():void
 		{
 			if (data[indexInDataGird])
 			{
-				tx_id.text = data[indexInDataGird].id + ""
-				tx_type.text = data[indexInDataGird].type + ""
-				tx_title.text =data[indexInDataGird].title			
+				tx_1.text = data[indexInDataGird].id + ""
+				tx_2.text = data[indexInDataGird].title
+				tx_3.text = data[indexInDataGird].update_time.slice(0, 10)
+			}
+			else
+			{
+				tx_1.text = ""
+				tx_2.text = ""
+				tx_3.text = ''
 			}
 			cherkSelected()
 		}
