@@ -84,9 +84,13 @@
 			{
 				display_obj.x = 20 - display_obj.width
 			}
-			if (display_obj.y < (20 - display_obj.height))
+			//if (display_obj.y < (20 - display_obj.height))
+			//{
+				//display_obj.y = 20 - display_obj.height
+			//}
+			if (display_obj.y < (0 /*- display_obj.height*/))
 			{
-				display_obj.y >= 20 - display_obj.height
+				display_obj.y = 0 /*- display_obj.height*/
 			}
 		}
 		

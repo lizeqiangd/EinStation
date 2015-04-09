@@ -10,8 +10,11 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.net.URLRequest;
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
 	
 	/**
+	 * 问卷调查系统子程序: 问题制作器
 	 * @author Lizeqiangd
 	 * @email lizeqiangd@gmail.com
 	 */
@@ -39,7 +42,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			addChild(ssn)
 			self = this
 			assest = new Loader
-			assest.load(new URLRequest('../assest/QuestionnaireGenerator/Interfaces.swf'))
+			assest.load(new URLRequest('assest/QuestionnaireGenerator/Interfaces.swf'),new LoaderContext(false,ApplicationDomain.currentDomain))
 			assest.contentLoaderInfo.addEventListener(Event.COMPLETE, onAssestLoadComplete)
 			function onAssestLoadComplete(e:Event):void
 			{
@@ -54,13 +57,14 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 		
 		private function onSubmit(e:UIEvent):void
 		{
-			//ssn.anime('ssn.ssn_wait', '发送请求中')
+			ssn.anime('ssn.ssn_wait', '发送请求中')
 			trace('********实际发送的数据***********')
 			for (var i:String in e.data)
 			{
 				trace(i, e.data[i])
-				for ( var s:String in e.data[i]) {
-					trace(i,s, e.data[i][s])
+				for (var s:String in e.data[i])
+				{
+					trace(i, s, e.data[i][s])
 				}
 			}
 			trace('***********************************')
@@ -75,7 +79,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			function onComplete(k:Object):void
 			{
 				master.applicationMessage({"refrush": 1})
-				//ssn.clean()
+				ssn.clean()
 			}
 		}
 		
@@ -100,7 +104,6 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 		private function onApplicationClose(e:ApplicationEvent):void
 		{
 			removeApplicationListener();
-		
 		}
 		
 		public function dispose():void
@@ -120,7 +123,6 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			{
 				master = e.master
 			}
-			
 			switch (e.type)
 			{
 				case 1: 

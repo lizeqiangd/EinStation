@@ -91,7 +91,7 @@
 		 */
 		public function set setApplicationTitle(t:String):void
 		{
-			tx_title.text = t;
+			tx_title.text = t+"";
 		}
 		
 		/**

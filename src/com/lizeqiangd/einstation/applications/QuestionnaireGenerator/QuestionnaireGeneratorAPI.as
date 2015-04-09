@@ -25,7 +25,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			_instance = new QuestionnaireGeneratorAPI
 			return _instance
 		}
-		private var baseurl:String = 'http://localhost/qg/'
+		private var baseurl:String = 'http://events.acg.tv/qg/questionnaire/'
 		private var question_api:String = 'questions.php'
 		private var questionnaire_api:String = 'questionnaires.php'
 		
@@ -87,7 +87,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 					urlr.url = baseurl + questionnaire_api
 					urlr.data['action'] = api
 					break;
-				case 'remove_questionnaire_question': 
+				case 'update_questionnaire_question': 
 					urlr.url = baseurl + questionnaire_api
 					urlr.data['action'] = api
 					break;

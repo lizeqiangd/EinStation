@@ -1,5 +1,6 @@
 package
 {
+	import com.lizeqiangd.zweisystem.animations.messbox.mb_blue_excalmatory;
 	import com.lizeqiangd.zweisystem.components.debug.db;
 	import com.lizeqiangd.zweisystem.components.PositionUtility;
 	import com.lizeqiangd.zweisystem.components.StageProxy;
@@ -14,6 +15,7 @@ package
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
 	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
+	import com.lizeqiangd.zweisystem.system.applications.message.Msg;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.setTimeout;
@@ -73,17 +75,17 @@ package
 			AddOnManager.initTweenPlugin()
 			AnimationManager.init()
 			new QuoteManager()
-			AnimationManager.MaskOutStage()
 			ApplicationManager.init()
 			//BackgroundManager.init();
 			setTimeout(onInitCompleted,1000)
 			
-		}
-		
+		}		
 		private function onInitCompleted():void 
 		{
 			ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
-		
+			AnimationManager.MaskOutStage()
+			
+			Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
 		}
 		//
 		//Cc.debug("EinStation initing: ApplicationManager inited");

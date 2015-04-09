@@ -4,6 +4,8 @@
 	import com.lizeqiangd.zweisystem.components.texteffect.TextAnimation;
 	import com.lizeqiangd.zweisystem.system.config.ESTextFormat;
 	import com.lizeqiangd.zweisystem.manager.AnimationManager;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	//import com.lizeqiangd.zweisystem.managers.SEManager;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Shape;
@@ -36,6 +38,8 @@
 		private var isAnimeExisted:Boolean
 		private var isUseText:Boolean
 		private var tf:TextField
+		private var self:SystemStatusNotification
+		private var clear_timer:Timer
 		
 		/**
 		 * 初始化SystemStatusNotification,并输入基本参数即可运作,你可以输入载体,也可以不输入自行addChild.
@@ -66,7 +70,8 @@
 				_displayContenter.addChild(this)
 			}
 			resize(_Width, _Height);
-		
+			clear_timer = new Timer(100, 1)
+			self=this
 		}
 		
 		/**
@@ -109,7 +114,7 @@
 		 */
 		public function anime(AnimationClassPath:String = "", InformationText:String = ""):void
 		{
-			this.parent.setChildIndex(this,this.parent.numChildren-1)
+			this.parent.setChildIndex(this, this.parent.numChildren - 1)
 			//当ssn没有遮罩时,增加遮罩
 			if (!isMasked)
 			{
@@ -157,28 +162,46 @@
 		/**
 		 * 主要方法..结束动画显示,
 		 */
-		public function clean():void
+		public function clean(needDelay:Boolean = true):void
 		{
-			this.parent.setChildIndex(this,this.parent.numChildren-1)
-			//消除遮罩层
-			if (isMasked)
+			if (needDelay)
 			{
-				AnimationManager.fade_out(mc_shadow);
-				isMasked = false;
+				clear_timer.addEventListener(TimerEvent.TIMER_COMPLETE, onDelayCleanComplete)
+				clear_timer.start()
 			}
-			//当ssn已经存在动画效果时候,卸载掉当前动画
-			if (isAnimeExisted)
-			{ //忘记方法了.↓这里.
-				nowAnime.stop()
-				removeChild(nowAnime);
-				nowAnime = null;
-				isAnimeExisted = false
-			}
-			//当有文字输入的时候
-			if (isUseText)
+			else
 			{
-				removeChild(tf)
-				isUseText = false
+				onDelayCleanComplete(null)
+			}
+			
+			function onDelayCleanComplete(e:TimerEvent):void
+			{
+				if (needDelay)
+				{
+					clear_timer.removeEventListener(TimerEvent.TIMER_COMPLETE, onDelayCleanComplete)
+					clear_timer.reset();
+				}
+				self.parent.setChildIndex(self, self.parent.numChildren - 1)
+				//消除遮罩层
+				if (isMasked)
+				{
+					AnimationManager.fade_out(mc_shadow);
+					isMasked = false;
+				}
+				//当ssn已经存在动画效果时候,卸载掉当前动画
+				if (isAnimeExisted)
+				{ //忘记方法了.↓这里.
+					nowAnime.stop()
+					removeChild(nowAnime);
+					nowAnime = null;
+					isAnimeExisted = false
+				}
+				//当有文字输入的时候
+				if (isUseText)
+				{
+					removeChild(tf)
+					isUseText = false
+				}
 			}
 		}
 		

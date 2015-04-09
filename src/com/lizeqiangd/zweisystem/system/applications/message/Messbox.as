@@ -1,15 +1,15 @@
 ﻿package com.lizeqiangd.zweisystem.system.applications.message
 {
+	import com.lizeqiangd.zweisystem.animations.messbox.mb_yellow_interrogation;
 	import com.lizeqiangd.zweisystem.events.UIEvent;
-	import com.lizeqiangd.zweisystem.system.config.ESPath;
+	import com.lizeqiangd.zweisystem.interfaces.button.btn_general_s;
+	import com.lizeqiangd.zweisystem.interfaces.textinput.ti_textfield;
 	import com.lizeqiangd.zweisystem.components.texteffect.TextAnimation;
 	import com.lizeqiangd.zweisystem.abstract.windows.TitleWindows;
 	import com.lizeqiangd.zweisystem.events.ApplicationEvent;
-	import com.lizeqiangd.zweisystem.events.UIEvent;
 	import com.lizeqiangd.zweisystem.manager.AnimationManager;
 	import flash.display.MovieClip;
-	import flash.display.SimpleButton;
-	import flash.events.EventDispatcher;
+	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.utils.setTimeout
 	import flash.utils.setInterval
@@ -22,6 +22,7 @@
 	 * 2013.06.21 修改部分逻辑，让对话框更流畅
 	 * 2013.06.21 根本无法优化，全部重做
 	 * 2014.04.04 优化更新,增加注释.
+	 * 2015.04.09 移除对FLash pro的依赖.完全使用as3重新绘制.
 	 */
 	public class Messbox extends TitleWindows
 	{
@@ -29,17 +30,16 @@
 		private const closeDelay:int = 4000;
 		///自动重复播放动画的默认时间值
 		private const replayAnimeDelay:int = 4000;
+		//默认的动画路径.
+		private const MessageBoxAnimePath:String = 'com.lizeqiangd.zweisystem.animations.messbox.'
 		
-		public var mc_btn1:MovieClip 
-		public var mc_btn2:MovieClip 
-		public var mc_bg:MovieClip 
-		public var mc_title:MovieClip 
-		public var mc_color:MovieClip 
-		public var tx_text:TextField 
-		public var btn_close:SimpleButton
+		public var mc_btn1:btn_general_s
+		public var mc_btn2:btn_general_s
+		public var mc_color:Sprite
+		public var tx_text:ti_textfield
+		private var mc_anime:*;
 		
 		private var intervalId:uint = 0
-		private var mc_anime:MovieClip;
 		private var _func1:Function
 		private var _func2:Function
 		private var config:Object
@@ -55,6 +55,41 @@
 			this.setOpeningAnimationType = "popup"
 			this.setMutiExistEnable = true;
 			this.addEventListener(ApplicationEvent.INIT, init);
+			configWindows(200, 200)
+			createUI()
+		}
+		
+		private function createUI():void
+		{
+			mc_btn1 = new btn_general_s
+			mc_btn2 = new btn_general_s
+			
+			mc_btn1.x = 10
+			mc_btn1.y = 175
+			mc_btn2.x = 110
+			mc_btn2.y = 175
+			addChild(mc_btn1)
+			addChild(mc_btn2)
+			
+			tx_text = new ti_textfield
+			tx_text.removeFrame()
+			tx_text.y = 71
+			tx_text.config(getUiWidth,100)
+			addChild(tx_text)
+			
+			mc_color = new Sprite
+			mc_color.y = 20
+			mc_color.graphics.beginFill(0, 0.5)
+			mc_color.graphics.drawRect(0, 0, getUiWidth, 50)
+			mc_color.graphics.endFill()
+			addChild(mc_color)
+		
+			setChildIndex(sp_frame,this.numChildren-1)
+			sp_frame.graphics.moveTo(0, 70)
+			sp_frame.graphics.lineTo(getUiWidth, 70)
+			sp_frame.graphics.moveTo(0, 170)
+			sp_frame.graphics.lineTo(getUiWidth,170)
+			
 		}
 		
 		/**
@@ -83,10 +118,10 @@
 					this.btn2 = config.btn2 ? config.btn2 : "取消";
 					break;
 				case "info": 
-					config.anime = "mc_ani_blueExcalmatory_motion"
+					config.anime = "mb_blue_excalmatory_motion"
 					config.animeText1 = "系统提示信息";
 					config.animeText2 = "System Information";
-					config.replayAnime = true
+					config.replayAnime = false
 					this.mc_btn2.visible = false;
 					this.mc_btn1.x = 60;
 					this.btn1 = "关闭";
@@ -94,13 +129,14 @@
 				default: 
 			}
 			this.anime = {anime: config.anime, title1: config.animeText1, title2: config.animeText2};
-			this.setApplicationTitle = config.title;
+			//this.setApplicationTitle = config.title;
 			this.info = config.info;
 			this.color = config.color;
 			this.isAutoRepeat = config.replayAnime ? true : false;
-			this.btn_close
+			//this.btn_close
 			this.isAutoClose = config.autoClose ? true : false;
-			this.btn_close.visible = config.showCloseButton;
+			showCloseButton(config.showCloseButton)
+			//this.btn_close.visible = config.showCloseButton;
 			//SoundManager.play(o.sound);
 			//mc_anime.gotoAndPlay(1)
 			//mc_anime.mc_anime.gotoAndPlay(1)
@@ -137,10 +173,11 @@
 			mc_btn1.mouseEnabled = true
 			mc_btn2.mouseEnabled = true
 			tx_text.mouseEnabled = true
-			mc_bg.mouseEnabled = true
-			mc_title.mouseEnabled = true
-			btn_close.mouseEnabled = true
+			//mc_bg.mouseEnabled = true
+			//mc_title.mouseEnabled = true
+			//btn_close.mouseEnabled = true
 		}
+		
 		///删除侦听器
 		private function removeApplicationListener():void
 		{
@@ -184,8 +221,14 @@
 			{
 				i.mouseEnabled = false
 			}
-			mc_anime.stop();
-			mc_anime.mc_anime.stop();
+			try
+			{
+				mc_anime.stop();
+				mc_anime.mc_anime.stop();
+			}
+			catch (e:*)
+			{
+			}
 			if (intervalId > 0)
 			{
 				clearInterval(intervalId)
@@ -210,9 +253,16 @@
 		//设置动画名称以及动画对象的class
 		private function set anime(o:Object):void
 		{
-			var ClassReference:Class = getDefinitionByName(ESPath.MessageBoxAnimePath + o.anime) as Class;
+			//var ClassReference:Class = getDefinitionByName('com.lizeqiangd.zweisystem.animations.messbox.mb_yellow_interrogationcom.lizeqiangd.zweisystem.animations.messbox.mb_blue_excalmatory_motion') as Class;
+			//mc_anime = (new ClassReference() as MovieClip);
+			//mc_anime.y = 15;
+			//addChild(mc_anime)
+			
+			trace(MessageBoxAnimePath + o.anime)
+			trace('com.lizeqiangd.zweisystem.animations.messbox.mb_blue_excalmatory_motion')
+			var ClassReference:Class = getDefinitionByName(MessageBoxAnimePath + o.anime) as Class;
 			mc_anime = (new ClassReference() as MovieClip);
-			mc_anime.y = 15;
+			mc_anime.y = 20;
 			//mc_anime.stop()
 			//mc_anime.mc_anime.stop()
 			mc_anime.tx_title1.text = o.title1; //"系统错误";
@@ -232,7 +282,7 @@
 		private function set info(s:String):void
 		{
 			this.tx_text.text = s;
-			TextAnimation.Typing(tx_text);
+			TextAnimation.Typing(tx_text.textfield);
 		}
 		
 		///设置左边按钮的文字

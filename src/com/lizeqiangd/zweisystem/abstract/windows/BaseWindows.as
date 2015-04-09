@@ -65,7 +65,7 @@
 			this.setBackGroundColor=0
 			this.configBaseUi(_w, _h)
 			this.createFrame(true)			
-			this.createBackground(0.7)
+			this.createBackground(0.8)
 		}
 		
 		/**

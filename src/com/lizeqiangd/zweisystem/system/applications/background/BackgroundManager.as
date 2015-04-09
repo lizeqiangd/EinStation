@@ -25,7 +25,8 @@
 		public static const none:String = "none"
 		
 		private static var inited:Boolean = false
-		private static var default_image:Image 
+		private static var default_image:Image
+		
 		public static function init():void
 		{
 			if (inited)
@@ -34,22 +35,24 @@
 			}
 			default_image = new Image()
 			default_image.description = '默认图片'
-			default_image.url='http://events.acg.tv/activity/html/img/background.jpg'
+			default_image.url = 'http://events.acg.tv/activity/html/img/background.jpg'
 			background = LayerManager.createPopUp(BackGround)
-			var o:Object = {image: HostManager.BACKGROUND_IMAGE?HostManager.BACKGROUND_IMAGE:default_image, type: "remote"}
+			var o:Object = {image: HostManager.BACKGROUND_IMAGE ? HostManager.BACKGROUND_IMAGE : default_image, type: "remote"}
 			background.applicationMessage(o)
 			inited = true
 		}
+		
 		/**
 		 * 为背景增加侦听事件方法.
 		 * 目前用于自动播放动画效果
 		 * @param	event
 		 * @param	listener
 		 */
-		public static function addEventListener(event:String , listener:Function):void
+		public static function addEventListener(event:String, listener:Function):void
 		{
 			background.addEventListener(event, listener, false, 0, true)
 		}
+		
 		/**
 		 * 为背景增加移除事件方法.
 		 * @param	event
@@ -93,13 +96,15 @@
 			background.applicationMessage({type: s})
 		
 		}
+		
 		/**
 		 * 外部锁死信息.
 		 * @param	information
 		 * @param	isLocked
 		 */
-		public static function infomation(information:String , isLocked:Boolean = false):void {
-			background.applicationMessage({type:"infolock",info:information,lock:isLocked})
+		public static function infomation(information:String, isLocked:Boolean = false):void
+		{
+			background.applicationMessage({type: "infolock", info: information, lock: isLocked})
 		}
 	
 	}

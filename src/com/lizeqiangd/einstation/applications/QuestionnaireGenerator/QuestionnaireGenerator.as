@@ -16,6 +16,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 	import flash.text.TextField;
 	
 	/**
+	 * 问卷调查系统入口程序.
 	 * @author Lizeqiangd
 	 *
 	 */
@@ -214,6 +215,9 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			var i:int = 0
 			switch (e.target)
 			{
+				case btn_general0: 
+					refrush()
+					break;
 				case btn_general1: 
 					if (control_mode == 3)
 					{
@@ -230,7 +234,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 				case btn_general2: 
 					if (control_mode == 3)
 					{
-						for (i = 0; i < dg_questions.getSelectedArray.length; i++)
+						for (i = 0; i < dg_questionnaires.getSelectedArray.length; i++)
 						{
 							qga.call_api('delete_questionnaire', function(e:Object):void
 								{
@@ -238,9 +242,6 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 								}, {id: cache_questionnaires_arr[dg_questionnaires.getSelectedArray[i]].id})
 						}
 					}
-					refrush()
-					break;
-				case btn_general0: 
 					refrush()
 					break;
 				case btn_general3: 
@@ -267,18 +268,18 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 		
 		private function refrush():void
 		{
-			//ssn.anime('ssn.ssn_wait', 'loading')
+			ssn.anime('ssn.ssn_wait', 'loading')
 			qga.call_api('list_question', function(e:Object):void
 				{
 					cache_questions_arr = e as Array
 					dg_questions.dataProvider = e as Array
-				//ssn.clean()
+					ssn.clean()
 				}, {page: 1, page_size: 100000})
 			qga.call_api('list_questionnaire', function(e:Object):void
 				{
 					cache_questionnaires_arr = e as Array
 					dg_questionnaires.dataProvider = e as Array
-				//ssn.clean()
+				ssn.clean()
 				}, {page: 1, page_size: 100000})
 		}
 		
@@ -302,7 +303,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 						qga.call_api('get_full_questionnaire', function(e:Object):void
 							{
 								qncreator.applicationMessage({'type': e.type, 'data': e});
-							}, {id: cache_questions_arr[dg_questionnaires.getSelectedArray[0]].id})
+							}, {id: cache_questionnaires_arr[dg_questionnaires.getSelectedArray[0]].id})
 					}
 				case 3: 
 					break;

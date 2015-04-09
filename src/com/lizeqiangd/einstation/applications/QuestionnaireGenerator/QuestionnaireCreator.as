@@ -16,6 +16,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 	import flash.net.URLRequest;
 	
 	/**
+	 * 问卷调查系统子程序: 问卷制作器
 	 * @author Lizeqiangd
 	 * @email lizeqiangd@gmail.com
 	 */
@@ -150,26 +151,33 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			switch (e.target)
 			{
 				case btn_1: 
+					ssn.anime('ssn.ssn_wait', '发送请求中')
 					if (la_title.title == '新建问卷模式')
 					{
 						qga.call_api('new_questionnaire', function(e:Object):void
 							{
-								master.applicationMessage({'refrush': 1})
-							}, {title: ti_title.title, description: ti_description, content: JSON.stringify([])})
+								master.applicationMessage( { 'refrush': 1 } )
+								ssn.clean()
+							}, {title: ti_title.title, description: ti_description.title, content: JSON.stringify([])})
 					}
 					else
 					{
 						qga.call_api('update_questionnaire', function(e:Object):void
 							{
-								master.applicationMessage({'refrush': 1})
-							}, {title: ti_title.title, description: ti_description.title, id: la_title.text, content: JSON.stringify([])})
+								master.applicationMessage( { 'refrush': 1 } )
+								ssn.clean()
+							}, {title: ti_title.title, description: ti_description.title, id: la_title.text, content: JSON.stringify(now_question_array)})
 					}
 					break;
 				case btn_2: 
 					clearFrom();
 					break;
 				case btn_3: 
-					clearFrom();
+					for (var i:int = dg_questions.getSelectedArray.length - 1; i >= 0; i--)
+					{
+						cache_questionnaire.splice(dg_questions.getSelectedArray[i], 1)
+					}
+					dg_questions.update()
 					break;
 				default: 
 			}
@@ -202,10 +210,10 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			
 			if (e.data)
 			{
-				la_title.title = e.data.id
-				ti_title.text = e.data.title
-				ti_description.text = e.data.description
-				la_date.text = e.data.update_time
+				la_title.title = e.data.id+""
+				ti_title.text = e.data.title+""
+				ti_description.text = e.data.description+""
+				la_date.text = e.data.update_time+""
 				cache_questionnaire = e.data.questions
 				this.dg_questions.dataProvider = e.data.questions
 			}
@@ -214,6 +222,16 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 				la_title.title = '新建问卷模式'
 				clearFrom()
 			}
+		}
+		
+		private function get now_question_array():Array
+		{
+			var temp:Array = []
+			for (var i:int = 0; i < cache_questionnaire.length; i++)
+			{
+				temp.push(cache_questionnaire[i].id)
+			}
+			return temp
 		}
 		
 		private function clearFrom(e:* = null):void

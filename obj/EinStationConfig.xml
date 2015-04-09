@@ -8,15 +8,15 @@
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>true</value>
-    </define>
-    <define append="true">
-      <name>CONFIG::release</name>
       <value>false</value>
     </define>
     <define append="true">
+      <name>CONFIG::release</name>
+      <value>true</value>
+    </define>
+    <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'2015/3/24'</value>
+      <value>'2015/4/9'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -30,7 +30,9 @@
       <name>CONFIG::desktop</name>
       <value>false</value>
     </define>
-    <verbose-stacktraces>true</verbose-stacktraces>
+    <optimize>true</optimize>
+    <omit-trace-statements>true</omit-trace-statements>
+    <verbose-stacktraces>false</verbose-stacktraces>
     <source-path append="true">
       <path-element>D:\wy\code\lizeqiangd\as3\EinStation\src</path-element>
       <path-element>D:\wy\code\lizeqiangd\as3\ZweiSystemUI\src</path-element>
@@ -45,7 +47,7 @@
   <file-specs>
     <path-element>D:\wy\code\lizeqiangd\as3\EinStation\src\Main.as</path-element>
   </file-specs>
-  <default-background-color>#000000</default-background-color>
+  <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>60</default-frame-rate>
   <default-size>
     <width>800</width>
