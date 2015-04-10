@@ -3,8 +3,6 @@
 	import com.lizeqiangd.zweisystem.abstract.windows.iApplication
 	import com.lizeqiangd.zweisystem.events.ActiveEvent;
 	import com.greensock.TweenLite;
-	import com.junkbyte.console.Cc;
-	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	
@@ -13,56 +11,71 @@
 	 * @author Lizeqiangd
 	 * 2013.02.12 接纳View为特殊Active模式。
 	 * 2014.03.24 重新审查代码
+	 * 2015.04.10 为纯as3化做准备.
 	 */
 	public class ActiveManager extends Sprite
 	{
+		public static const TweenTime:int = 1;
+		public static const TweenDistence:int = 100;
 		protected var _host:iApplication;
 		protected var _ActiveArray:Array;
 		private var _regPointArray:Array;
-		public static var TweenTime:int = 1;
-		public static var TweenDistence:int = 100;
-		public static const mc_am_mask:String = "am_mask";
 		
 		/**
 		 * 构造方法,将宿主程序当作参数输入.需要的是继承iApplication接口的.
 		 */
-		public function ActiveManager(hostApp:iApplication)
-		{ //if(!Container)trace("ActiveManager没有接收到宿主信息")
-			_ActiveArray = new Array;
-			_regPointArray = new Array;
-			_host = hostApp;
-			autoInit(_host);
+		public function ActiveManager(hostApp:iApplication = null)
+		{
+			if (!hostApp)
+			{
+				trace("ActiveManager没有定义宿主程序.")
+			}
+			else
+			{
+				_ActiveArray = new Array;
+				_regPointArray = new Array;
+				_host = hostApp;
+			}
+		}
+		
+		public function addActiveByClass(cls:Class):iActive
+		{
+			var active:* = new cls;
+			active.setAcitveManager = this;
+			active.host = _host;
+			_ActiveArray.push(active);
+			return iActive(active)
 		}
 		
 		/**
 		 * 自动初始化.懒人方法.自动搜索宿主程序下元件名为 active开头的元件并执行注册方法.
 		 */
-		private function autoInit(e:iApplication)
+		private function autoInit(e:iApplication):void
 		{
-			_host = e;
-			try
-			{
-				this.mask = Sprite(DisplayObjectContainer(e).getChildByName(ActiveManager.mc_am_mask));
-			}
-			catch (e:*)
-			{
-				trace("没有找到ActiveManager用遮罩：" + mc_am_mask);
-			}
-			DisplayObjectContainer(e).addChild(this);
-			for (var i:int = 0; i < DisplayObjectContainer(e).numChildren; i++)
-			{
-				if (DisplayObjectContainer(e).getChildAt(i).name.slice(0, 6).toLowerCase() == "active")
-				{
-					registerActive(BaseActive(DisplayObjectContainer(e).getChildAt(i)));
-					i -= 1;
-				}
-			}
+			//_host = e;
+			//try
+			//{
+			////this.mask = Sprite(DisplayObjectContainer(e).getChildByName(ActiveManager.mc_am_mask));
+			//}
+			//catch (e:*)
+			//{
+			//trace("没有找到ActiveManager用遮罩：" + mc_am_mask);
+			//}
+			//DisplayObjectContainer(e).addChild(this);
+			//for (var i:int = 0; i < DisplayObjectContainer(e).numChildren; i++)
+			//{
+			//if (DisplayObjectContainer(e).getChildAt(i).name.slice(0, 6).toLowerCase() == "active")
+			//{
+			//registerActive(BaseActive(DisplayObjectContainer(e).getChildAt(i)));
+			//i -= 1;
+			//}
+			//}
 		}
 		
 		/**
 		 * 通过active的坐标注册坐标点.(新方法,好用很多..)
 		 */
-		public function registerPointByActive(active:BaseActive, activePointName:String)
+		public function registerPointByActive(active:BaseActive, activePointName:String):void
 		{
 			var o:Object = new Object;
 			o.name = activePointName;
@@ -74,7 +87,7 @@
 		/**
 		 * 注册Point通过输入坐标数据
 		 */
-		public function registerPointByXY(_X:Number, _Y:Number, activePointName:String)
+		public function registerPointByXY(_X:Number, _Y:Number, activePointName:String):void
 		{
 			var o:Object = new Object;
 			o.name = activePointName;
@@ -86,10 +99,10 @@
 		/**
 		 * 注册active.将active当作参数输入则会从宿主程序remove掉,在am中加载,并录入管理器.
 		 */
-		public function registerActive(active:BaseActive)
+		public function registerActive(active:BaseActive):void
 		{
 			//trace("registerActive",active);
-			active.AM = this;
+			active.setAcitveManager = this;
 			active.host = _host;
 			_ActiveArray.push(active);
 			DisplayObjectContainer(_host).removeChild(active);
@@ -123,7 +136,7 @@
 					TweenLite.from(i, TweenTime, {alpha: 0, onInit: showActive, onInitParams: [i], onComplete: showActiveComplete, onCompleteParams: [i]});
 					break;
 			}
-			i.nowPosition = pointname;
+			i.setPositionName = pointname;
 			
 			return i;
 		}
@@ -131,12 +144,12 @@
 		/**
 		 * 将active移动到目标点位置.
 		 */
-		public function moveto(activename:String, pointname:String)
+		public function moveto(activename:String, pointname:String):BaseActive
 		{
 			var i:BaseActive = searchActive(activename);
 			TweenLite.to(i, TweenTime, {x: getPoint(pointname).x, y: getPoint(pointname).y});
 			
-			i.nowPosition = pointname;
+			i.setPositionName = pointname;
 			return i;
 		}
 		
@@ -165,7 +178,7 @@
 					TweenLite.to(i, TweenTime, {alpha: 0, onInit: hideActive, onInitParams: [i], onComplete: hideActiveComplete, onCompleteParams: [i]});
 					break;
 			}
-			i.nowPosition = "";
+			i.setPositionName = "";
 			return i;
 		}
 		
@@ -196,7 +209,7 @@
 						TweenLite.to(i, TweenTime, {alpha: 0, onInit: hideActive, onInitParams: [i], onComplete: hideActiveComplete, onCompleteParams: [i]});
 						break;
 				}
-				i.nowPosition = "";
+				i.setPositionName = "";
 				return i;
 			}
 			else
@@ -208,7 +221,7 @@
 		/**
 		 * 显示active.直接addchild.
 		 */
-		private function showActive(active:BaseActive)
+		private function showActive(active:BaseActive):void
 		{
 			try
 			{
@@ -231,7 +244,7 @@
 		/**
 		 * 激活隐藏active,将事件流放入active中调度.
 		 */
-		private function hideActive(active:BaseActive)
+		private function hideActive(active:BaseActive):void
 		{
 			active.dispatchEvent(new ActiveEvent(ActiveEvent.OUT));
 		}
@@ -239,7 +252,7 @@
 		/**
 		 * 动画类事件反馈,当消失动画完成时调度,用于remove.
 		 */
-		private function hideActiveComplete(active:BaseActive)
+		private function hideActiveComplete(active:BaseActive):void
 		{
 			try
 			{
@@ -337,29 +350,16 @@
 			return null;
 		}
 		
-		/**
-		 * 测试方法. trace active管理数组.
-		 */
-		public function traceActives()
-		{
-			trace(_ActiveArray);
-		}
 		
 		/**
 		 * 销毁该部件,同时remove掉所有该am所管理的active.同时执行所有active的dispose方法.
 		 * 最后将所有active为null
 		 */
-		public function dispose()
+		public function dispose():void
 		{
+			this.removeChildren()
 			for (var i:int = 0; i < _ActiveArray.length; i++)
 			{
-				try
-				{
-					removeChild(_ActiveArray[i]);
-				}
-				catch (e:Error)
-				{
-				}
 				iActive(_ActiveArray[i]).dispose();
 				_ActiveArray[i] = null;
 			}

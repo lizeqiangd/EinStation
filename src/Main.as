@@ -1,5 +1,7 @@
 package
 {
+	import com.lizeqiangd.einstation.applications.WorkAssistant.WorkList;
+	import com.lizeqiangd.zweisystem.abstract.active.BaseActive;
 	import com.lizeqiangd.zweisystem.animations.messbox.mb_blue_excalmatory;
 	import com.lizeqiangd.zweisystem.components.debug.db;
 	import com.lizeqiangd.zweisystem.components.PositionUtility;
@@ -82,10 +84,25 @@ package
 		}		
 		private function onInitCompleted():void 
 		{
-			ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
+			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
 			AnimationManager.MaskOutStage()
 			
-			Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
+			//Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
+			
+			var wl:WorkList = new WorkList
+			addChild(wl)
+			//var test:BaseActive = new BaseActive
+			//test.setFrameColor=(0xff0000)
+			//addChild(test)
+			//test.config(400, 200)
+			//test.createFrame()
+			//
+			//var test2:BaseActive = new BaseActive
+			////test2.setFrameColor=(0xffff00)
+			//addChild(test2)
+			//test2.x=420
+			//test2.config(200, 200)
+			//test2.createFrame()
 		}
 		//
 		//Cc.debug("EinStation initing: ApplicationManager inited");
