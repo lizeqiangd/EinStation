@@ -16,6 +16,8 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 		private var lc:LinearChart
 		private var arr:Array
 		private var title:String = '等待数据接收...'
+		private var display_type:String = 'cpu'
+		
 		
 		public function ServerMonitor()
 		{
@@ -28,9 +30,10 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 			lc = new LinearChart
 			lc.config(getUiWidth, getUiHeight - 20)
 			lc.y = 20
-			addChild(lc)
 			arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-			lc.data=arr
+			lc.data = arr
+		
+			this.mouseChildren=false
 		}
 		
 		private function addActiveListener():void
@@ -41,12 +44,12 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 		
 		private function onActiveIn(e:ActiveEvent):void
 		{
-		
+			addChild(lc)		
 		}
 		
 		private function onActiveOut(e:ActiveEvent):void
 		{
-		
+			removeChild(lc)
 		}
 		
 		public function dispose():void
@@ -66,6 +69,7 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 					}
 					lc.update()
 					updateTitle()
+					this.cacheAsBitmap=true
 					break;
 				case 'title': 
 					title = msg.title
@@ -103,8 +107,6 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 				default: 
 			}
 		}
-		private var display_type:String = 'cpu'
-		
 		private function updateTitle():void
 		{
 			var server:String
@@ -123,7 +125,7 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 					this.setActiveTitle = title + '  ' + server
 					break;
 				default: 
-			}		
+			}
 		}
 	}
 }

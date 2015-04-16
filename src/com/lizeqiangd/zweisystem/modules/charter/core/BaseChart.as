@@ -48,6 +48,8 @@ package com.lizeqiangd.zweisystem.modules.charter.core
 			addChild(sp_data)
 			addChild(sp_Xaxis)
 			addChild(sp_Yaxis)
+			
+			this.mouseChildren		=false
 		}
 		
 		public function config(_w:Number, _h:Number):void

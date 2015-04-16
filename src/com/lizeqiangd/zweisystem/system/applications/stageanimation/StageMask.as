@@ -5,6 +5,7 @@
 	import com.lizeqiangd.zweisystem.events.AnimationEvent;
 	import com.lizeqiangd.zweisystem.events.ApplicationEvent;
 	import com.lizeqiangd.zweisystem.components.StageProxy;
+	import com.lizeqiangd.zweisystem.modules.notification.SystemStatusNotification;
 	import flash.display.Sprite;
 	import flash.utils.setTimeout
 	
@@ -18,25 +19,26 @@
 	 */
 	public class StageMask extends FullWindows implements iApplication
 	{
+		
+		private var ssn:SystemStatusNotification
+		
 		public function StageMask()
 		{
 			this.setDisplayLayer = "animationLayer";
 			this.setBackgroundTitle = "Einstation System Application - StageMask -";
 			this.setApplicationName = "StageMask";
-			this.setBackgroundControlType = "none"
+			ssn = new SystemStatusNotification()
+			ssn.config(getUiWidth, getUiHeight, this)
+			onStageResize()
 			init(null)
 		}
 		
 		public function init(e:ApplicationEvent):void
 		{
-			this.graphics.beginFill(0x000000, 1);
-			this.graphics.drawRect(0, 0, 300, 300);
-			this.graphics.endFill();
-			this.alpha = 0
 			dispatchEvent(new ApplicationEvent(ApplicationEvent.INITED))
 			addApplicationListener()
 			StageProxy.addResizeFunction(onStageResize);
-			setTimeout(onStageResize, 50)
+			setTimeout(onStageResize, 1000)
 		}
 		
 		private function addApplicationListener():void
@@ -46,7 +48,6 @@
 		
 		private function removeApplicationListener():void
 		{
-			;
 			this.removeEventListener(ApplicationEvent.CLOSE, onApplicationClose);
 		}
 		
@@ -63,15 +64,26 @@
 		
 		private function onStageResize():void
 		{
-			this.width = StageProxy.stageWidth;
-			this.height = StageProxy.stageHeight;
-			this.x = 0
-			this.y = 0
+			configBaseUi(StageProxy.stageWidth, StageProxy.stageHeight)
+			ssn.resize(getUiWidth, getUiHeight)
 		}
 		
 		public function applicationMessage(e:Object):void
 		{
-		
+			if (e.close) {
+				ssn.clean()
+				return
+			}			
+			ssn.anime(e.anime?e.anime:"", e.text?e.text:"");
+			return
+			//if (e == 'close') {
+			//ssn.clean()
+			//return
+			//}
+			//if(e.anime||e.text)
+			//{
+			//
+			//}
 		}
 	}
 

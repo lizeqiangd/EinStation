@@ -1,8 +1,7 @@
 package
 {
-	import com.lizeqiangd.einstation.applications.WorkAssistant.ServerMonitor;
-	import com.lizeqiangd.zweisystem.abstract.active.BaseActive;
-	import com.lizeqiangd.zweisystem.animations.messbox.mb_blue_excalmatory;
+	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
+	import com.lizeqiangd.zweisystem.system.applications.message.Msg;
 	import com.lizeqiangd.zweisystem.components.debug.db;
 	import com.lizeqiangd.zweisystem.components.PositionUtility;
 	import com.lizeqiangd.zweisystem.components.StageProxy;
@@ -16,8 +15,6 @@ package
 	import com.lizeqiangd.zweisystem.manager.MusicManager;
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
-	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
-	import com.lizeqiangd.zweisystem.system.applications.message.Msg;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.setTimeout;
@@ -79,6 +76,8 @@ package
 			new QuoteManager()
 			ApplicationManager.init()
 			//BackgroundManager.init();
+			AnimationManager.GlobalAnimation('','系统启动中' )
+			
 			setTimeout(onInitCompleted,1000)
 			
 		}		
@@ -87,7 +86,9 @@ package
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
 			ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
 			
-			AnimationManager.MaskOutStage()
+			
+			
+			AnimationManager.GlobalAnimationClose()
 			
 			//Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
 			

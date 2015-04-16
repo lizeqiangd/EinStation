@@ -1,4 +1,4 @@
-﻿package com.zweisystem.applications.SinaWeibo.FullScreenDisplay
+﻿package com.lizeqiangd.zweisystem.applications.SinaWeibo.FullScreenDisplay
 {
 
 	import com.zweisystem.events.UnitEvent;

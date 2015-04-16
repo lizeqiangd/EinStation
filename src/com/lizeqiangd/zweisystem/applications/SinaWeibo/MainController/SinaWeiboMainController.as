@@ -1,4 +1,4 @@
-﻿package com.zweisystem.applications.SinaWeibo.MainController
+﻿package com.lizeqiangd.zweisystem.applications.SinaWeibo.MainController
 {
 	import com.zweisystem.abstracts.windows.iApplication;
 	import com.zweisystem.abstracts.windows.TitleWindows;

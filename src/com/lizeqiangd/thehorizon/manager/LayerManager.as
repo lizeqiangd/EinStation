@@ -1,4 +1,4 @@
-package com.thehorizon.manager
+package com.lizeqiangd.thehorizon.manager
 {
 	import com.thehorizoncom.thehorizon.BaseLayer;
 	import com.thehorizon.abstracts.BaseMark;

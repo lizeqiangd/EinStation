@@ -38,7 +38,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			this.addEventListener(ApplicationEvent.INIT, init);
 			ssn = new SystemStatusNotification()
 			ssn.y = 20
-			ssn.init(this.getUiWidth, getUiHeight - 20)
+			ssn.config(this.getUiWidth, getUiHeight - 20)
 			initUI()
 			addChild(ssn)
 			showCloseButton(false)

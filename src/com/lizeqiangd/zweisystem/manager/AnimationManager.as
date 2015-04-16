@@ -17,6 +17,7 @@
 	 * 2013.02.10 集合StageMask到AnimationManager管理。
 	 * 2013.06.29 修改动画时间为0.8秒，提高整个系统的体验效果
 	 * 2014.04.05 重新审查.
+	 * 2015.04.16 删除stage maskin等方法,转为全局一个ssn进行管理.
 	 */
 	public class AnimationManager
 	{
@@ -39,27 +40,16 @@
 		}
 		
 		/**
-		 * 遮罩全舞台,只保留TopLayer能使用,默认是0.6的alpha,如果为0则取消遮罩
-		 * @param	value
+		 * 全局动画效果.会在背景遮罩上再额外增加动画类.用于表现全局动画的效果.其次该动画会根据dpi进行缩放.特此注意.
 		 */
-		public static function MaskInStage(value:Number = 0.6):void
+		public static function GlobalAnimation(anime_path:String = '', anime_text:String = ''):void
 		{
-			if (value > 0)
-			{
-				TweenLite.to(stagemask, animeTime, {autoAlpha: value, overwrite: 3 /*, onStart: dispatchEventStart, onStartParams: [stagemask], onComplete: dispatchEventComplete, onCompleteParams: [stagemask]*/});
-			}
-			else
-			{
-				AnimationManager.MaskOutStage()
-			}
+			stagemask.applicationMessage({anime: anime_path, text: anime_text})
 		}
 		
-		/**
-		 * 取消舞台遮罩.
-		 */
-		public static function MaskOutStage():void
+		public static function GlobalAnimationClose():void
 		{
-			TweenLite.to(stagemask, animeTime, {autoAlpha: 0, overwrite: 3 /*, onStart: dispatchEventStart, onStartParams: [stagemask], onComplete: dispatchEventComplete, onCompleteParams: [stagemask]*/});
+			stagemask.applicationMessage({close: 1})
 		}
 		
 		/**
@@ -68,7 +58,7 @@
 		 */
 		public static function fade_in(o:*):void
 		{
-			if (o.alpha == 1&&o.visible==true)
+			if (o.alpha == 1 && o.visible == true)
 			{
 				return
 			}
@@ -100,7 +90,7 @@
 		 */
 		public static function fade(o:*, n:Number = 0, time:Number = 0):void
 		{
-			time == 0 ? time =animeTime : time
+			time == 0 ? time = animeTime : time
 			TweenLite.to(DisplayObject(o), time, {autoAlpha: n, overwrite: 3, onStart: dispatchEventStart, onStartParams: [o], onComplete: dispatchEventComplete, onCompleteParams: [o]});
 		}
 		
@@ -221,6 +211,7 @@
 					break;
 			}
 		}
+		
 		///抛出事件:OPENED
 		private static function dispatchEventOpened(o:DisplayObject):void
 		{

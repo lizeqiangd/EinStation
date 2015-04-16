@@ -1,4 +1,4 @@
-﻿package com.zweisystem.applications.SinaWeibo.FullScreenDisplay
+﻿package com.lizeqiangd.zweisystem.applications.SinaWeibo.FullScreenDisplay
 {
 	import com.sina.microblog.data.*;
 	import com.zweisystem.animations.texteffect.TextAnimation;

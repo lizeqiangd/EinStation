@@ -18,10 +18,10 @@
 	public class BaseWindows extends BaseUI
 	{
 		
-		protected  const BaseWindowsDefaultScale:Number = 1
-		protected  const BaseWindowsRetinaScale:Number = 2
-		protected  const BaseWindowsRetinaScaleLimit:Number = 140
-		private var nowScale:Number =1
+		protected const BaseWindowsDefaultScale:Number = 1
+		protected const BaseWindowsRetinaScale:Number = 2
+		protected const BaseWindowsRetinaScaleLimit:Number = 140
+		private var nowScale:Number = 1
 		private var appName:String = "untitled";
 		private var displayLayer:String = "topLayer";
 		private var mutiExist:Boolean = false;
@@ -37,6 +37,7 @@
 		 */
 		public function BaseWindows()
 		{
+			adjustToRetinaScreen()
 			this.addEventListener(MouseEvent.MOUSE_DOWN, onBaseWindowsFocus);
 			this.addEventListener(ApplicationEvent.CLOSED, onBaseWindowsClosedHangle);
 			this.addEventListener(ApplicationEvent.OPENED, onBaseWindowsOpenedHangle);
@@ -49,10 +50,9 @@
 		 */
 		private function adjustToRetinaScreen():void
 		{
-			//trace("appName:", appName, "autoAdjustToRetina:", autoAdjustToRetina)
 			if (SystemManager.getScreenDPI > BaseWindowsRetinaScaleLimit && autoAdjustToRetina)
 			{
-				nowScale =BaseWindowsRetinaScale
+				nowScale = BaseWindowsRetinaScale
 				this.scaleX = BaseWindowsRetinaScale
 				this.scaleY = BaseWindowsRetinaScale
 			}
@@ -65,9 +65,9 @@
 		 */
 		public function configWindows(_w:Number, _h:Number):void
 		{
-			this.setBackGroundColor=0
+			this.setBackGroundColor = 0
 			this.configBaseUi(_w, _h)
-			this.createFrame(true)			
+			this.createFrame(true)
 			this.createBackground(0.8)
 		}
 		
@@ -96,7 +96,7 @@
 		 */
 		private function onBaseWindowsOpenedHangle(e:ApplicationEvent):void
 		{
-			adjustToRetinaScreen()
+			//adjustToRetinaScreen()
 		}
 		
 		/**
@@ -222,7 +222,10 @@
 			this.autoAdjustToRetina = value
 		}
 		
-		public  function get getNowScale():Number
+		/**
+		 * 获取当前windows的缩放情况.
+		 */
+		public function get getNowScale():Number
 		{
 			return nowScale
 		}

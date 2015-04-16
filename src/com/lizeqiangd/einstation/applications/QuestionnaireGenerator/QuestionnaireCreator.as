@@ -50,7 +50,7 @@ package com.lizeqiangd.einstation.applications.QuestionnaireGenerator
 			this.configWindows(600, 500)
 			ssn = new SystemStatusNotification()
 			ssn.y = 20
-			ssn.init(this.getUiWidth, getUiHeight - 20)
+			ssn.config(this.getUiWidth, getUiHeight - 20)
 			addChild(ssn)
 			self = this
 			this.addEventListener(ApplicationEvent.INIT, init);

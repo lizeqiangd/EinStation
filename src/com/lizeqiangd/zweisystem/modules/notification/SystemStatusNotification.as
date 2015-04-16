@@ -47,7 +47,7 @@
 		 * @param	_Height 显示范围高度 会上下各减少1(默认是200)
 		 * @param	_displayContenter 显示的载体
 		 */
-		public function init(_Width:Number = 300, _Height:Number = 200, _displayContenter:DisplayObjectContainer = null):void
+		public function config(_Width:Number = 300, _Height:Number = 200, _displayContenter:DisplayObjectContainer = null):void
 		{
 			//初始化文字格式设定.
 			tf = new TextField

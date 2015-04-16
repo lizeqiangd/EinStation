@@ -43,7 +43,7 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 			
 			ssn = new SystemStatusNotification()
 			ssn.y = 20
-			ssn.init(this.getUiWidth, getUiHeight - 20)
+			ssn.config(this.getUiWidth, getUiHeight - 20)
 			addChild(ssn)
 			
 			am = new ActiveManager(this)

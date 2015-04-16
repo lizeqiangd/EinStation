@@ -39,6 +39,8 @@
 			tx_title.text = _ActiveTitle
 			tx_title.height = 20
 			tx_title.mouseEnabled = false
+			//sp_frame.mouseEnabled = false
+			
 			addChild(tx_title)
 		}
 		
