@@ -38,51 +38,58 @@
 			}
 		}
 		
-		public function addActiveByClass(cls:Class):iActive
+		/**
+		 * 将多个active class导入进去管理.
+		 * @param	... args
+		 */
+		public function addActiveByClass(... args):void
 		{
-			var active:* = new cls;
-			active.setAcitveManager = this;
-			active.host = _host;
-			_ActiveArray.push(active);
-			return iActive(active)
+			for each (var cls:Class in args)
+			{
+				var active:* = new cls;
+				active.setAcitveManager = this;
+				active.host = _host;
+				_ActiveArray.push(active);
+					//return iActive(active)
+			}
 		}
 		
 		/**
 		 * 自动初始化.懒人方法.自动搜索宿主程序下元件名为 active开头的元件并执行注册方法.
 		 */
-		private function autoInit(e:iApplication):void
-		{
-			//_host = e;
-			//try
-			//{
-			////this.mask = Sprite(DisplayObjectContainer(e).getChildByName(ActiveManager.mc_am_mask));
-			//}
-			//catch (e:*)
-			//{
-			//trace("没有找到ActiveManager用遮罩：" + mc_am_mask);
-			//}
-			//DisplayObjectContainer(e).addChild(this);
-			//for (var i:int = 0; i < DisplayObjectContainer(e).numChildren; i++)
-			//{
-			//if (DisplayObjectContainer(e).getChildAt(i).name.slice(0, 6).toLowerCase() == "active")
-			//{
-			//registerActive(BaseActive(DisplayObjectContainer(e).getChildAt(i)));
-			//i -= 1;
-			//}
-			//}
-		}
+		//private function autoInit(e:iApplication):void
+		//{
+		////_host = e;
+		////try
+		////{
+		//////this.mask = Sprite(DisplayObjectContainer(e).getChildByName(ActiveManager.mc_am_mask));
+		////}
+		////catch (e:*)
+		////{
+		////trace("没有找到ActiveManager用遮罩：" + mc_am_mask);
+		////}
+		////DisplayObjectContainer(e).addChild(this);
+		////for (var i:int = 0; i < DisplayObjectContainer(e).numChildren; i++)
+		////{
+		////if (DisplayObjectContainer(e).getChildAt(i).name.slice(0, 6).toLowerCase() == "active")
+		////{
+		////registerActive(BaseActive(DisplayObjectContainer(e).getChildAt(i)));
+		////i -= 1;
+		////}
+		////}
+		//}
 		
-		/**
-		 * 通过active的坐标注册坐标点.(新方法,好用很多..)
-		 */
-		public function registerPointByActive(active:BaseActive, activePointName:String):void
-		{
-			var o:Object = new Object;
-			o.name = activePointName;
-			o.x = active.x;
-			o.y = active.y;
-			_regPointArray.push(o);
-		}
+		///**
+		//* 通过active的坐标注册坐标点.(新方法,好用很多..)
+		//*/
+		//public function registerPointByActive(active:BaseActive, activePointName:String):void
+		//{
+		//var o:Object = new Object;
+		//o.name = activePointName;
+		//o.x = active.x;
+		//o.y = active.y;
+		//_regPointArray.push(o);
+		//}
 		
 		/**
 		 * 注册Point通过输入坐标数据
@@ -97,6 +104,7 @@
 		}
 		
 		/**
+		 * 将已经实例化过的active纳入管理器进行操作.
 		 * 注册active.将active当作参数输入则会从宿主程序remove掉,在am中加载,并录入管理器.
 		 */
 		public function registerActive(active:BaseActive):void
@@ -114,6 +122,10 @@
 		public function movein(activename:String, pointname:String, direction:String = "fade"):BaseActive
 		{
 			var i:BaseActive = searchActive(activename);
+			if (!i)
+			{
+				return null
+			}
 			i.alpha = 1;
 			i.x = getPoint(pointname).x;
 			i.y = getPoint(pointname).y;
@@ -147,6 +159,10 @@
 		public function moveto(activename:String, pointname:String):BaseActive
 		{
 			var i:BaseActive = searchActive(activename);
+			if (!i)
+			{
+				return null
+			}
 			TweenLite.to(i, TweenTime, {x: getPoint(pointname).x, y: getPoint(pointname).y});
 			
 			i.setPositionName = pointname;
@@ -159,6 +175,10 @@
 		public function moveout(activename:String, direction:String = "fade"):BaseActive
 		{
 			var i:BaseActive = searchActive(activename);
+			if (!i)
+			{
+				return null
+			}
 			switch (direction)
 			{
 				case "up": 
@@ -349,7 +369,6 @@
 			//trace("没找到point上的active:" + point);
 			return null;
 		}
-		
 		
 		/**
 		 * 销毁该部件,同时remove掉所有该am所管理的active.同时执行所有active的dispose方法.

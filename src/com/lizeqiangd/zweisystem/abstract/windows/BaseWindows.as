@@ -5,7 +5,6 @@
 	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
 	import com.lizeqiangd.zweisystem.events.ApplicationEvent;
 	import com.lizeqiangd.zweisystem.manager.LayerManager;
-	import com.lizeqiangd.zweisystem.system.config.ESSetting;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	
@@ -18,6 +17,11 @@
 	 */
 	public class BaseWindows extends BaseUI
 	{
+		
+		protected  const BaseWindowsDefaultScale:Number = 1
+		protected  const BaseWindowsRetinaScale:Number = 2
+		protected  const BaseWindowsRetinaScaleLimit:Number = 140
+		private var nowScale:Number =1
 		private var appName:String = "untitled";
 		private var displayLayer:String = "topLayer";
 		private var mutiExist:Boolean = false;
@@ -26,7 +30,6 @@
 		private var backgroundApplication:Boolean = false;
 		private var isFocusAble:Boolean = true;
 		private var autoAdjustToRetina:Boolean = true
-		private static var nowScale:Number = ESSetting.BaseWindowsDefaultScale
 		
 		/**
 		 * BaseWindows的构造函数,对本应用添加事件侦听器,打开完成和完全关闭,以及对鼠标的侦听以触发聚焦.
@@ -42,16 +45,16 @@
 		}
 		
 		/**
-		 * 简单粗暴的方法对应苹果高清屏幕所使用.效果群拔
+		 * 简单粗暴的方法对应苹果高清屏幕所使用.效果拔群
 		 */
 		private function adjustToRetinaScreen():void
 		{
 			//trace("appName:", appName, "autoAdjustToRetina:", autoAdjustToRetina)
-			if (SystemManager.getScreenDPI > ESSetting.BaseWindowsRetinaScaleLimit && autoAdjustToRetina)
+			if (SystemManager.getScreenDPI > BaseWindowsRetinaScaleLimit && autoAdjustToRetina)
 			{
-				nowScale = ESSetting.BaseWindowsRetinaScale
-				this.scaleX = ESSetting.BaseWindowsRetinaScale
-				this.scaleY = ESSetting.BaseWindowsRetinaScale
+				nowScale =BaseWindowsRetinaScale
+				this.scaleX = BaseWindowsRetinaScale
+				this.scaleY = BaseWindowsRetinaScale
 			}
 		}
 		
@@ -219,7 +222,7 @@
 			this.autoAdjustToRetina = value
 		}
 		
-		public static function get getNowScale():Number
+		public  function get getNowScale():Number
 		{
 			return nowScale
 		}

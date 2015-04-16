@@ -98,6 +98,14 @@
 		}
 		
 		/**
+		 * 重新设置Active名字
+		 */
+		public function set setActiveName(e:String):void
+		{
+			_ActiveName = e
+		}
+		
+		/**
 		 * 设置当前Active的管理器ActiveManager
 		 */
 		public function set setAcitveManager(e:ActiveManager):void

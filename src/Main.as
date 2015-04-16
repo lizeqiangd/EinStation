@@ -1,6 +1,6 @@
 package
 {
-	import com.lizeqiangd.einstation.applications.WorkAssistant.WorkList;
+	import com.lizeqiangd.einstation.applications.WorkAssistant.ServerMonitor;
 	import com.lizeqiangd.zweisystem.abstract.active.BaseActive;
 	import com.lizeqiangd.zweisystem.animations.messbox.mb_blue_excalmatory;
 	import com.lizeqiangd.zweisystem.components.debug.db;
@@ -85,12 +85,14 @@ package
 		private function onInitCompleted():void 
 		{
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
+			ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
+			
 			AnimationManager.MaskOutStage()
 			
 			//Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
 			
-			var wl:WorkList = new WorkList
-			addChild(wl)
+			//var active:ServerMonitor = new ServerMonitor
+						//addChild(active)
 			//var test:BaseActive = new BaseActive
 			//test.setFrameColor=(0xff0000)
 			//addChild(test)
