@@ -75,7 +75,7 @@ package
 			AnimationManager.init()
 			new QuoteManager()
 			ApplicationManager.init()
-			//BackgroundManager.init();
+			BackgroundManager.init();
 			AnimationManager.GlobalAnimation('','系统启动中' )
 			
 			setTimeout(onInitCompleted,1000)

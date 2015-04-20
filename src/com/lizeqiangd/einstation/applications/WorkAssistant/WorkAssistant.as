@@ -39,8 +39,8 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 			this.setDisplayLayer = "applicationLayer";
 			this.setApplicationTitle = "EinStation Application - WorkAssistant -";
 			this.setApplicationName = "WorkAssistant";
+			this.setBackGroundColor=0xffffff
 			this.configWindows(700, 900)
-			
 			ssn = new SystemStatusNotification()
 			ssn.y = 20
 			ssn.config(this.getUiWidth, getUiHeight - 20)
