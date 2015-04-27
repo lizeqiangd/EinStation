@@ -37,7 +37,7 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 		public function WorkAssistant()
 		{
 			this.setDisplayLayer = "applicationLayer";
-			this.setApplicationTitle = "EinStation Application - WorkAssistant -";
+			this.setApplicationTitle = "EinStation Application - WorkAssistant2 -";
 			this.setApplicationName = "WorkAssistant";
 			this.setBackGroundColor=0xffffff
 			this.configWindows(700, 900)

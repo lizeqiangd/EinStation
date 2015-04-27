@@ -61,7 +61,8 @@ package com.lizeqiangd.einstation.applications.WorkAssistant
 		{
 			switch (msg.type)
 			{
-				case 'data': 
+				case 'data': 					
+					this.cacheAsBitmap=false
 					arr.push(msg.data as Number)
 					if (arr.length > 20)
 					{
