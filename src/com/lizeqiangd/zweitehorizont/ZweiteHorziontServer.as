@@ -1,16 +1,19 @@
 package com.lizeqiangd.zweitehorizont
 {
 	import com.lizeqiangd.zweitehorizont.events.GatewayEvent;
+	import com.lizeqiangd.zweitehorizont.events.ZweiteHorizontServerEvent;
 	import com.lizeqiangd.zweitehorizont.net.Gateway;
 	import flash.events.Event;
+	import flash.events.EventDispatcher;
 	
 	/**
 	 * ZweiteHorziontServer(base on Node.js) 2.0 MainEntence
 	 *
 	 * @author Lizeqiangd
 	 */
-	public class ZweiteHorziontServer
+	public class ZweiteHorziontServer extends EventDispatcher
 	{
+		//单例模式
 		private static var _instance:ZweiteHorziontServer
 		
 		public static function get getInstance():ZweiteHorziontServer
@@ -39,6 +42,38 @@ package com.lizeqiangd.zweitehorizont
 			gateway.addEventListener(GatewayEvent.CONNECTING, onGatewayConnecting)
 		}
 		
+		public function connectToServer(_host:String, _port:int):void
+		{
+			gateway.connect(_host, _port)
+		}
+		
+		public function disconnectToServer():void
+		{
+			gateway.close()
+		}
+		
+		public function sendData(data:Object, module:String, action:String = ''):String
+		{
+			if (!inited)
+			{
+				return '';
+			}
+			return gateway.sendData(data,module,action)
+		}
+		
+		/**
+		 * 返回是否已经初始化完成.
+		 */
+		public function get getInited():Boolean
+		{
+			return inited
+		}
+		/**
+		 * 返回当前client_id
+		 */
+		public function get getClientId():String {
+			return gateway.client_id
+		}
 		private function onGatewayConnected(e:Event):void
 		{
 			
@@ -60,16 +95,6 @@ package com.lizeqiangd.zweitehorizont
 			trace('正在尝试连接')
 		}
 		
-		public function connectToServer(_host:String, _port:int):void
-		{
-			gateway.connect(_host, _port)
-		}
-		
-		public function disconnectToServer():void
-		{
-			gateway.close()
-		}
-		
 		private function onRouteFunction(obj:Object):void
 		{
 			if (!inited && obj.client_id)
@@ -77,6 +102,7 @@ package com.lizeqiangd.zweitehorizont
 				gateway.client_id = obj.client_id
 				inited = true
 				trace('连接成功,client_id:', gateway.client_id)
+				this.dispatchEvent(new ZweiteHorizontServerEvent(ZweiteHorizontServerEvent.INITED))
 				return;
 			}
 			Gateway.traceObjectContent(obj)
