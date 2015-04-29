@@ -15,6 +15,7 @@ package
 	import com.lizeqiangd.zweisystem.manager.MusicManager;
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
+	import com.lizeqiangd.zweitehorizont.demo.Main;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.setTimeout;
@@ -23,7 +24,7 @@ package
 	 * ...
 	 * @author Lizeqiangd
 	 */
-	public class Main extends Sprite
+	public class com.lizeqiangd.zweitehorizont.demo.Main extends Sprite
 	{
 		public static const _Tips:String = "您好，如果有幸被您看到了这行字，证明你对我的作品有兴趣。谢谢您，本文件没有加密也没有混淆。有空联系我的Email哦。";
 		public static const _CreatorEmail:String = "lizeqiangd@gmail.com";
@@ -31,7 +32,7 @@ package
 		public static const _CreatorBlog:String = "http://acgs.me";
 		public static const version:String = "Version:4.0[20150318]";
 		
-		public function Main()
+		public function com.lizeqiangd.zweitehorizont.demo.Main()
 		{
 			if (stage)
 				initComponents();
