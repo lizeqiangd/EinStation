@@ -9,10 +9,13 @@ package com.lizeqiangd.zweitehorizont.events
 	public class ZweiteHorizontServerEvent extends Event
 	{
 		public static const INITED:String = 'inited';
+		public static const DATA:String = 'data';
 		
-		//public static const INITED:String = 'inited';
-		public function ZweiteHorizontServerEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false)
+		public var data:Object
+		
+		public function ZweiteHorizontServerEvent(type:String, _data:Object = null, bubbles:Boolean = false, cancelable:Boolean = false)
 		{
+			data = _data
 			super(type, bubbles, cancelable);
 		}
 		

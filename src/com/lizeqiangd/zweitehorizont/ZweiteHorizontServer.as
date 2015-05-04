@@ -11,16 +11,16 @@ package com.lizeqiangd.zweitehorizont
 	 *
 	 * @author Lizeqiangd
 	 */
-	public class ZweiteHorziontServer extends EventDispatcher
+	public class ZweiteHorizontServer extends EventDispatcher
 	{
 		//单例模式
-		private static var _instance:ZweiteHorziontServer
+		private static var _instance:ZweiteHorizontServer
 		
-		public static function get getInstance():ZweiteHorziontServer
+		public static function get getInstance():ZweiteHorizontServer
 		{
 			if (!_instance)
 			{
-				_instance = new ZweiteHorziontServer;
+				_instance = new ZweiteHorizontServer;
 			}
 			return _instance;
 		}
@@ -30,7 +30,7 @@ package com.lizeqiangd.zweitehorizont
 		///本机是否在服务器上完成初始化逻辑.
 		private var inited:Boolean = false
 		
-		public function ZweiteHorziontServer()
+		public function ZweiteHorizontServer()
 		{
 			if (_instance)
 			{
@@ -58,7 +58,7 @@ package com.lizeqiangd.zweitehorizont
 			{
 				return '';
 			}
-			return gateway.sendData(data,module,action)
+			return gateway.sendData(data, module, action)
 		}
 		
 		/**
@@ -68,12 +68,15 @@ package com.lizeqiangd.zweitehorizont
 		{
 			return inited
 		}
+		
 		/**
 		 * 返回当前client_id
 		 */
-		public function get getClientId():String {
+		public function get getClientId():String
+		{
 			return gateway.client_id
 		}
+		
 		private function onGatewayConnected(e:Event):void
 		{
 			
@@ -105,6 +108,7 @@ package com.lizeqiangd.zweitehorizont
 				this.dispatchEvent(new ZweiteHorizontServerEvent(ZweiteHorizontServerEvent.INITED))
 				return;
 			}
+			this.dispatchEvent(new ZweiteHorizontServerEvent(ZweiteHorizontServerEvent.DATA, obj))
 			Gateway.traceObjectContent(obj)
 		}
 	

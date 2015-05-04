@@ -14,8 +14,8 @@ package com.lizeqiangd.zweitehorizont.net
 	 */
 	public class Gateway extends ObjectSocket
 	{
-		private const max_reconnect_count:uint = 10
-		private const reconnect_delay:uint = 1000
+		private const max_reconnect_count:uint = 1000
+		private const reconnect_delay:uint = 2000
 		private var reconnect_timer:Timer
 		private var _retry_count:int = 0
 		private var _user_closed:Boolean = false

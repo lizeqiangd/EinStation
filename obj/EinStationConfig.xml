@@ -43,7 +43,7 @@
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\wy\code\lizeqiangd\as3\EinStation\src\com\lizeqiangd\zweitehorizont\demo\Main2.as</path-element>
+    <path-element>D:\wy\code\lizeqiangd\as3\EinStation\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>60</default-frame-rate>

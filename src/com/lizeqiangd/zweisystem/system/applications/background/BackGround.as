@@ -18,6 +18,7 @@
 	import flash.events.IOErrorEvent;
 	import flash.display.Shape;
 	import com.junkbyte.console.Cc;
+	import flash.utils.setTimeout;
 	
 	/**
 	 * 本系统应用为背景图片显示应用.
@@ -94,6 +95,7 @@
 			onStageResize();
 			dispatchEvent(new ApplicationEvent(ApplicationEvent.INITED))
 		
+			setTimeout(onStageResize,5000)
 			//trace("scaleX",this.scaleX)
 		}
 		

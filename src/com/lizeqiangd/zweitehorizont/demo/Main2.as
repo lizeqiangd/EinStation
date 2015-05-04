@@ -5,7 +5,7 @@ package com.lizeqiangd.zweitehorizont.demo
 	import com.lizeqiangd.zweisystem.interfaces.label.la_general;
 	import com.lizeqiangd.zweisystem.interfaces.textinput.ti_general;
 	import com.lizeqiangd.zweitehorizont.events.ZweiteHorizontServerEvent;
-	import com.lizeqiangd.zweitehorizont.ZweiteHorziontServer;
+	import com.lizeqiangd.zweitehorizont.ZweiteHorizontServer;
 	import flash.display.Sprite;
 	
 	/**
@@ -20,8 +20,8 @@ package com.lizeqiangd.zweitehorizont.demo
 		
 		public function Main2()
 		{
-			ZweiteHorziontServer.getInstance.connectToServer('127.0.0.1', 20100)
-			ZweiteHorziontServer
+			ZweiteHorizontServer.getInstance.connectToServer('acfun.moe', 20100)
+			ZweiteHorizontServer
 			ti_message = new ti_general
 			ti_message.y=30
 			addChild(ti_message)
@@ -36,19 +36,19 @@ package com.lizeqiangd.zweitehorizont.demo
 			addChild(la_client_id)
 			btn_message.addEventListener(UIEvent.CLICK, onClick)
 			
-			ZweiteHorziontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.INITED,onInited)
+			ZweiteHorizontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.INITED,onInited)
 		}
 		
 		private function onInited(e:ZweiteHorizontServerEvent):void 
 		{
-			la_client_id.title=ZweiteHorziontServer.getInstance.getClientId
+			la_client_id.title=ZweiteHorizontServer.getInstance.getClientId
 		}
 		
 		private function onClick(e:UIEvent):void
 		{
-			if (ZweiteHorziontServer.getInstance.getInited)
+			if (ZweiteHorizontServer.getInstance.getInited)
 			{
-				ZweiteHorziontServer.getInstance.sendData({msg: ti_message.text + ''}, 'communication_manager', 'test_boardcast_message')
+				ZweiteHorizontServer.getInstance.sendData({type:'anime',msg: ti_message.text + ''}, 'communication_manager', 'test_boardcast_message')
 			}
 		}
 	

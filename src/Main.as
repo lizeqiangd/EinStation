@@ -15,7 +15,8 @@ package
 	import com.lizeqiangd.zweisystem.manager.MusicManager;
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
-	import com.lizeqiangd.zweitehorizont.demo.Main;
+	import com.lizeqiangd.zweitehorizont.events.ZweiteHorizontServerEvent;
+	import com.lizeqiangd.zweitehorizont.ZweiteHorizontServer;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.setTimeout;
@@ -24,7 +25,7 @@ package
 	 * ...
 	 * @author Lizeqiangd
 	 */
-	public class com.lizeqiangd.zweitehorizont.demo.Main extends Sprite
+	public class Main extends Sprite
 	{
 		public static const _Tips:String = "您好，如果有幸被您看到了这行字，证明你对我的作品有兴趣。谢谢您，本文件没有加密也没有混淆。有空联系我的Email哦。";
 		public static const _CreatorEmail:String = "lizeqiangd@gmail.com";
@@ -32,7 +33,7 @@ package
 		public static const _CreatorBlog:String = "http://acgs.me";
 		public static const version:String = "Version:4.0[20150318]";
 		
-		public function com.lizeqiangd.zweitehorizont.demo.Main()
+		public function Main()
 		{
 			if (stage)
 				initComponents();
@@ -77,24 +78,26 @@ package
 			new QuoteManager()
 			ApplicationManager.init()
 			BackgroundManager.init();
-			AnimationManager.GlobalAnimation('','系统启动中' )
+			AnimationManager.GlobalAnimation('', '系统启动中')
 			
-			setTimeout(onInitCompleted,1000)
-			
-		}		
-		private function onInitCompleted():void 
+			setTimeout(onInitCompleted, 1000)
+		
+		}
+		
+		private function onInitCompleted():void
 		{
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
 			ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
 			
-			
+			ZweiteHorizontServer.getInstance.connectToServer('acfun.moe', 20100)
+			ZweiteHorizontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.DATA, onDataAnime)
 			
 			AnimationManager.GlobalAnimationClose()
-			
+		
 			//Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
-			
+		
 			//var active:ServerMonitor = new ServerMonitor
-						//addChild(active)
+			//addChild(active)
 			//var test:BaseActive = new BaseActive
 			//test.setFrameColor=(0xff0000)
 			//addChild(test)
@@ -107,6 +110,27 @@ package
 			//test2.x=420
 			//test2.config(200, 200)
 			//test2.createFrame()
+		}
+		
+		private function onDataAnime(e:ZweiteHorizontServerEvent):void
+		{
+			try
+			{
+				if (e.data.data.type == 'anime')
+				{
+					if (e.data.data.msg=='clean')
+					{
+						AnimationManager.GlobalAnimationClose()
+					}
+					else
+					{
+						AnimationManager.GlobalAnimation('', e.data.data.msg + '')
+					}
+				}
+			}
+			catch (e:*)
+			{
+			}
 		}
 		//
 		//Cc.debug("EinStation initing: ApplicationManager inited");
