@@ -11,14 +11,17 @@ package com.lizeqiangd.zweitehorizont.events
 		public static const INITED:String = 'inited';
 		public static const DATA:String = 'data';
 		
-		public var data:Object
+		public var payload:Object
 		
 		public function ZweiteHorizontServerEvent(type:String, _data:Object = null, bubbles:Boolean = false, cancelable:Boolean = false)
 		{
-			data = _data
+			payload = _data
 			super(type, bubbles, cancelable);
 		}
-		
+			
+		public function get data():Object {
+			return payload
+		}
 		public override function clone():Event
 		{
 			return new ZweiteHorizontServerEvent(type, bubbles, cancelable);

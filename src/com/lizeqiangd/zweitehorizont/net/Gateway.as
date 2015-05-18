@@ -165,6 +165,7 @@ package com.lizeqiangd.zweitehorizont.net
 		 */
 		public static function traceObjectContent(obj:Object):void
 		{
+			trace('**************traceObjectContent*******************')
 			for (var i:String in obj)
 			{
 				trace(i, ':', obj[i])
@@ -177,6 +178,7 @@ package com.lizeqiangd.zweitehorizont.net
 					}
 				}
 			}
+			trace('************end of traceObjectContent***************')
 		}
 		
 		public static function getRandomFingerprint():int

@@ -104,14 +104,13 @@ package com.lizeqiangd.zweitehorizont
 			{
 				gateway.client_id = obj.client_id
 				inited = true
-				trace('连接成功,client_id:', gateway.client_id)
+				//Gateway.traceObjectContent(obj)
+				//trace('连接成功,client_id:', gateway.client_id)
 				this.dispatchEvent(new ZweiteHorizontServerEvent(ZweiteHorizontServerEvent.INITED))
 				return;
 			}
-			this.dispatchEvent(new ZweiteHorizontServerEvent(ZweiteHorizontServerEvent.DATA, obj))
-			Gateway.traceObjectContent(obj)
+			this.dispatchEvent(new ZweiteHorizontServerEvent(ZweiteHorizontServerEvent.DATA, obj))			
+			//Gateway.traceObjectContent(obj)
 		}
-	
 	}
-
 }
