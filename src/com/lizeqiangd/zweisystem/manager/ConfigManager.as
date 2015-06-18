@@ -13,7 +13,8 @@ package com.lizeqiangd.zweisystem.manager
 		public static function setConfigByLocal(onCompleteFunc:Function):void
 		{
 			complete_func = onCompleteFunc;
-			config_data = {test: '123'
+			config_data = {
+				test: '123'
 				
 				}
 			

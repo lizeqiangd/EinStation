@@ -1,11 +1,11 @@
 ﻿package com.lizeqiangd.zweisystem.modules.imagedisplay
 {
 	
-	import com.lizeqiangd.zweisystem.manager.AnimationManager;
-	import com.lizeqiangd.zweisystem.events.NetEvent;
 	import com.greensock.events.LoaderEvent;
 	import com.greensock.loading.ImageLoader;
-	import com.junkbyte.console.Cc;
+	
+	import com.lizeqiangd.zweisystem.manager.AnimationManager;
+	import com.lizeqiangd.zweisystem.events.NetEvent;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -74,7 +74,7 @@
 				unload();
 			}
 			_url = url;
-			Cc.log("ImageDisplay" + _code + ":Loading image url:", url);
+			//Cc.log("ImageDisplay" + _code + ":Loading image url:", url);
 			_loader = new ImageLoader(url, _config);
 			_loader.load(true);
 			state = "loading";
@@ -160,7 +160,7 @@
 		 */
 		private function onErrorHandler(e:LoaderEvent):void
 		{
-			Cc.error("ImageDisplay" + _code + ": load url(" + _url + ") fault!");
+			//Cc.error("ImageDisplay" + _code + ": load url(" + _url + ") fault!");
 			dispatchEvent(new IOErrorEvent(IOErrorEvent.IO_ERROR));
 			state = "fault";
 		}
