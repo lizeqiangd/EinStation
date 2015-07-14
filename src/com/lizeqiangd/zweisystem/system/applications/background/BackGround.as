@@ -17,7 +17,7 @@
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.display.Shape;
-	import com.junkbyte.console.Cc;
+	//import com.junkbyte.console.Cc;
 	import flash.utils.setTimeout;
 	
 	/**
@@ -67,7 +67,7 @@
 		public function init(e:ApplicationEvent):void
 		{
 			removeEventListener(ApplicationEvent.OPENED, init)
-			Cc.log("BackGround:initing...");
+			//Cc.log("BackGround:initing...");
 			
 			blackScene = new Shape;
 			
@@ -126,7 +126,7 @@
 		{
 			state = "error";
 			setDescription("背景图片加载失败,不会影响正常使用.")
-			Cc.error(("BackGround.onIOError:Image load fault! url:", image.url));
+			//Cc.error(("BackGround.onIOError:Image load fault! url:", image.url));
 		}
 		
 		/**

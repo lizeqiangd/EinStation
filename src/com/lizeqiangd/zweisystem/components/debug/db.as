@@ -1,6 +1,6 @@
 package com.lizeqiangd.zweisystem.components.debug
 {
-	import com.junkbyte.console.Cc;
+	//import com.junkbyte.console.Cc;
 	import flash.display.Stage;
 	
 	/**
@@ -9,6 +9,7 @@ package com.lizeqiangd.zweisystem.components.debug
 	 */
 	public class db
 	{
+		public static var Cc:Object = { };
 		public static function log(... args):void
 		{
 			trace(args);

@@ -26,10 +26,22 @@
 		{
 			//trace("AnimeWindows 构造函数");
 			this.visible = false;
+			this.alpha = 0;
+			this.addEventListener(ApplicationEvent.INIT, onPassAnimation);
 			this.addEventListener(ApplicationEvent.OPENED, onAnimeWindwosOpenedHangle);
 			this.addEventListener(ApplicationEvent.CLOSE, onAnimeWindwosCloseHangle);
 			this.addEventListener(AnimationEvent.OPENED, onAnimeOpened);
 			this.addEventListener(AnimationEvent.CLOSED, onAnimeClosed);
+		}
+		
+		/**
+		 * 提供方法给直接跳过动画的.
+		 * @param	e
+		 */
+		private function onPassAnimation(e:ApplicationEvent):void 
+		{
+			this.visible = true;
+			this.alpha = 1;
 		}
 		
 		/**

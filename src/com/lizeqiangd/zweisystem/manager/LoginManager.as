@@ -1,5 +1,6 @@
 ﻿package com.lizeqiangd.zweisystem.manager
 {
+	import com.lizeqiangd.zweisystem.components.debug.db;
 	import com.lizeqiangd.zweisystem.events.LoginEvent;
 	import com.lizeqiangd.zweisystem.net.AMFPHP;
 	//import com.lizeqiangd.zweisystem.system.config.ESSetting;
@@ -7,9 +8,6 @@
 	import flash.events.EventDispatcher;
 	import flash.net.Responder;
 	import flash.utils.Dictionary;
-	
-	import com.junkbyte.console.Cc;
-	
 	/**
 	 * EinStation系统提权用类,所有重要操作会询问这里获取权限,但是同时这里的信息会一次次的发送到服务器上防止暴力破解
 	 * 2014.04.05 更新注释更改引用
@@ -69,10 +67,10 @@
 		{
 			if (username == "")
 			{
-				Cc.log("LoginManager:empty username,will not login");
+				db.log("LoginManager:empty username,will not login");
 				return;
 			}
-			Cc.log("LoginManager:username:", username, "is logining...");
+			db.log("LoginManager:username:", username, "is logining...");
 			_saveLoginInfo = cache;
 			_username = username;
 			_password = password;
@@ -99,14 +97,14 @@
 				{
 					SystemConfig.setLocalConfig(sharedobject_name, {username: _username, password: _password})
 				}
-				Cc.log("LoginManager.onCheckLogOK: Login success:" + _username)
+				db.log("LoginManager.onCheckLogOK: Login success:" + _username)
 				_dispatcher.dispatchEvent(new LoginEvent(LoginEvent.LOGIN_OK));
 				_dispatcher.dispatchEvent(new LoginEvent(LoginEvent.USER_CHANGE));
 				updateUserChange();
 			}
 			if (e.state == "failed")
 			{
-				Cc.log("LoginManager.onCheckLogOK: Login failed:" + _username)
+				db.log("LoginManager.onCheckLogOK: Login failed:" + _username)
 				_dispatcher.dispatchEvent(new LoginEvent(LoginEvent.LOGIN_FAULT));
 				logOut()
 			}
@@ -115,7 +113,7 @@
 		///登陆过程中的网络失败问题.
 		private static function onFault(e:*):void
 		{
-			Cc.error("LoginManager.onFault:Login Failure,net problem.");
+			db.log("LoginManager.onFault:Login Failure,net problem.");
 			logOut()
 		}
 		

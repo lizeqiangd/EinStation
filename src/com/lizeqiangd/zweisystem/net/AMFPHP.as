@@ -1,7 +1,7 @@
 ﻿package com.lizeqiangd.zweisystem.net
 {
 	import com.lizeqiangd.zweisystem.events.NetEvent;
-	import com.junkbyte.console.Cc;
+	//import com.junkbyte.console.Cc;
 	import flash.events.EventDispatcher;
 	import flash.events.NetStatusEvent;
 	import flash.events.SecurityErrorEvent;
@@ -42,7 +42,7 @@
 			_gateway.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError)
 			//_gateway.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError)
 			gatewayUrl = url;
-			Cc.log("AMFPHP: gateway url:" + _gatewayUrl);
+			//Cc.log("AMFPHP: gateway url:" + _gatewayUrl);
 			trace("AMFPHP: gateway url:" + _gatewayUrl)
 			connect(_gatewayUrl);
 		}
@@ -51,7 +51,7 @@
 		static private function onSecurityError(e:SecurityErrorEvent):void
 		{
 			security_error = e
-			Cc.error(security_error)
+			//Cc.error(security_error)
 		}
 		
 		/**
@@ -67,7 +67,7 @@
 			}
 			else
 			{
-				Cc.log("AMFPHP (" + gatewayUrl + ") Reconnecting");
+				//Cc.log("AMFPHP (" + gatewayUrl + ") Reconnecting");
 				trace("AMFPHP (" + gatewayUrl + ") Reconnecting")
 				_gateway.connect(gatewayUrl);
 			}
@@ -79,7 +79,7 @@
 		 */
 		private static function onStatus(e:NetStatusEvent):void
 		{
-			Cc.error("Amfphp: NetStatusEvent:", e.info.code);
+			//Cc.error("Amfphp: NetStatusEvent:", e.info.code);
 			trace("Amfphp: NetStatusEvent:", e.info.code);
 			
 			switch (e.info.code)
@@ -140,7 +140,7 @@
 			if (_status == "connected")
 			{
 				trace("AMFPHP.call:" + command);
-				Cc.log("AMFPHP.call:" + command);
+				//Cc.log("AMFPHP.call:" + command);
 				if (!rest)
 				{
 					_gateway.call(command, responder);
@@ -197,8 +197,8 @@
 			}
 			tx_test += "End of Fault Report";
 			
-			Cc.error(e);
-			Cc.error(tx_test);
+			//Cc.error(e);
+			//Cc.error(tx_test);
 			
 			for (var i:Object in e)
 			{

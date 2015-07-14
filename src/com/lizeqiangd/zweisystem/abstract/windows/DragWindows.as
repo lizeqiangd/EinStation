@@ -27,12 +27,9 @@
 		 */
 		private function onDragWindiowsInitedHandle(e:ApplicationEvent):void
 		{
-			this.removeEventListener(ApplicationEvent.INITED, onDragWindiowsInitedHandle);
-			
-				this.sp_background.addEventListener(MouseEvent.MOUSE_DOWN, onDragWindowsStartDrag);
-				stage.addEventListener(MouseEvent.MOUSE_UP, onDragWindowsStopDrag, false, 0, true);
-					//stage.addEventListener(MouseEvent.RELEASE_OUTSIDE, onDragWindowsStopDrag, false, 0, true);
-			
+			this.removeEventListener(ApplicationEvent.INITED, onDragWindiowsInitedHandle);			
+			this.sp_background.addEventListener(MouseEvent.MOUSE_DOWN, onDragWindowsStartDrag);
+			stage ? stage.addEventListener(MouseEvent.MOUSE_UP, onDragWindowsStopDrag, false, 0, true) : null;
 		}
 		
 		/**

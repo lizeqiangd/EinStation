@@ -72,6 +72,14 @@
 		}
 		
 		/**
+		 * 提供手动初始化的方法给不适用完整系统的组件.
+		 */
+		public function manualInitWindows():void
+		{
+			this.dispatchEvent(new ApplicationEvent(ApplicationEvent.INIT))
+		}
+		
+		/**
 		 * 该方法将 ApplicationEvent.CLOSE 事件放入本应用,则应用将会和常规关闭方法一样被关闭.
 		 */
 		public function CloseApplication(e:* = null):void

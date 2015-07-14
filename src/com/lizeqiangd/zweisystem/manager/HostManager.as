@@ -1,5 +1,6 @@
 ﻿package com.lizeqiangd.zweisystem.manager
 {
+	import com.lizeqiangd.zweisystem.components.debug.db;
 	import com.lizeqiangd.zweisystem.system.config.ESSetting;
 	import com.lizeqiangd.zweisystem.system.config.SystemConfig;
 	import com.lizeqiangd.zweisystem.data.advertisement.Advertisement;
@@ -11,8 +12,6 @@
 	import com.greensock.loading.LoaderMax;
 	import com.greensock.loading.XMLLoader;
 	import com.greensock.events.LoaderEvent;
-	
-	import com.junkbyte.console.Cc;
 	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -89,7 +88,7 @@
 				_loaderQueue.append(_loaderApplications);
 				_loaderQueue.load();
 			}
-			Cc.log("HostManager.loadApplications address:" + url_applications);
+			db.log("HostManager.loadApplications address:" + url_applications);
 		
 		}
 		

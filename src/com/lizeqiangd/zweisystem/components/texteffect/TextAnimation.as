@@ -28,11 +28,20 @@
 		//private static var _animateTime:0
 		private static var stage:Stage
 		
+		private static var is_inited:Boolean = false
+		
 		public static function init(main_stage:Stage):void
 		{
+			
+			if (is_inited)
+			{
+				trace('TextAnimation: already inited');
+				return;
+			}
 			_typingTextArray = new Array;
 			_changeTextArray = new Array;
 			stage = main_stage
+			is_inited = true;
 			//stage.addEventListener(Event.ENTER_FRAME, enterframe)
 		}
 		
@@ -41,7 +50,7 @@
 		   _typingTextArray = new Array;
 		   _changeTextArray = new Array;
 		   StageProxy.addEnterFrameFunction(enterframe);
-		 }*/
+		   }*/
 		
 		/**
 		 * 自动跳转数字动画特效.
@@ -51,18 +60,23 @@
 		 */
 		public static function NumberCount(e:TextField, targetInt:int, needFix:Boolean = false, ToOrFrom:Boolean = true):void
 		{
+			if (!is_inited)
+			{
+				trace('TextAniamtion.NumberCount:not inited')
+				return;
+			}
 			var arr:Array = [int(e.text)]
-			TweenLite.to(arr,1, {endArray: [targetInt], onUpdate: function():void
+			TweenLite.to(arr, 1, {endArray: [targetInt], onUpdate: function():void
+			{
+				if (needFix)
 				{
-					if (needFix)
-					{
-						e.text = String(arr[0].toFixed(0))
-					}
-					else
-					{
-						e.text = String(arr[0])
-					}
-				}})
+					e.text = String(arr[0].toFixed(0))
+				}
+				else
+				{
+					e.text = String(arr[0])
+				}
+			}})
 		}
 		
 		/**
@@ -71,6 +85,11 @@
 		 */
 		public static function Typing(t:TextField):void
 		{
+			if (!is_inited)
+			{
+				trace('TextAniamtion.Typing:not inited')
+				return;
+			}
 			
 			var o:Object = new Object;
 			o.nowCount = 0;
@@ -131,6 +150,11 @@
 		 */
 		public static function Changing(t:TextField, useTextString:String = null, speed:Number = 1, allview:Boolean = false, now:int = 0, animationColor:int = -1):void
 		{
+			if (!is_inited)
+			{
+				trace('TextAniamtion.Changing:not inited')
+				return;
+			}
 			var o:Object = new Object;
 			o.textField = t;
 			if (!useTextString)
