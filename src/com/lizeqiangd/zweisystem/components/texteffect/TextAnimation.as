@@ -7,7 +7,7 @@
 	
 	/**
 	 * ZweiSystem所有文字转换特效类.用法非常简单方便.
-	 * 依赖GreenSock和AnimationEvent
+	 * <br>不依赖</br>GreenSock和AnimationEvent
 	 * @author Lizeqiangd
 	 * @update 2014.03.30 重新检查.
 	 * 2014.12.26 取消所有外部类引用,让此类变成任意使用类. 优化代码.
@@ -42,15 +42,7 @@
 			_changeTextArray = new Array;
 			stage = main_stage
 			is_inited = true;
-			//stage.addEventListener(Event.ENTER_FRAME, enterframe)
 		}
-		
-		/*public static function init()
-		   {
-		   _typingTextArray = new Array;
-		   _changeTextArray = new Array;
-		   StageProxy.addEnterFrameFunction(enterframe);
-		   }*/
 		
 		/**
 		 * 自动跳转数字动画特效.
@@ -58,23 +50,27 @@
 		 * @param	targetInt
 		 * @param	ToOrFrom
 		 */
-		public static function NumberCount(e:TextField, targetInt:int, needFix:Boolean = false, ToOrFrom:Boolean = true):void
+		public static function NumberCount(e:TextField, targetInt:Number, fix_length:int = 0, ToOrFrom:Boolean = true, onUpdateFunction:Function = null):void
 		{
 			if (!is_inited)
 			{
 				trace('TextAniamtion.NumberCount:not inited')
 				return;
 			}
-			var arr:Array = [int(e.text)]
+			var arr:Array = [Number(e.text)]
 			TweenLite.to(arr, 1, {endArray: [targetInt], onUpdate: function():void
 			{
-				if (needFix)
+				if (fix_length > 0)
 				{
-					e.text = String(arr[0].toFixed(0))
+					e.text = String(arr[0].toFixed(fix_length))
 				}
 				else
 				{
 					e.text = String(arr[0])
+				}
+				if (onUpdateFunction!=null)
+				{
+					onUpdateFunction()
 				}
 			}})
 		}
@@ -108,35 +104,6 @@
 			}
 			_typingTextArray.push(o);
 			stageDrive(true)
-		}
-		
-		/**
-		 * 是否驱动EnterFrame检查.
-		 * @param	isAddDrive
-		 */
-		static private function stageDrive(isAddDrive:Boolean):void
-		{
-			if (isAddDrive)
-			{
-				_animations++
-			}
-			else
-			{
-				_animations > 0 ? _animations-- : null
-			}
-			if (_animations)
-			{
-				if (!_hasListener)
-				{
-					stage.addEventListener(Event.ENTER_FRAME, enterframe)
-					_hasListener = true
-				}
-			}
-			else
-			{
-				_hasListener = false
-				stage.removeEventListener(Event.ENTER_FRAME, enterframe)
-			}
 		}
 		
 		/**
@@ -181,6 +148,35 @@
 			}
 			_changeTextArray.push(o);
 			stageDrive(true)
+		}
+		
+		/**
+		 * 是否驱动EnterFrame检查.
+		 * @param	isAddDrive
+		 */
+		static private function stageDrive(isAddDrive:Boolean):void
+		{
+			if (isAddDrive)
+			{
+				_animations++
+			}
+			else
+			{
+				_animations > 0 ? _animations-- : null
+			}
+			if (_animations)
+			{
+				if (!_hasListener)
+				{
+					stage.addEventListener(Event.ENTER_FRAME, enterframe)
+					_hasListener = true
+				}
+			}
+			else
+			{
+				_hasListener = false
+				stage.removeEventListener(Event.ENTER_FRAME, enterframe)
+			}
 		}
 		
 		//内部方法
@@ -229,13 +225,6 @@
 		//内部方法 全部字体特效的EnterFrame
 		private static function enterframe(e:Event = null):void
 		{
-			//if (_nowHandle == _speed)
-			//{
-			//_nowHandle = 0;
-			//return;
-			//}
-			//_speed > 0 ? _nowHandle++ : null;
-			
 			var o:Object;
 			for (var i:int = 0; i < _typingTextArray.length; i++)
 			{

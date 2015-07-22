@@ -37,6 +37,7 @@ package com.lizeqiangd.zweisystem.net
 		
 		/**
 		 * 呼叫php的方法由callback定义回调函数.param
+		 * 已经转换成为URLVariables
 		 * @param	api
 		 * @param	callback
 		 * @param	params
@@ -64,7 +65,14 @@ package com.lizeqiangd.zweisystem.net
 			}
 			function onLoadComplete(e:Event):void
 			{
-				callback(JSON.parse(urll.data));
+				try
+				{
+					callback(JSON.parse(urll.data));
+				}
+				catch (e:*)
+				{
+					trace(urll.data)
+				}
 			}
 			urlr.url = gateway_url;
 			params['action'] = api;
