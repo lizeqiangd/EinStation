@@ -271,5 +271,27 @@
 			}
 		
 		}
+
+				/**
+		 * 根据情况切换全屏和非全屏状态
+		 */
+		public static function autoSwitchToFullScreen():void
+		{
+			if (isFullScreenMode)
+			{
+				_stage.displayState = StageDisplayState.NORMAL
+			}
+			else
+			{
+				_stage.displayState = StageDisplayState.FULL_SCREEN
+			}
+		}
+		/**
+		 * @return 是否为全屏模式
+		 */
+		public static function get isFullScreenMode():Boolean
+		{
+			return _stage.displayState == StageDisplayState.FULL_SCREEN
+		}
 	}
 }
