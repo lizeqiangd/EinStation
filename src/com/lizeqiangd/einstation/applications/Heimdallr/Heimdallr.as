@@ -17,7 +17,7 @@ package com.lizeqiangd.einstation.applications.Heimdallr
 	 * @email lizeqiangd@gmail.com
 	 */
 	
-	public class Heimdallr extends DragWindows implements iApplication
+	public class Heimdallr extends TitleWindows implements iApplication
 	{
 		
 		private var ssn:SystemStatusNotification
@@ -26,9 +26,9 @@ package com.lizeqiangd.einstation.applications.Heimdallr
 		public function Heimdallr()
 		{
 			this.setBackGroundColor = 0
-			this.setBgAlpha=0.1
+			this.setBgAlpha = 0.1
 			this.setDisplayLayer = "applicationLayer";
-			//this.setApplicationTitle = "EinStation Application - Heimdallr -";
+			this.setApplicationTitle = "テルミヌス·エスト(Terminus Est)";
 			this.setApplicationName = "Heimdallr";
 			this.configWindows(900, 600)
 			ssn = new SystemStatusNotification()
@@ -58,7 +58,6 @@ package com.lizeqiangd.einstation.applications.Heimdallr
 				arr_char_index++
 			}, 10000)
 			addChild(id)
-			
 			
 			dispatchEvent(new ApplicationEvent(ApplicationEvent.INITED))
 			addApplicationListener()
