@@ -2,7 +2,7 @@
 {
 	import com.lizeqiangd.zweisystem.system.applications.message.Message;
 	import com.lizeqiangd.zweisystem.manager.LoginManager;
-	import com.lizeqiangd.zweisystem.net.AMFPHP;
+	//import com.lizeqiangd.zweisystem.net.AMFPHP;
 	import flash.events.NetStatusEvent;
 	import flash.net.Responder;
 	import flash.net.SharedObject;
@@ -41,7 +41,7 @@
 			o.username = LoginManager.getUsername
 			o.name = name
 			o.value = value
-			AMFPHP.call("EinStationServices/setEinStationConfig2", new Responder(okFunc, onSystemConfigFailed), o)
+			//AMFPHP.call("EinStationServices/setEinStationConfig2", new Responder(okFunc, onSystemConfigFailed), o)
 		}
 		
 		/**
@@ -56,7 +56,7 @@
 		 */
 		public static function getSystemConfig(name:String, okFunc:Function):void
 		{
-			AMFPHP.call("EinStationServices/getEinStationConfig2", new Responder(okFunc, onSystemConfigFailed), name)
+			//AMFPHP.call("EinStationServices/getEinStationConfig2", new Responder(okFunc, onSystemConfigFailed), name)
 		}
 		
 		/**
@@ -71,10 +71,10 @@
 		 */
 		public static function getSystemConfig2(name:String, okFunc:Function):void
 		{
-			AMFPHP.call("EinStationServices/getEinStationConfig2", new Responder(function(e:*):void
-				{
-					okFunc(JSON.parse(e.value));
-				}, onSystemConfigFailed), name)
+			//AMFPHP.call("EinStationServices/getEinStationConfig2", new Responder(function(e:*):void
+				//{
+					//okFunc(JSON.parse(e.value));
+				//}, onSystemConfigFailed), name)
 		}
 		
 		/**

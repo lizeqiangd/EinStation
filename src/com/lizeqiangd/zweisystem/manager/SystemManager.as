@@ -1,12 +1,10 @@
 ﻿package com.lizeqiangd.zweisystem.manager
 {
-	//import com.lizeqiangd.zweisystem.components.StageProxy
 	import flash.display.LoaderInfo;
 	import flash.system.Capabilities;
 	
 	/**
 	 * 用于管理flash接受的参数，和flash所在的运行环境的检测。供其他程序调用.
-	 * update
 	 * 2014.04.05 更新备注和修正法部分参数.
 	 *
 	 */

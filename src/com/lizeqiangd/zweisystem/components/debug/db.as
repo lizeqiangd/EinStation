@@ -1,6 +1,6 @@
 package com.lizeqiangd.zweisystem.components.debug
 {
-	//import com.junkbyte.console.Cc;
+	import com.junkbyte.console.Cc;
 	import flash.display.Stage;
 	
 	/**
@@ -9,7 +9,8 @@ package com.lizeqiangd.zweisystem.components.debug
 	 */
 	public class db
 	{
-		public static var Cc:Object = { };
+		public static var Cc:Object = {};
+		
 		public static function log(... args):void
 		{
 			trace(args);
@@ -34,16 +35,21 @@ package com.lizeqiangd.zweisystem.components.debug
 		
 		public static function initConsole(_stage:Stage):void
 		{
-			Cc.start(_stage);
-			Cc.config.tracing = true;
-			Cc.remoting = true;
-			Cc.width = 600;
-			Cc.height = 500;
-			Cc.config.commandLineAllowed = true;
-			Cc.debug("*******************************************");
-			Cc.debug("Console is inited.");
+			try
+			{
+				Cc.start(_stage);
+				Cc.config.tracing = true;
+				Cc.remoting = true;
+				Cc.width = 600;
+				Cc.height = 500;
+				Cc.config.commandLineAllowed = true;
+				Cc.debug("*******************************************");
+				Cc.debug("Console is inited.");
+			}
+			catch (e:*)
+			{
+				trace('db: Console init failed.')
+			}
 		}
-	
-	}
-
+		}
 }

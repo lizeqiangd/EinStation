@@ -4,6 +4,7 @@
 	import flash.display.InteractiveObject;
 	import flash.display.Stage;
 	import flash.display.LoaderInfo;
+	import flash.display.StageDisplayState;
 	import flash.display.StageQuality;
 	import flash.events.MouseEvent;
 	import flash.utils.Dictionary;

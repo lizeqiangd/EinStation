@@ -6,7 +6,7 @@
 	import com.lizeqiangd.zweisystem.data.advertisement.Advertisement;
 	import com.lizeqiangd.zweisystem.data.application.ApplicationExplorer;
 	import com.lizeqiangd.zweisystem.data.image.Image;
-	import com.lizeqiangd.zweisystem.net.AMFPHP;
+	//import com.lizeqiangd.zweisystem.net.AMFPHP;
 	import com.lizeqiangd.zweisystem.system.applications.message.Message;
 	
 	import com.greensock.loading.LoaderMax;
@@ -63,9 +63,10 @@
 		 */
 		public static function init(amfphp_url:String, url_applications:String, okFunction:Function = null):void
 		{
+			throw new  Error('hostmanager not use')
 			AddOnManager.initLoaderMax()
 			url_amphp = amfphp_url
-			AMFPHP.init(HostManager.AMFPHP_URL);
+			//AMFPHP.init(HostManager.AMFPHP_URL);
 			if (null == okFunction)
 			{
 				_okFunc = null

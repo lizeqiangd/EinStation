@@ -1,5 +1,6 @@
 package
 {
+	import com.lizeqiangd.zweisystem.net.PHPAPI;
 	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
 	import com.lizeqiangd.zweisystem.system.applications.message.Msg;
 	import com.lizeqiangd.zweisystem.components.debug.db;
@@ -12,7 +13,7 @@ package
 	import com.lizeqiangd.zweisystem.manager.ConfigManager;
 	import com.lizeqiangd.zweisystem.manager.LayerManager;
 	import com.lizeqiangd.zweisystem.manager.LoginManager;
-	import com.lizeqiangd.zweisystem.manager.MusicManager;
+	//import com.lizeqiangd.zweisystem.manager.MusicManager;
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
 	import com.lizeqiangd.zweitehorizont.events.ZweiteHorizontServerEvent;
@@ -54,6 +55,7 @@ package
 			TextAnimation.init(this.stage)
 			PositionUtility.center(db);
 			loadConfig();
+			PHPAPI.getInstance.setGatewayUrl('http://utils.lizeqiangd.com/EinStation/gateway.php')
 		}
 		
 		/**
@@ -64,22 +66,23 @@ package
 		 */
 		private function loadConfig():void
 		{
-			ConfigManager.setConfigByLocal(initManagers)
+			var config_data:Object = { };
+			ConfigManager.setConfigByJSON('http://utils.lizeqiangd.com/EinStation/gateway.php',initManagers)
+			ConfigManager.setConfigByData(config_data,initManagers)
 		}
 		
 		private function initManagers():void
 		{
 			SystemManager.init(this.loaderInfo);
 			LayerManager.init()
-			MusicManager.init();
 			AddOnManager.initLoaderMax()
 			AddOnManager.initTweenPlugin()
 			AnimationManager.init()
-			new QuoteManager()
 			ApplicationManager.init()
 			BackgroundManager.init();
-			AnimationManager.GlobalAnimation('', '系统启动中')
 			
+			//AnimationManager.GlobalAnimation('', '系统启动中')
+			new QuoteManager()
 			setTimeout(onInitCompleted, 1000)
 		
 		}
@@ -87,14 +90,14 @@ package
 		private function onInitCompleted():void
 		{
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
-			ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
+			//ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
 			
-			ZweiteHorizontServer.getInstance.connectToServer('acfun.moe', 20100)
-			ZweiteHorizontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.DATA, onDataAnime)
+			//ZweiteHorizontServer.getInstance.connectToServer('acfun.moe', 20100)
+			//ZweiteHorizontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.DATA, onDataAnime)
 			
 			AnimationManager.GlobalAnimationClose()
 		
-			//Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
+			Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
 		
 			//var active:ServerMonitor = new ServerMonitor
 			//addChild(active)

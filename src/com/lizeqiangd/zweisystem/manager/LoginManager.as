@@ -2,7 +2,7 @@
 {
 	import com.lizeqiangd.zweisystem.components.debug.db;
 	import com.lizeqiangd.zweisystem.events.LoginEvent;
-	import com.lizeqiangd.zweisystem.net.AMFPHP;
+	//import com.lizeqiangd.zweisystem.net.AMFPHP;
 	//import com.lizeqiangd.zweisystem.system.config.ESSetting;
 	import com.lizeqiangd.zweisystem.system.config.SystemConfig;
 	import flash.events.EventDispatcher;
@@ -80,7 +80,7 @@
 			o.password = password
 			//AMFPHP.call("CoreServices/getUserInfoByPassword", new Responder(onCheckLogOK, onFault), o);
 			_dispatcher.dispatchEvent(new LoginEvent(LoginEvent.USER_CHANGE));
-			AMFPHP.call("UserManager/CherkUserAuthorize", new Responder(onCheckLogOK, onFault), o);
+			//AMFPHP.call("UserManager/CherkUserAuthorize", new Responder(onCheckLogOK, onFault), o);
 		
 		}
 		

@@ -10,7 +10,7 @@ package com.lizeqiangd.zweisystem.net
 	import flash.net.URLVariables;
 	
 	/**
-	 * ...
+	 * 一个php通讯类.非amfphp方式.
 	 * @author Lizeqiangd
 	 */
 	public class PHPAPI
@@ -47,6 +47,11 @@ package com.lizeqiangd.zweisystem.net
 			if (!params)
 			{
 				params = {};
+			}
+			if (gateway_url == '')
+			{
+				throw new Error('PHPAPI: not init geteway url.');
+				return;
 			}
 			var urlr:URLRequest = new URLRequest
 			var urll:URLLoader = new URLLoader
