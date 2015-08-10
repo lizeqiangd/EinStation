@@ -23,7 +23,7 @@ package com.lizeqiangd.zweisystem.system.config
 		public static const SystemConfigApplicationName:String = "com.lizeqiangd.zweisystem"
 		
 		///for animation manager
-		public static const AnimationManagerTime:Number = 0.7
+		public static const AnimationManagerTime:Number = 1
 		
 		///for postion utility
 		public static const PositionUtilityOffsetY:uint = 0

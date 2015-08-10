@@ -32,7 +32,7 @@
 			im1 = new ImageDisplay;
 			im2 = new ImageDisplay;
 			/*im1.visible = false;
-			 im2.visible = false;*/
+			   im2.visible = false;*/
 			addChild(im1);
 			//addChild(im2);
 			addUiListener();
@@ -49,6 +49,8 @@
 			im2.addEventListener(NetEvent.PROGRESSING, onProgress);
 			im1.addEventListener(IOErrorEvent.IO_ERROR, onIOErrorHandler);
 			im2.addEventListener(IOErrorEvent.IO_ERROR, onIOErrorHandler);
+			im1.addEventListener(AnimationEvent.COMPLETE, onAnimeDone)
+			im2.addEventListener(AnimationEvent.COMPLETE, onAnimeDone)
 		}
 		
 		/**
@@ -62,6 +64,8 @@
 			im2.removeEventListener(NetEvent.PROGRESSING, onProgress);
 			im1.removeEventListener(IOErrorEvent.IO_ERROR, onIOErrorHandler);
 			im2.removeEventListener(IOErrorEvent.IO_ERROR, onIOErrorHandler);
+			im1.removeEventListener(AnimationEvent.COMPLETE, onAnimeDone)
+			im2.removeEventListener(AnimationEvent.COMPLETE, onAnimeDone)
 		}
 		
 		/**
@@ -119,7 +123,6 @@
 				addChild(im2)
 				AnimationManager.fade_out(im1);
 				AnimationManager.fade_in(im2);
-				setTimeout(onAnimeDone, ESSetting.AnimationManagerTime + 0.1)
 				_nowUsingCore = 2;
 				return;
 			}
@@ -128,7 +131,6 @@
 				addChild(im1)
 				AnimationManager.fade_in(im1);
 				AnimationManager.fade_out(im2);
-				setTimeout(onAnimeDone, ESSetting.AnimationManagerTime + 0.1)
 				_nowUsingCore = 1;
 				return;
 			}
@@ -139,17 +141,24 @@
 		
 		}
 		
-		private function onAnimeDone():void
+		private function onAnimeDone(e:*):void
 		{
-			if (_nowUsingCore == 1)
+			try
 			{
-				removeChild(im2)
-				return;
+				//try everything	
+				if (_nowUsingCore == 1)
+				{
+					removeChild(im2)
+					return;
+				}
+				if (_nowUsingCore == 2)
+				{
+					removeChild(im1)
+					return;
+				}
 			}
-			if (_nowUsingCore == 2)
+			catch (e:*)
 			{
-				removeChild(im1)
-				return;
 			}
 			im1.x = 0
 			im2.x = 0

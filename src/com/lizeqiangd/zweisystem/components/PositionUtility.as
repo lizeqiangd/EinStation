@@ -13,7 +13,7 @@
 	{
 		private static const offsetX:int = 0//ESSetting.PositionUtilityOffsetX
 		private static const offsetY:int = 0//ESSetting.PositionUtilityOffsetY
-		private static const saveWindowsBoard:int=20
+		private static const saveWindowsBoard:int = 20
 		private static var displayObjects:Array;
 		private static var isInited:Boolean = false
 		
@@ -84,13 +84,9 @@
 			{
 				display_obj.x = 20 - display_obj.width
 			}
-			//if (display_obj.y < (20 - display_obj.height))
-			//{
-				//display_obj.y = 20 - display_obj.height
-			//}
-			if (display_obj.y < (0 /*- display_obj.height*/))
+			if (display_obj.y < (20 - display_obj.height))
 			{
-				display_obj.y = 0 /*- display_obj.height*/
+				display_obj.y = 20 - display_obj.height
 			}
 		}
 		
@@ -104,54 +100,54 @@
 		{
 			switch (method)
 			{
-				case "↓": 
-				case StageAlign.BOTTOM: 
-					bottom(display_obj);
-					break;
-				case "←": 
-				case StageAlign.LEFT: 
-					left(display_obj);
-					break;
-				case "→": 
-				case StageAlign.RIGHT: 
-					right(display_obj);
-					break;
-				case "↑": 
-				case StageAlign.TOP: 
-					top(display_obj);
-					break;
-				case "↑↑": 
-				case "TC": 
-					widthCenter(display_obj);
-					top(display_obj);					
-					break;
-				case "↓↓": 
-				case "BC": 
-					widthCenter(display_obj);
-					bottom(display_obj);
-					break;
-				case "↘": 
-				case StageAlign.BOTTOM_LEFT: 
-					bottom(display_obj);
-					left(display_obj);
-					break;
-				case "↙": 
-				case StageAlign.BOTTOM_RIGHT: 
-					bottom(display_obj);
-					right(display_obj);
-					break;
-				case "↖": 
-				case StageAlign.TOP_LEFT: 
-					top(display_obj);
-					left(display_obj);
-					break;
-				case "↗": 
-				case StageAlign.TOP_RIGHT: 
-					top(display_obj);
-					right(display_obj);
-					break;
-				default: 
-					center(display_obj);
+			case "↓": 
+			case StageAlign.BOTTOM: 
+				bottom(display_obj);
+				break;
+			case "←": 
+			case StageAlign.LEFT: 
+				left(display_obj);
+				break;
+			case "→": 
+			case StageAlign.RIGHT: 
+				right(display_obj);
+				break;
+			case "↑": 
+			case StageAlign.TOP: 
+				top(display_obj);
+				break;
+			case "↑↑": 
+			case "TC": 
+				widthCenter(display_obj);
+				top(display_obj);
+				break;
+			case "↓↓": 
+			case "BC": 
+				widthCenter(display_obj);
+				bottom(display_obj);
+				break;
+			case "↘": 
+			case StageAlign.BOTTOM_LEFT: 
+				bottom(display_obj);
+				left(display_obj);
+				break;
+			case "↙": 
+			case StageAlign.BOTTOM_RIGHT: 
+				bottom(display_obj);
+				right(display_obj);
+				break;
+			case "↖": 
+			case StageAlign.TOP_LEFT: 
+				top(display_obj);
+				left(display_obj);
+				break;
+			case "↗": 
+			case StageAlign.TOP_RIGHT: 
+				top(display_obj);
+				right(display_obj);
+				break;
+			default: 
+				center(display_obj);
 			}
 		}
 		
@@ -162,7 +158,7 @@
 		 */
 		public static function bottom(o:*):void
 		{
-			o.y = int(boundsBottom - o.height)+1;
+			o.y = int(boundsBottom - o.height) + 1;
 		}
 		
 		/**

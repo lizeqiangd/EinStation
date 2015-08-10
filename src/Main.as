@@ -1,5 +1,6 @@
 package
 {
+	import com.lizeqiangd.zweisystem.interfaces.label.la_general;
 	import com.lizeqiangd.zweisystem.net.PHPAPI;
 	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
 	import com.lizeqiangd.zweisystem.system.applications.message.Msg;
@@ -32,8 +33,9 @@ package
 		public static const _CreatorEmail:String = "lizeqiangd@gmail.com";
 		public static const _Creator:String = "Lizeqiangd";
 		public static const _CreatorBlog:String = "http://acgs.me";
-		public static const version:String = "Version:4.0[20150318]";
+		public static const version:String = "Version:4.1[20150810]";
 		
+		private var tf:la_general;
 		public function Main()
 		{
 			if (stage)
@@ -48,31 +50,41 @@ package
 		 */
 		private function initComponents(e:Event = null):void
 		{
+			tf = new la_general
+			this.addChild(tf)
+			tf.text='系统加载中,请等待.'
+			//初始化舞台
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			StageProxy.init(this.stage)
+			//初始化console
 			db.initConsole(this.stage)
 			db.hideConsole();
+			//文字动画库
 			TextAnimation.init(this.stage)
+			//相对位置库
 			PositionUtility.center(db);
-			loadConfig();
+			//全局api地址.			
 			PHPAPI.getInstance.setGatewayUrl('http://utils.lizeqiangd.com/EinStation/gateway.php')
+			//加载配置信息.		
+			loadConfig();
 		}
 		
 		/**
 		 * 配置文件加载.
 		 * 1.本地写死
-		 * 2.xml或者json文件
+		 * 2.json文件
 		 * 3.保存在服务上用api调用.
 		 */
 		private function loadConfig():void
 		{
-			var config_data:Object = { };
-			ConfigManager.setConfigByJSON('http://utils.lizeqiangd.com/EinStation/gateway.php',initManagers)
-			ConfigManager.setConfigByData(config_data,initManagers)
+			var config_data:Object = {};
+			//ConfigManager.setConfigByJSON('http://utils.lizeqiangd.com/EinStation/gateway.php', initManagers)
+			ConfigManager.setConfigByObject(config_data, initManagers)
 		}
 		
 		private function initManagers():void
 		{
+			//加载用于跳转的信息.有什么方便的方法呢/
 			SystemManager.init(this.loaderInfo);
 			LayerManager.init()
 			AddOnManager.initLoaderMax()
@@ -80,39 +92,30 @@ package
 			AnimationManager.init()
 			ApplicationManager.init()
 			BackgroundManager.init();
+			QuoteManager.init();
 			
-			//AnimationManager.GlobalAnimation('', '系统启动中')
-			new QuoteManager()
-			setTimeout(onInitCompleted, 1000)
-		
+			AnimationManager.GlobalAnimation('', '系统加载完成,启动中....');
+			
+			removeChild(tf)
+			tf = null;			
+			setTimeout(onInitCompleted, 2000)
 		}
 		
 		private function onInitCompleted():void
 		{
+			AnimationManager.GlobalAnimationClose()
+			db.showConsole()
+			//这里开始您的应用.
+			
+			
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
 			
 			//ZweiteHorizontServer.getInstance.connectToServer('acfun.moe', 20100)
 			//ZweiteHorizontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.DATA, onDataAnime)
+			ApplicationManager.open('com.lizeqiangd.einstation.applications.Heimdallr.Heimdallr');
 			
-			AnimationManager.GlobalAnimationClose()
-		
-			Msg.info('testtewsettetwetwerwerwerwerwerwersdfasfdgbsdghsdh')
-		
-			//var active:ServerMonitor = new ServerMonitor
-			//addChild(active)
-			//var test:BaseActive = new BaseActive
-			//test.setFrameColor=(0xff0000)
-			//addChild(test)
-			//test.config(400, 200)
-			//test.createFrame()
-			//
-			//var test2:BaseActive = new BaseActive
-			////test2.setFrameColor=(0xffff00)
-			//addChild(test2)
-			//test2.x=420
-			//test2.config(200, 200)
-			//test2.createFrame()
+			Msg.info('EinStation4 inited.')
 		}
 		
 		private function onDataAnime(e:ZweiteHorizontServerEvent):void
@@ -121,7 +124,7 @@ package
 			{
 				if (e.data.data.type == 'anime')
 				{
-					if (e.data.data.msg=='clean')
+					if (e.data.data.msg == 'clean')
 					{
 						AnimationManager.GlobalAnimationClose()
 					}

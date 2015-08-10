@@ -76,14 +76,6 @@
 			}			
 			ssn.anime(e.anime?e.anime:"", e.text?e.text:"");
 			return
-			//if (e == 'close') {
-			//ssn.clean()
-			//return
-			//}
-			//if(e.anime||e.text)
-			//{
-			//
-			//}
 		}
 	}
 

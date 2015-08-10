@@ -56,9 +56,9 @@
 		 * 简易方法调用DisplayObject从alpha0到1
 		 * @param	o
 		 */
-		public static function fade_in(o:*):void
+		public static function fade_in(o:*, auto:Boolean = false):void
 		{
-			if (o.alpha == 1 && o.visible == true)
+			if (auto && (o.alpha == 1 || o.visible == true))
 			{
 				return
 			}
@@ -70,17 +70,18 @@
 		 * 简易方法调用DisplayObject从alpha1到0 ,如果元件本身就是alpha为0则将其visible设为true.然后返回.
 		 * @param	o
 		 */
-		public static function fade_out(o:*):void
+		public static function fade_out(o:*, auto:Boolean = false):void
 		{
-			if (o.alpha == 0)
+			if (auto && o.alpha == 0)
 			{
 				o.visible = false
 			}
-			if (!o.visible)
+			if (auto && !o.visible)
 			{
 				return
 			}
 			DisplayObject(o).alpha = 1;
+			DisplayObject(o).visible = true;
 			TweenLite.to(DisplayObject(o), animeTime, {autoAlpha: 0, overwrite: 3, onStart: dispatchEventStart, onStartParams: [o], onComplete: dispatchEventComplete, onCompleteParams: [o]});
 		}
 		
@@ -106,24 +107,24 @@
 			var color:uint = 0
 			switch (n)
 			{
-				case "blue": 
-					color = 0x0033ff
-					break;
-				case "lightblue": 
-					color = 0x3399ff
-					break;
-				case "orange": 
-					color = 0xff9900
-					break;
-				case "red": 
-					color = 0xff0000
-					break;
-				case "white": 
-					color = 0xFFFFFF
-					break;
-				default: 
-					color = uint(n)
-					break;
+			case "blue": 
+				color = 0x0033ff
+				break;
+			case "lightblue": 
+				color = 0x3399ff
+				break;
+			case "orange": 
+				color = 0xff9900
+				break;
+			case "red": 
+				color = 0xff0000
+				break;
+			case "white": 
+				color = 0xFFFFFF
+				break;
+			default: 
+				color = uint(n)
+				break;
 			}
 			if (immediately)
 			{
@@ -149,28 +150,28 @@
 			var obj:Object = {overwrite: 3, onStart: dispatchEventStart, onStartParams: [o], onComplete: dispatchEventOpened, onCompleteParams: [o]}
 			switch (type)
 			{
-				case "popup": 
-					o.alpha = 1;
-					o.visible = true;
-					obj.transformAroundCenter = {scaleX: 0.5, scaleY: 0.5}
-					obj.ease = Elastic.easeOut
-					TweenLite.from(o, 1, obj);
-					break;
-				case "fade_in": 
-					o.alpha = 0;
-					obj.autoAlpha = 1
-					TweenLite.to(o, animeTime, obj);
-					break;
-				case "left": 
-					obj.autoAlpha = 0.5
-					obj.ease = Elastic.easeOut
-					obj.x = PositionUtility.boundsRight
-					TweenLite.from(o, animeTime, obj);
-					break;
-				default: 
-					trace("AnimationManager.open找不到开启动画type：", type, o)
-					break;
-			
+			case "popup": 
+				o.alpha = 1;
+				o.visible = true;
+				obj.transformAroundCenter = {scaleX: 0.5, scaleY: 0.5}
+				obj.ease = Elastic.easeOut
+				TweenLite.from(o, 1, obj);
+				break;
+			case "fade_in": 
+				o.alpha = 0;
+				obj.autoAlpha = 1
+				TweenLite.to(o, animeTime, obj);
+				break;
+			case "left": 
+				obj.autoAlpha = 0.5
+				obj.ease = Elastic.easeOut
+				obj.x = PositionUtility.boundsRight
+				TweenLite.from(o, animeTime, obj);
+				break;
+			default: 
+				trace("AnimationManager.open找不到开启动画type：", type, o)
+				break;
+				
 			}
 		}
 		
@@ -185,30 +186,30 @@
 			var obj:Object = {overwrite: 3, onStart: dispatchEventStart, onStartParams: [o], onComplete: dispatchEventClosed, onCompleteParams: [o]}
 			switch (type)
 			{
-				case "fade_out_and_blur": 
-					obj.autoAlpha = 0
-					obj.blurFilter = {blurX: 20, blurY: 20}
+			case "fade_out_and_blur": 
+				obj.autoAlpha = 0
+				obj.blurFilter = {blurX: 20, blurY: 20}
+				TweenLite.to(o, animeTime, obj);
+				break;
+			case "left": 
+				break;
+			case "fade_out": 
+				obj.autoAlpha = 0
+				TweenLite.to(o, animeTime, obj);
+				break;
+			default: 
+				obj.autoAlpha = 0
+				obj.blurFilter = {blurX: 20, blurY: 20}
+				trace("AnimationManager.close找不到关闭动画type：", type, o, " 采取默认方式执行.")
+				try
+				{
 					TweenLite.to(o, animeTime, obj);
-					break;
-				case "left": 
-					break;
-				case "fade_out": 
-					obj.autoAlpha = 0
-					TweenLite.to(o, animeTime, obj);
-					break;
-				default: 
-					obj.autoAlpha = 0
-					obj.blurFilter = {blurX: 20, blurY: 20}
-					trace("AnimationManager.close找不到关闭动画type：", type, o, " 采取默认方式执行.")
-					try
-					{
-						TweenLite.to(o, animeTime, obj);
-					}
-					catch (e:*)
-					{
-						
-					}
-					break;
+				}
+				catch (e:*)
+				{
+					
+				}
+				break;
 			}
 		}
 		
