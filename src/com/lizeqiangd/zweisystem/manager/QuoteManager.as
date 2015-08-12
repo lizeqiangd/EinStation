@@ -3,6 +3,7 @@ package com.lizeqiangd.zweisystem.manager
 	//import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionCreator;
 	//import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireCreator;
 	//import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator;
+	import com.lizeqiangd.einstation.applications.BaseMap.BaseMapBackground;
 	import com.lizeqiangd.einstation.applications.Heimdallr.Heimdallr;
 	import com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant;
 	import com.lizeqiangd.zweisystem.animations.messbox.mb_blue_excalmatory;
@@ -24,6 +25,7 @@ package com.lizeqiangd.zweisystem.manager
 		//private var QuestionCreators:QuestionCreator 	
 		//private var WorkAssistants:WorkAssistant
 		private var heimdallr:Heimdallr
+		private var basemapbackground:BaseMapBackground
 		
 		//****animation****
 		private var ssn_waits:ssn_wait

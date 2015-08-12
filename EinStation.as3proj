@@ -17,6 +17,7 @@
   <classpaths>
     <class path="src" />
     <class path="..\ZweiSystemUI\src" />
+    <class path="..\BaseMap\src" />
   </classpaths>
   <!-- Build options -->
   <build>

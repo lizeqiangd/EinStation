@@ -91,9 +91,9 @@ package
 			AddOnManager.initTweenPlugin()
 			AnimationManager.init()
 			ApplicationManager.init()
-			BackgroundManager.init();
 			QuoteManager.init();
 			
+			//BackgroundManager.init();
 			AnimationManager.GlobalAnimation('', '系统加载完成,启动中....');
 			
 			removeChild(tf)
@@ -108,12 +108,19 @@ package
 			//这里开始您的应用.
 			
 			
+			
+			
+			
+			
+			ApplicationManager.open('com.lizeqiangd.einstation.applications.BaseMap.BaseMapBackground');
+			
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
 			
 			//ZweiteHorizontServer.getInstance.connectToServer('acfun.moe', 20100)
 			//ZweiteHorizontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.DATA, onDataAnime)
 			ApplicationManager.open('com.lizeqiangd.einstation.applications.Heimdallr.Heimdallr');
+			
 			
 			Msg.info('EinStation4 inited.')
 		}

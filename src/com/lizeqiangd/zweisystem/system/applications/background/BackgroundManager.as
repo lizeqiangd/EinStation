@@ -35,7 +35,7 @@
 			}
 			default_image = new Image()
 			default_image.description = '默认图片'
-			default_image.url = 'http://events.acg.tv/activity/html/img/background.jpg'
+			default_image.url = 'http://events.acg.tv/test/crop_mgo/bilibili.png'
 			background = LayerManager.createPopUp(BackGround)
 			var o:Object = {image: HostManager.BACKGROUND_IMAGE ? HostManager.BACKGROUND_IMAGE : default_image, type: "remote"}
 			background.applicationMessage(o)
