@@ -9,6 +9,8 @@ package com.lizeqiangd.einstation.applications.BaseMap
 	import com.lizeqiangd.zweisystem.components.StageProxy;
 	import com.lizeqiangd.zweisystem.events.ApplicationEvent;
 	import com.lizeqiangd.zweisystem.modules.notification.SystemStatusNotification;
+	import flash.events.KeyboardEvent;
+	import flash.ui.Keyboard;
 	import flash.utils.setTimeout;
 	
 	/**
@@ -81,7 +83,34 @@ package com.lizeqiangd.einstation.applications.BaseMap
 		private function addApplicationListener():void
 		{
 			StageProxy.addResizeFunction(onStageResize)
+			StageProxy.addEnterFrameFunction(onStageEnterFrame)
 			this.addEventListener(ApplicationEvent.CLOSE, onApplicationClose);
+			StageProxy.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown)
+		}
+		
+		private function onKeyDown(e:KeyboardEvent):void
+		{
+			switch (e.keyCode)
+			{
+			case Keyboard.DOWN: 
+				bm.getMapLayer.movement(0, 16)
+				break;
+			case Keyboard.RIGHT: 
+				bm.getMapLayer.movement(16, 0)
+				break;
+			case Keyboard.LEFT: 
+				bm.getMapLayer.movement(-16, 0)
+				break;
+			case Keyboard.UP: 
+				bm.getMapLayer.movement(0, -16)
+				break;
+			default: 
+			}
+		}
+		
+		private function onStageEnterFrame():void
+		{
+			bm.getMapLayer.movement(-1, 1)
 		}
 		
 		private function removeApplicationListener():void
