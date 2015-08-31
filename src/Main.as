@@ -36,12 +36,18 @@ package
 		public static const version:String = "Version:4.1[20150810]";
 		
 		private var tf:la_general;
+		
 		public function Main()
 		{
 			if (stage)
 				initComponents();
 			else
 				addEventListener(Event.ADDED_TO_STAGE, initComponents);
+			
+			PLATFORM::WINDOWS
+			{
+				trace('debug mode on')
+			}
 		}
 		
 		/**
@@ -52,7 +58,7 @@ package
 		{
 			tf = new la_general
 			this.addChild(tf)
-			tf.text='系统加载中,请等待.'
+			tf.text = '系统加载中,请等待.'
 			//初始化舞台
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			StageProxy.init(this.stage)
@@ -97,7 +103,7 @@ package
 			AnimationManager.GlobalAnimation('', '系统加载完成,启动中....');
 			
 			removeChild(tf)
-			tf = null;			
+			tf = null;
 			setTimeout(onInitCompleted, 2000)
 		}
 		
@@ -107,20 +113,14 @@ package
 			db.showConsole()
 			//这里开始您的应用.
 			
-			
-			
-			
-			
-			
-			ApplicationManager.open('com.lizeqiangd.einstation.applications.BaseMap.BaseMapBackground');
+			//ApplicationManager.open('com.lizeqiangd.einstation.applications.BaseMap.BaseMapBackground');
 			
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator')
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.WorkAssistant.WorkAssistant')
 			
 			//ZweiteHorizontServer.getInstance.connectToServer('acfun.moe', 20100)
 			//ZweiteHorizontServer.getInstance.addEventListener(ZweiteHorizontServerEvent.DATA, onDataAnime)
-			ApplicationManager.open('com.lizeqiangd.einstation.applications.Heimdallr.Heimdallr');
-			
+			//ApplicationManager.open('com.lizeqiangd.einstation.applications.Heimdallr.Heimdallr');
 			
 			Msg.info('EinStation4 inited.')
 		}
