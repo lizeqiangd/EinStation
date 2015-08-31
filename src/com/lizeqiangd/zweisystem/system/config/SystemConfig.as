@@ -108,7 +108,7 @@
 									case "SharedObject.Flush.Failed": 
 										break;
 								}
-								so.removeEventListener(NetStatusEvent.NET_STATUS, this);
+								so.removeEventListener(NetStatusEvent.NET_STATUS, this as Function);
 							});
 						break;
 					case SharedObjectFlushStatus.FLUSHED: 

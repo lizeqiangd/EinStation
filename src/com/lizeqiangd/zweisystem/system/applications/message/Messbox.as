@@ -74,7 +74,7 @@
 			tx_text = new ti_textfield
 			tx_text.removeFrame()
 			tx_text.y = 71
-			tx_text.config(getUiWidth,100)
+			tx_text.config(getUiWidth, 100)
 			addChild(tx_text)
 			
 			mc_color = new Sprite
@@ -83,13 +83,13 @@
 			mc_color.graphics.drawRect(0, 0, getUiWidth, 50)
 			mc_color.graphics.endFill()
 			addChild(mc_color)
-		
-			setChildIndex(sp_frame,this.numChildren-1)
+			
+			setChildIndex(sp_frame, this.numChildren - 1)
 			sp_frame.graphics.moveTo(0, 70)
 			sp_frame.graphics.lineTo(getUiWidth, 70)
 			sp_frame.graphics.moveTo(0, 170)
-			sp_frame.graphics.lineTo(getUiWidth,170)
-			
+			sp_frame.graphics.lineTo(getUiWidth, 170)
+		
 		}
 		
 		/**
@@ -108,25 +108,29 @@
 			addApplicationListener();
 			switch (config.type)
 			{
-				case "show": 
-					this.btn1 = config.btn1 ? config.btn1 : "关闭";
-					this.mc_btn2.visible = false;
-					this.mc_btn1.x = 60;
-					break;
-				case "confirm": 
-					this.btn1 = config.btn1 ? config.btn1 : "确定";
-					this.btn2 = config.btn2 ? config.btn2 : "取消";
-					break;
-				case "info": 
-					config.anime = "mb_blue_excalmatory_motion"
-					config.animeText1 = "系统提示信息";
-					config.animeText2 = "System Information";
-					config.replayAnime = false
-					this.mc_btn2.visible = false;
-					this.mc_btn1.x = 60;
-					this.btn1 = "关闭";
-					break;
-				default: 
+			case "show": 
+				this.btn1 = config.btn1 ? config.btn1 : "关闭";
+				this.mc_btn2.visible = false;
+				this.mc_btn1.x = 60;
+				break;
+			case "confirm": 
+				this.btn1 = config.btn1 ? config.btn1 : "确定";
+				this.btn2 = config.btn2 ? config.btn2 : "取消";
+				break;
+			case "info": 
+				config.anime = "mb_blue_excalmatory_motion"
+				CONFIG::LOWANIMATION
+			{
+				config.anime = "mb_blue_excalmatory"
+			}
+				config.animeText1 = "系统提示信息";
+				config.animeText2 = "System Information";
+				config.replayAnime = false
+				this.mc_btn2.visible = false;
+				this.mc_btn1.x = 60;
+				this.btn1 = "关闭";
+				break;
+			default: 
 			}
 			this.anime = {anime: config.anime, title1: config.animeText1, title2: config.animeText2};
 			//this.setApplicationTitle = config.title;
@@ -192,24 +196,24 @@
 		{
 			switch (e.target.name)
 			{
-				case "mc_btn1": 
-					try
-					{
-						_func1()
-					}
-					catch (f:*)
-					{ //trace("func1",f)
-					}
-					break;
-				case "mc_btn2": 
-					try
-					{
-						_func2()
-					}
-					catch (h:*)
-					{ //trace("func2",h)
-					}
-					break;
+			case "mc_btn1": 
+				try
+				{
+					_func1()
+				}
+				catch (f:*)
+				{ //trace("func1",f)
+				}
+				break;
+			case "mc_btn2": 
+				try
+				{
+					_func2()
+				}
+				catch (h:*)
+				{ //trace("func2",h)
+				}
+				break;
 			}
 			closeMessageBox(null)
 		}

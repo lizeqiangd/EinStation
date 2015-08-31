@@ -1,6 +1,9 @@
 package com.lizeqiangd.zweisystem.components.debug
 {
-	import com.junkbyte.console.Cc;
+	CONFIG::CONSOLE
+	{
+		import com.junkbyte.console.Cc;
+	}
 	import flash.display.Stage;
 	
 	/**
@@ -9,33 +12,37 @@ package com.lizeqiangd.zweisystem.components.debug
 	 */
 	public class db
 	{
-		public static var Cc:Object = {};
+		//public static var Cc:Object = {};
 		
 		public static function log(... args):void
 		{
 			trace(args);
-			try
+			CONFIG::CONSOLE
 			{
 				Cc.log(args);
 			}
-			catch (e:*)
-			{
-			}
+		
 		}
 		
 		public static function showConsole():void
 		{
-			Cc.visible = true
+			CONFIG::CONSOLE
+			{
+				Cc.visible = true
+			}
 		}
 		
 		public static function hideConsole():void
 		{
-			Cc.visible = false
+			CONFIG::CONSOLE
+			{
+				Cc.visible = false
+			}
 		}
 		
 		public static function initConsole(_stage:Stage):void
 		{
-			try
+			CONFIG::CONSOLE
 			{
 				Cc.start(_stage);
 				Cc.config.tracing = true;
@@ -46,10 +53,6 @@ package com.lizeqiangd.zweisystem.components.debug
 				Cc.debug("*******************************************");
 				Cc.debug("Console is inited.");
 			}
-			catch (e:*)
-			{
-				trace('db: Console init failed.')
-			}
 		}
-		}
+	}
 }

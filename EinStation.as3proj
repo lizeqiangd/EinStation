@@ -2,7 +2,7 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="Application" />
+    <movie outputType="OtherIDE" />
     <movie input="" />
     <movie path="bin\EinStation.swf" />
     <movie fps="60" />
@@ -12,6 +12,7 @@
     <movie minorVersion="0" />
     <movie platform="AIR" />
     <movie background="#FFFFFF" />
+    <movie preferredSDK="AIR 18.0.0;18.0.0;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
@@ -44,7 +45,7 @@
     <option linkReport="" />
     <option loadExterns="" />
     <option staticLinkRSL="True" />
-    <option additional="-define PLATFORM::WINDOWS false" />
+    <option additional="-define CONFIG::DEBUGMODE false&#xA;-define CONFIG::CONSOLE true&#xA;-define CONFIG::LOWANIMATION true" />
     <option compilerConstants="" />
     <option minorVersion="" />
   </build>

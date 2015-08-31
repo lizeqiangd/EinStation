@@ -16,13 +16,13 @@
 	<text xml:lang="ja">Japanese App name goes here</text>
 	</name>
 -->
-<application xmlns="http://ns.adobe.com/air/application/17.0">
-  <id>com.lizeqiangd.einstation.workassistant</id>
+<application xmlns="http://ns.adobe.com/air/application/18.0">
+  <id>com.lizeqiangd.bcc.mian</id>
   <versionNumber>1.0</versionNumber>
-  <filename>WorkAssistant</filename>
-  <description/>
-  <name>WorkAssistant</name>
-  <copyright/>
+  <filename>bilibili_comment_censor</filename>
+  <description>BILIBILI comment censor client.</description>
+  <name>bilibili_comment_censor</name>
+  <copyright>Lizeqiangd</copyright>
   <initialWindow>
     <content>Air_publisher.swf</content>
     <systemChrome>standard</systemChrome>
@@ -33,14 +33,14 @@
     <renderMode>direct</renderMode>
     <autoOrients>true</autoOrients></initialWindow>
   <icon>
-    <image29x29>AppIconsForPublish/29.png</image29x29>
-    <image57x57>AppIconsForPublish/57.png</image57x57>
-    <image114x114>AppIconsForPublish/114.png</image114x114>
-    <image58x58>AppIconsForPublish/58.png</image58x58>
-    <image48x48>AppIconsForPublish/48.png</image48x48>
-    <image72x72>AppIconsForPublish/72.png</image72x72>
-    <image50x50>AppIconsForPublish/50.png</image50x50>
-    <image100x100>AppIconsForPublish/100.png</image100x100>
+    
+    
+    
+    
+    
+    
+    
+    
   </icon>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
@@ -55,4 +55,4 @@
 ]]></InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
   </iPhone>
-</application>
+  <supportedProfiles>desktop extendedDesktop </supportedProfiles></application>

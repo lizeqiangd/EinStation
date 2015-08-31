@@ -1,5 +1,6 @@
 package
 {
+	import com.lizeqiangd.zweisystem.abstract.windows.NativeWindows;
 	import com.lizeqiangd.zweisystem.interfaces.label.la_general;
 	import com.lizeqiangd.zweisystem.net.PHPAPI;
 	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
@@ -14,6 +15,12 @@ package
 	import com.lizeqiangd.zweisystem.manager.ConfigManager;
 	import com.lizeqiangd.zweisystem.manager.LayerManager;
 	import com.lizeqiangd.zweisystem.manager.LoginManager;
+	import flash.desktop.NativeApplication;
+	//import flash.display.NativeWindowInitOptions;
+	//import flash.display.NativeWindowRenderMode;
+	//import flash.display.NativeWindowSystemChrome;
+	//import flash.display.NativeWindowType;
+	//import flash.desktop.NativeApplication;
 	//import com.lizeqiangd.zweisystem.manager.MusicManager;
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
@@ -44,7 +51,7 @@ package
 			else
 				addEventListener(Event.ADDED_TO_STAGE, initComponents);
 			
-			PLATFORM::WINDOWS
+			CONFIG::DEBUGMODE
 			{
 				trace('debug mode on')
 			}
@@ -100,17 +107,31 @@ package
 			QuoteManager.init();
 			
 			//BackgroundManager.init();
-			AnimationManager.GlobalAnimation('', '系统加载完成,启动中....');
+			//AnimationManager.GlobalAnimation('', '系统加载完成,启动中....');
 			
 			removeChild(tf)
 			tf = null;
 			setTimeout(onInitCompleted, 2000)
-		}
+		} 
 		
 		private function onInitCompleted():void
 		{
 			AnimationManager.GlobalAnimationClose()
-			db.showConsole()
+			//NativeApplication.autoExit =true
+			
+			NativeApplication
+			var n:NativeWindowInitOptions = new NativeWindowInitOptions
+			n.maximizable = true
+			n.minimizable = true
+			n.renderMode = NativeWindowRenderMode.DIRECT
+			n.resizable = false
+			//n.systemChrome = NativeWindowSystemChrome.NONE
+			//n.transparent = true
+			n.type = NativeWindowType.UTILITY
+			var test:NativeWindows = new NativeWindows(n)
+			test.activate();
+			trace('actived');
+			//db.showConsole()
 			//这里开始您的应用.
 			
 			//ApplicationManager.open('com.lizeqiangd.einstation.applications.BaseMap.BaseMapBackground');

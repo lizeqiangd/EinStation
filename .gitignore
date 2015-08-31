@@ -1,3 +1,7 @@
 assest/
 bin/
 obj/
+AirPublish/blcc.air
+AirPublish/Air_publisher.html
+AirPublish/temp_xml_plist_file.xml
+*.tmp
