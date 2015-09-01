@@ -25,8 +25,8 @@
   <copyright>Lizeqiangd</copyright>
   <initialWindow>
     <content>Air_publisher.swf</content>
-    <systemChrome>standard</systemChrome>
-    <transparent>false</transparent>
+    <systemChrome>none</systemChrome>
+    <transparent>true</transparent>
     <visible>true</visible>
     <fullScreen>false</fullScreen>
     <aspectRatio>portrait</aspectRatio>

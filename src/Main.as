@@ -1,6 +1,5 @@
 package
 {
-	import com.lizeqiangd.zweisystem.abstract.windows.NativeWindows;
 	import com.lizeqiangd.zweisystem.interfaces.label.la_general;
 	import com.lizeqiangd.zweisystem.net.PHPAPI;
 	import com.lizeqiangd.zweisystem.system.applications.background.BackgroundManager;
@@ -15,13 +14,6 @@ package
 	import com.lizeqiangd.zweisystem.manager.ConfigManager;
 	import com.lizeqiangd.zweisystem.manager.LayerManager;
 	import com.lizeqiangd.zweisystem.manager.LoginManager;
-	import flash.desktop.NativeApplication;
-	//import flash.display.NativeWindowInitOptions;
-	//import flash.display.NativeWindowRenderMode;
-	//import flash.display.NativeWindowSystemChrome;
-	//import flash.display.NativeWindowType;
-	//import flash.desktop.NativeApplication;
-	//import com.lizeqiangd.zweisystem.manager.MusicManager;
 	import com.lizeqiangd.zweisystem.manager.QuoteManager;
 	import com.lizeqiangd.zweisystem.manager.SystemManager;
 	import com.lizeqiangd.zweitehorizont.events.ZweiteHorizontServerEvent;
@@ -40,7 +32,7 @@ package
 		public static const _CreatorEmail:String = "lizeqiangd@gmail.com";
 		public static const _Creator:String = "Lizeqiangd";
 		public static const _CreatorBlog:String = "http://acgs.me";
-		public static const version:String = "Version:4.1[20150810]";
+		public static const version:String = "Version:4.2[20150810]";
 		
 		private var tf:la_general;
 		
@@ -117,19 +109,23 @@ package
 		private function onInitCompleted():void
 		{
 			AnimationManager.GlobalAnimationClose()
-			//NativeApplication.autoExit =true
 			
-			NativeApplication
-			var n:NativeWindowInitOptions = new NativeWindowInitOptions
-			n.maximizable = true
-			n.minimizable = true
-			n.renderMode = NativeWindowRenderMode.DIRECT
-			n.resizable = false
-			//n.systemChrome = NativeWindowSystemChrome.NONE
-			//n.transparent = true
-			n.type = NativeWindowType.UTILITY
-			var test:NativeWindows = new NativeWindows(n)
-			test.activate();
+			//这里进行全屏协议和关闭缩放功能,只允许单方面操作...
+			
+			ApplicationManager.open('com.lizeqiangd.einstation.applications.BCC.CommentCensor');
+			//NativeApplication.autoExit =true
+			//
+			//NativeApplication
+			//var n:NativeWindowInitOptions = new NativeWindowInitOptions
+			//n.maximizable = true
+			//n.minimizable = true
+			//n.renderMode = NativeWindowRenderMode.DIRECT
+			//n.resizable = false
+			////n.systemChrome = NativeWindowSystemChrome.NONE
+			////n.transparent = true
+			//n.type = NativeWindowType.UTILITY
+			//var test:NativeWindows = new NativeWindows(n)
+			//test.activate();
 			trace('actived');
 			//db.showConsole()
 			//这里开始您的应用.

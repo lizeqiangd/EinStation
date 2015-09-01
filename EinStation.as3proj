@@ -2,7 +2,7 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="OtherIDE" />
+    <movie outputType="Application" />
     <movie input="" />
     <movie path="bin\EinStation.swf" />
     <movie fps="60" />
@@ -10,7 +10,7 @@
     <movie height="600" />
     <movie version="18" />
     <movie minorVersion="0" />
-    <movie platform="AIR" />
+    <movie platform="Flash Player" />
     <movie background="#FFFFFF" />
     <movie preferredSDK="AIR 18.0.0;18.0.0;" />
   </output>
@@ -90,7 +90,7 @@
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
-    <option testMovie="Unknown" />
+    <option testMovie="Default" />
     <option testMovieCommand="" />
   </options>
   <!-- Plugin storage -->
