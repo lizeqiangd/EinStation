@@ -11,7 +11,8 @@ package
 		
 		public function AirMain() 
 		{
-			this.stage.nativeWindow.activate();
+			//this.stage.nativeWindow.activate();
+			this.stage
 		}
 		
 	}
