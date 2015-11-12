@@ -39,7 +39,7 @@ package com.lizeqiangd.einstation.applications.BCC
 			this.setApplicationTitle = "EinStation Application - CommentCensor -";
 			this.setApplicationName = "CommentCensor";
 			this.configWindows(600, 500);
-			this.showCloseButton = false;
+			this.showCloseButton (false);
 			ssn = new SystemStatusNotification();
 			ssn.y = 20;
 			ssn.config(this.getUiWidth, getUiHeight - 20);
