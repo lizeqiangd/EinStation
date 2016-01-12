@@ -1,8 +1,5 @@
 package com.lizeqiangd.zweisystem.manager
 {
-	//import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionCreator;
-	//import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireCreator;
-	//import com.lizeqiangd.einstation.applications.QuestionnaireGenerator.QuestionnaireGenerator;
 	import com.lizeqiangd.einstation.applications.BaseMap.BaseMapBackground;
 	import com.lizeqiangd.einstation.applications.BCC.CommentCensor;
 	import com.lizeqiangd.einstation.applications.Heimdallr.Heimdallr;
@@ -20,15 +17,15 @@ package com.lizeqiangd.zweisystem.manager
 	 */
 	public class QuoteManager
 	{
-		//****application****
+		/**  applications  **/
 		//private var QuestionnaireGenerators:QuestionnaireGenerator	
 		//private var QuestionnaireCreators:QuestionnaireCreator 	
 		//private var QuestionCreators:QuestionCreator 	
 		//private var WorkAssistants:WorkAssistant
 		//private var heimdallr:Heimdallr
 		//private var basemapbackground:BaseMapBackground
-		private var commentcensor:CommentCensor
-		//****animation****
+		//private var commentcensor:CommentCensor
+		/** animations **/
 		private var ssn_waits:ssn_wait
 		private var mb_blue_excalmatorys:mb_blue_excalmatory
 		private var mb_blue_excalmatory_motions:mb_blue_excalmatory_motion

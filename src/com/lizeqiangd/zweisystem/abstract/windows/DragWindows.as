@@ -27,9 +27,10 @@
 		 */
 		private function onDragWindiowsInitedHandle(e:ApplicationEvent):void
 		{
-			this.removeEventListener(ApplicationEvent.INITED, onDragWindiowsInitedHandle);			
+			this.removeEventListener(ApplicationEvent.INITED, onDragWindiowsInitedHandle);
 			this.sp_background.addEventListener(MouseEvent.MOUSE_DOWN, onDragWindowsStartDrag);
-			stage ? stage.addEventListener(MouseEvent.MOUSE_UP, onDragWindowsStopDrag, false, 0, true) : null;
+			if (stage)
+				stage.addEventListener(MouseEvent.MOUSE_UP, onDragWindowsStopDrag, false, 0, true);
 		}
 		
 		/**
@@ -41,7 +42,6 @@
 			this.sp_background.removeEventListener(MouseEvent.MOUSE_DOWN, this.onDragWindowsStartDrag);
 			
 			this.stage.removeEventListener(MouseEvent.MOUSE_UP, this.onDragWindowsStopDrag);
-			//StageProxy.stage.removeEventListener(Event.MOUSE_LEAVE,onUIStopDrag);
 		}
 		
 		/**
@@ -50,9 +50,7 @@
 		protected function onDragWindowsStartDrag(e:MouseEvent):void
 		{
 			if (dragAble)
-			{
 				this.startDrag();
-			}
 		}
 		
 		/**

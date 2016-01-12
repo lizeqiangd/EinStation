@@ -93,9 +93,7 @@
 		private function onBaseWindowsFocus(e:MouseEvent):void
 		{
 			if (isFocusAble)
-			{
 				LayerManager.setForceLayer(this);
-			}
 		}
 		
 		/**
@@ -104,7 +102,6 @@
 		 */
 		private function onBaseWindowsOpenedHangle(e:ApplicationEvent):void
 		{
-			//adjustToRetinaScreen()
 		}
 		
 		/**
@@ -125,13 +122,8 @@
 			this.removeEventListener(ApplicationEvent.CLOSED, onBaseWindowsClosedHangle);
 			this.removeEventListener(ApplicationEvent.OPENED, onBaseWindowsOpenedHangle);
 			this.removeEventListener(MouseEvent.MOUSE_DOWN, onBaseWindowsFocus);
-			if (removeBackground)
-			{
-				//BackgroundManager.addBackGroundImage()
-			}
 			if (!(this is AnimeWindows))
 			{
-				//trace("BaseWindows CLOSED函数");
 				dispatchEvent(new ApplicationEvent(ApplicationEvent.CLOSED));
 			}
 		}
@@ -227,7 +219,7 @@
 		 */
 		public function set setAutoAdjustToRetina(value:Boolean):void
 		{
-			this.autoAdjustToRetina = value
+			this.autoAdjustToRetina = value;
 		}
 		
 		/**
@@ -235,7 +227,7 @@
 		 */
 		public function get getNowScale():Number
 		{
-			return nowScale
+			return nowScale;
 		}
 	}
 }

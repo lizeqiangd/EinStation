@@ -21,7 +21,7 @@
 		 */
 		public static function initTweenPlugin():void
 		{
-			TweenPlugin.activate([AutoAlphaPlugin, TintPlugin, BlurFilterPlugin, MotionBlurPlugin, GlowFilterPlugin, EndArrayPlugin]);
+			TweenPlugin.activate([AutoAlphaPlugin, TintPlugin, BlurFilterPlugin,  GlowFilterPlugin, EndArrayPlugin]);
 			TweenPlugin.activate([TransformAroundCenterPlugin, ShortRotationPlugin, TransformAroundPointPlugin]);
 			//Cc.debug("TweenPlugin activated:AutoAlphaPlugin, TintPlugin, BlurFilterPlugin, MotionBlurPlugin, GlowFilterPlugin, EndArrayPlugin");
 			//Cc.debug("TweenPlugin activated:TransformAroundCenterPlugin, ShortRotationPlugin, TransformAroundPointPlugin");

@@ -1,7 +1,6 @@
 ﻿package com.lizeqiangd.zweisystem.components
 {
 	import com.lizeqiangd.zweisystem.system.applications.message.Message;
-	//import com.lizeqiangd.zweisystem.manager.HostManager;
 	import flash.events.Event;
 	import flash.net.URLRequest;
 	import flash.net.navigateToURL;
@@ -34,14 +33,5 @@
 				}, trusted);
 			return;
 		}
-		//
-		///**
-		 //* 刷新页面.
-		 //*/
-		//public static function refresh()
-		//{
-			//navigateToURL(new URLRequest(HostManager.HOST_URL), "_self");
-		//}
-	
 	}
 }

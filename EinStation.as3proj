@@ -12,7 +12,7 @@
     <movie minorVersion="0" />
     <movie platform="Flash Player" />
     <movie background="#FFFFFF" />
-    <movie preferredSDK="AIR 18.0.0;18.0.0;" />
+    <movie preferredSDK="Flex 4.6.0, AIR 3.1;4.6.0, 3.1;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
@@ -45,7 +45,7 @@
     <option linkReport="" />
     <option loadExterns="" />
     <option staticLinkRSL="True" />
-    <option additional="-define CONFIG::DEBUGMODE false&#xA;-define CONFIG::CONSOLE true&#xA;-define CONFIG::LOWANIMATION true" />
+    <option additional="-define CONFIG::DEBUGMODE false&#xA;-define CONFIG::CONSOLE true&#xA;-define CONFIG::LOWANIMATION false" />
     <option compilerConstants="" />
     <option minorVersion="" />
   </build>
@@ -58,6 +58,8 @@
     <element path="src\swc\Console.swc" />
     <element path="src\swc\EinStationUI.swc" />
     <element path="src\swc\weibo-flash-sdk-oauth2.swc" />
+    <element path="libs\Console.swc" />
+    <element path="libs\EinStationUI.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

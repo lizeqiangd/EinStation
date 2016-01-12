@@ -54,7 +54,6 @@ package com.lizeqiangd.zweisystem.manager
 				timeout_timer.addEventListener(TimerEvent.TIMER_COMPLETE, onTimeout);
 				timeout_timer.start();
 			}
-			//_callback = callback;
 			var php:PHPAPI = new PHPAPI();
 			php.setGatewayUrl(json_url);
 			php.call('get_einstation_config', onLoadJsonComplete);

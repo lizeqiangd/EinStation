@@ -19,9 +19,9 @@
 	{
 		public var tx_title:TextField;
 		
-		private var orignalTitle:String = ""
-		private var isInited:Boolean = false
-		private var btn_closes:btn_close
+		private var orignalTitle:String = "";
+		private var isInited:Boolean = false;
+		private var btn_closes:btn_close;
 		
 		/**
 		 *TitleWindows构造函数,添加2个侦听器:程序开始关闭,程序完全打开,程序初始化完成.
@@ -31,8 +31,8 @@
 			this.addEventListener(ApplicationEvent.CLOSE, onTitleWindowsCloseHandle);
 			this.addEventListener(ApplicationEvent.OPENED, onTitleWindowsOpenedHandle);
 			this.addEventListener(ApplicationEvent.INITED, onTitleWindowsInitedHandle);
-			tx_title = new TextField()
-			btn_closes = new btn_close
+			tx_title = new TextField();
+			btn_closes = new btn_close();
 		}
 		
 		override public function configWindows(_w:Number, _h:Number):void
@@ -43,7 +43,6 @@
 			tx_title.height = 20
 			tx_title.defaultTextFormat = ESTextFormat.LightBlueTitleTextFormat
 			tx_title.width = _w
-			//tx_title.text = "Initializing.";
 			tx_title.mouseEnabled = false;
 			addChild(tx_title)
 		}
@@ -56,7 +55,6 @@
 			btn_closes.addEventListener(MouseEvent.CLICK, onTitleWindowsCloseButtonClickHangle)
 			btn_closes.x = getUiWidth - btn_closes.width
 			addChild(btn_closes)
-			//AnimationManager.fade_in(btn_closes)
 		}
 		
 		/**
@@ -81,9 +79,6 @@
 		 */
 		private function onTitleWindowsCloseHandle(e:ApplicationEvent):void
 		{
-			//getChildByName(TitleWindows._btn_close).removeEventListener(MouseEvent.CLICK, onTitleWindowsCloseButtonClickHangle);
-			//getChildByName(TitleWindows._mc_title).removeEventListener(MouseEvent.MOUSE_DOWN, onDragWindowsStartDrag);
-			//getChildByName(TitleWindows._mc_title).removeEventListener(MouseEvent.MOUSE_UP, onDragWindowsStopDrag);
 		}
 		
 		/**
