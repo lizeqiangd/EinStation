@@ -1,4 +1,4 @@
-﻿package com.zweisystem.applications.SinaWeibo.FullScreenGesture
+﻿package com.lizeqiangd.zweisystem.applications.SinaWeibo.FullScreenGesture
 {
 	import com.zweisystem.modules.imagedisplay.ImageDisplay;
 	import flash.display.MovieClip;
